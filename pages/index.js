@@ -14,6 +14,7 @@ export default function Home() {
       </Head>
 
       <h1>Select available time:</h1>
+      <SetWorkoutTime minutes="30" />
     </div>
   );
 }
