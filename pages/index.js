@@ -5,9 +5,11 @@ import styles from "../styles/Home.module.css";
 
 import WorkoutTimeSelector from "../components/WorkoutTimeSelector";
 import WorkoutPresetCard from "../components/WorkoutPresetCard";
+import StartWorkoutButton from "../components/StartWorkoutButton";
 
 export default function Home() {
   const [workoutTime, setWorkoutTime] = useState(15);
+  const [activeWorkoutPreset, setActiveWorkoutPreset] = useState("");
 
   return (
     <div className={styles.container}>
@@ -34,7 +36,12 @@ export default function Home() {
 
       <h1 className={styles.title}>Pick a present:</h1>
       <div className={styles.presetsWrapper}>
-        <WorkoutPresetCard workoutPresetName="My preset 1" />
+        <WorkoutPresetCard
+          workoutPresetName="My preset 1"
+          onClick={() => {
+            setActiveWorkoutPreset(0);
+          }}
+        />
         <WorkoutPresetCard workoutPresetName="My preset 1" />
         <WorkoutPresetCard workoutPresetName="My preset 1" />
         <WorkoutPresetCard workoutPresetName="My preset 1" />
@@ -44,6 +51,8 @@ export default function Home() {
         <WorkoutPresetCard workoutPresetName="My preset 1" />
         <WorkoutPresetCard workoutPresetName="My preset 1" />
       </div>
+
+      <StartWorkoutButton />
 
       <p>Create a custom workout</p>
     </div>

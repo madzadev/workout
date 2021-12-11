@@ -4,3 +4,8 @@
   border: 1px solid lime;
   border-radius: 5px;
 }
+
+.wrapper:hover {
+  cursor: pointer;
+  /* background-color: silver; */
+}

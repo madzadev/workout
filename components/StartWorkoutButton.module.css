@@ -1,0 +1,14 @@
+.wrapper {
+  max-width: 200px;
+  height: 50px;
+  background-color: lime;
+  border-radius: 5px;
+  color: white;
+  margin: 0 auto 20px auto;
+  display: grid;
+  place-items: center;
+}
+
+.wrapper:hover {
+  cursor: pointer;
+}
