@@ -1,3 +1,5 @@
+import {useState} from 'react';
+
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
@@ -5,6 +7,10 @@ import styles from "../styles/Home.module.css";
 import SetWorkoutTime from "../components/SetWorkoutTime";
 
 export default function Home() {
+const [workoutTime, setWorkoutTime] = useState(15);
+
+
+
   return (
     <div className={styles.container}>
       <Head>
@@ -14,7 +20,8 @@ export default function Home() {
       </Head>
 
       <h1>Select available time:</h1>
-      <SetWorkoutTime minutes="30" />
+      <SetWorkoutTime minutes={workoutTime} />
+      <h1>Pick a present:</h1>
     </div>
   );
 }
