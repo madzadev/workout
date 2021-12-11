@@ -1,6 +1,6 @@
 import styles from "./SetWorkoutTime.module.css";
 
-export default SetWorkoutTime = ({ mins }) => {
+const SetWorkoutTime = ({ minutes }) => {
   return (
     <div className={styles.wrapper}>
       <h1>-</h1>
@@ -9,3 +9,5 @@ export default SetWorkoutTime = ({ mins }) => {
     </div>
   );
 };
+
+export default SetWorkoutTime;
