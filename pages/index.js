@@ -17,14 +17,21 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1>Select available time:</h1>
+      <h1 style={{ color: "white" }}>Select available time:</h1>
       <SetWorkoutTime
         workoutTime={workoutTime}
         increaseWorkoutTime={() => {
-          setWorkoutTime(setWorkoutTime + 5);
+          if (workoutTime != 120) {
+            setWorkoutTime(workoutTime + 5);
+          }
+        }}
+        decreaseWorkoutTime={() => {
+          if (workoutTime !== 5) {
+            setWorkoutTime(workoutTime - 5);
+          }
         }}
       />
-      <h1>Pick a present:</h1>
+      <h1 style={{ color: "white" }}>Pick a present:</h1>
     </div>
   );
 }
