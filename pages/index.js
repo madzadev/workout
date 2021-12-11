@@ -54,7 +54,7 @@ export default function Home() {
 
       <StartWorkoutButton />
 
-      <p>Create a custom workout</p>
+      <p style={{ color: "purple" }}>Create a custom workout</p>
     </div>
   );
 }
