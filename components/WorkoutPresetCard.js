@@ -1,9 +1,9 @@
 import styles from "./WorkoutPresetCard.module.css";
 
-const WorkoutPresetCard = ({ presetName }) => {
+const WorkoutPresetCard = ({ workoutPresetName }) => {
   return (
     <div className={styles.wrapper}>
-      <h1>{presetName}</h1>
+      <h1>{workoutPresetName}</h1>
     </div>
   );
 };

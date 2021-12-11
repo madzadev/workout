@@ -4,6 +4,7 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 
 import WorkoutTimeSelector from "../components/WorkoutTimeSelector";
+import WorkoutPresetCard from "../components/WorkoutPresetCard";
 
 export default function Home() {
   const [workoutTime, setWorkoutTime] = useState(15);
@@ -30,7 +31,19 @@ export default function Home() {
           }
         }}
       />
+
       <h1 className={styles.title}>Pick a present:</h1>
+      <div className={styles.presetsWrapper}>
+        <WorkoutPresetCard workoutPresetName="My preset 1" />
+        <WorkoutPresetCard workoutPresetName="My preset 1" />
+        <WorkoutPresetCard workoutPresetName="My preset 1" />
+        <WorkoutPresetCard workoutPresetName="My preset 1" />
+        <WorkoutPresetCard workoutPresetName="My preset 1" />
+        <WorkoutPresetCard workoutPresetName="My preset 1" />
+        <WorkoutPresetCard workoutPresetName="My preset 1" />
+        <WorkoutPresetCard workoutPresetName="My preset 1" />
+        <WorkoutPresetCard workoutPresetName="My preset 1" />
+      </div>
 
       <p>Create a custom workout</p>
     </div>
