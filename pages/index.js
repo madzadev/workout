@@ -1,10 +1,9 @@
 import { useState } from "react";
 
 import Head from "next/head";
-import Image from "next/image";
 import styles from "../styles/Home.module.css";
 
-import SetWorkoutTime from "../components/SetWorkoutTime";
+import WorkoutTimeSelector from "../components/WorkoutTimeSelector";
 
 export default function Home() {
   const [workoutTime, setWorkoutTime] = useState(15);
@@ -17,8 +16,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1 style={{ color: "white" }}>Select available time:</h1>
-      <SetWorkoutTime
+      <h1 className={styles.title}>Select available time:</h1>
+      <WorkoutTimeSelector
         workoutTime={workoutTime}
         increaseWorkoutTime={() => {
           if (workoutTime != 120) {
@@ -31,7 +30,9 @@ export default function Home() {
           }
         }}
       />
-      <h1 style={{ color: "white" }}>Pick a present:</h1>
+      <h1 className={styles.title}>Pick a present:</h1>
+
+      <p>Create a custom workout</p>
     </div>
   );
 }
