@@ -1,7 +1,7 @@
 const workouts = {
   preset1: {
-    name: "wewe",
-    description: "fdfdf",
+    name: "General Workout",
+    description: "General workout for those sitting at the chair",
     equipment: "none",
     exercises: [
       {
