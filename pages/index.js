@@ -19,7 +19,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1 className={styles.title}>Select available time:</h1>
+      <h1 className={styles.title}>Select time:</h1>
       <WorkoutTimeSelector
         workoutTime={workoutTime}
         increaseWorkoutTime={() => {
