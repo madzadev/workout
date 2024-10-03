@@ -34,27 +34,29 @@ export default function Home() {
         }}
       />
 
-      <h1 className={styles.title}>Pick a present:</h1>
+      <h1 className={styles.title}>Pick a preset:</h1>
       <div className={styles.presetsWrapper}>
         <WorkoutPresetCard
-          workoutPresetName="My preset 1"
+          workoutPresetName="Quick Workout"
           onClick={() => {
             setActiveWorkoutPreset(0);
           }}
         />
-        <WorkoutPresetCard workoutPresetName="My preset 1" />
-        <WorkoutPresetCard workoutPresetName="My preset 1" />
-        <WorkoutPresetCard workoutPresetName="My preset 1" />
-        <WorkoutPresetCard workoutPresetName="My preset 1" />
-        <WorkoutPresetCard workoutPresetName="My preset 1" />
-        <WorkoutPresetCard workoutPresetName="My preset 1" />
-        <WorkoutPresetCard workoutPresetName="My preset 1" />
-        <WorkoutPresetCard workoutPresetName="My preset 1" />
+        <WorkoutPresetCard workoutPresetName="Total Body Blitz" />
+        <WorkoutPresetCard workoutPresetName="Flex and Burn" />
+        <WorkoutPresetCard workoutPresetName="Cardio Power Surge" />
+        <WorkoutPresetCard workoutPresetName="Strength Fusion Flow" />
+        <WorkoutPresetCard workoutPresetName="HIIT the Beat" />
+        <WorkoutPresetCard workoutPresetName="Core Sculpt Session" />
+        <WorkoutPresetCard workoutPresetName="Warrior Boot Camp" />
+        <WorkoutPresetCard workoutPresetName="Muscle Madness Circuit" />
       </div>
 
       <StartWorkoutButton />
 
-      <p style={{ color: "white" }}>Create a custom workout</p>
+      <a href="/custom">
+        <p style={{ color: "white" }}>Create a custom workout</p>
+      </a>
     </div>
   );
 }

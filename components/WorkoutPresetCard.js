@@ -3,9 +3,9 @@ import styles from "./WorkoutPresetCard.module.css";
 const WorkoutPresetCard = ({ workoutPresetName, onClick }) => {
   return (
     <div className={styles.wrapper} onClick={onClick}>
-      <h1>{workoutPresetName}</h1>
+      <h2>{workoutPresetName}</h2>
       <p>Equipment needed: none</p>
-      <p>Difficulty: none</p>
+      <p>Difficulty: ⭐⭐⭐</p>
     </div>
   );
 };

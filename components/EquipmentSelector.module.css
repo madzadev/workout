@@ -1,0 +1,42 @@
+.equipmentContainer {
+    display: flex;
+    /* Horizontal layout */
+    flex-wrap: wrap;
+    /* Allow wrapping if container gets too small */
+    justify-content: space-between;
+    /* Add space between items */
+    max-width: 800px;
+    /* Limit the container width */
+    margin: 0 auto;
+    /* Center the container */
+}
+
+.equipmentItem {
+    width: 100px;
+    /* Set each item to not exceed 100px */
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    text-align: center;
+    /* Center align text inside the item */
+    box-sizing: border-box;
+    /* Ensure padding and border are included in width */
+}
+
+.equipmentItem:hover {
+    background-color: lightgray;
+}
+
+.selected {
+    background-color: purple;
+    color: white;
+}
+
+.equipmentIcon {
+    font-size: 20px;
+}
+
+.equipmentName {
+    font-size: 16px;
+}
