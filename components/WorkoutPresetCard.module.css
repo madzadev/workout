@@ -1,7 +1,7 @@
 .wrapper {
   color: white;
   height: 100px;
-  border: 1px solid rgb(132, 24, 255);
+  border: 1px solid rgb(63, 63, 63);
   border-radius: 5px;
   transition: transform 0.3s ease;
 }
@@ -9,5 +9,5 @@
 .wrapper:hover {
   cursor: pointer;
   background-color: rgb(34, 34, 34);
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
