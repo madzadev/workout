@@ -1,15 +1,16 @@
 const About = () => {
   return (
     <div>
-      <h1>About the app</h1>
-      <p>Having workout is important</p>
-      <h1>Note about programs</h1>
-      <p>
-        Note that created presets are general. It is always recommended do go to
-        the doctor first or arrange a consultation with the exercise specialist
-        to get more special program specific to you.
-      </p>
-      ;
+      <div>
+        <h1> This is the progress</h1>
+      </div>
+      <div>
+        <h1>Jaws</h1>
+        <p>What to do</p>
+      </div>
+      <div>
+        <h1>Current progress</h1>
+      </div>
     </div>
   );
 };
