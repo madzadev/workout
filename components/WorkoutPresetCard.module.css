@@ -1,11 +1,11 @@
 .wrapper {
   color: white;
-  height: 50px;
-  border: 1px solid lime;
+  height: 100px;
+  border: 1px solid rgb(132, 24, 255);
   border-radius: 5px;
 }
 
 .wrapper:hover {
   cursor: pointer;
-  /* background-color: silver; */
+  background-color: silver;
 }
