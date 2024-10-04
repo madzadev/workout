@@ -1,6 +1,6 @@
-import styles from "./ProgressBar.module.css";
+import styles from "./WorkoutTimeline.module.css";
 
-const StartWorkoutButton = () => {
+const WorkoutTimeline = () => {
   return (
     <div className={styles.wrapper}>
       <h1>The progress of the workout goes here</h1>
@@ -8,4 +8,4 @@ const StartWorkoutButton = () => {
   );
 };
 
-export default StartWorkoutButton;
+export default WorkoutTimeline;

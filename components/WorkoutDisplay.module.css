@@ -1,0 +1,16 @@
+.wrapper {
+    flex-grow: 1;
+    display: grid;
+    place-items: center;
+    border: 1px solid red;
+}
+
+.title {
+    font-size: 40px;
+    color: var(--text-color);
+}
+
+.description {
+    font-size: 18px;
+    color: var(--paragraph-color);
+}

@@ -1,13 +1,13 @@
+import WorkoutTimeline from "../components/WorkoutTimeline";
+import WorkoutDisplay from "../components/WorkoutDisplay";
+
+import styles from "../styles/Workout.module.css";
+
 const Workout = () => {
   return (
-    <div>
-      <div>
-        <h1> This is the progress</h1>
-      </div>
-      <div>
-        <h1>Jaws</h1>
-        <p>What to do</p>
-      </div>
+    <div className={styles.wrapper}>
+      <WorkoutTimeline />
+      <WorkoutDisplay />
       <div>
         <h1>Current progress</h1>
       </div>
