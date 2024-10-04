@@ -1,9 +1,9 @@
 .wrapper {
   max-width: 200px;
   height: 50px;
-  background-color: rgb(132, 24, 255);
+  background-color: var(--button-color);
   border-radius: 5px;
-  color: white;
+  color: var(--text-color);
   margin: 0 auto 20px auto;
   display: grid;
   place-items: center;

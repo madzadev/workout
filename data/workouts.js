@@ -1,8 +1,8 @@
 const presets = [
   {
-    id: 1,
-    name: "Relax",
-    link: "relax",
+    preset: 1,
+    difficulty: 1,
+    name: "Quick Workout",
     workout: [
       {
         eyes,

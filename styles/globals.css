@@ -1,5 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
+:root {
+  --background-color: #16161a;
+  --secondary-color: #2ecc71;
+  --button-color: #7f5af0;
+  --text-color: #ffffff;
+  --paragraph-color: ##94a1b2;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -8,7 +16,8 @@
 }
 
 body {
-  background-color: #2b2a2e;
+  background-color: var(--background-color);
   padding: 20px;
   text-align: center;
+  color: white;
 }
