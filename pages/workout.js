@@ -1,5 +1,6 @@
 import WorkoutTimeline from "../components/WorkoutTimeline";
 import WorkoutDisplay from "../components/WorkoutDisplay";
+import WorkoutProgress from "../components/WorkoutProgress";
 
 import styles from "../styles/Workout.module.css";
 
@@ -8,9 +9,7 @@ const Workout = () => {
     <div className={styles.wrapper}>
       <WorkoutTimeline />
       <WorkoutDisplay />
-      <div>
-        <h1>Current progress</h1>
-      </div>
+      <WorkoutProgress />
     </div>
   );
 };

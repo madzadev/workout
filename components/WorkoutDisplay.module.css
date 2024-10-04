@@ -2,15 +2,15 @@
     flex-grow: 1;
     display: grid;
     place-items: center;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 .title {
-    font-size: 40px;
+    font-size: 72px;
     color: var(--text-color);
 }
 
 .description {
-    font-size: 18px;
+    font-size: 32px;
     color: var(--paragraph-color);
 }

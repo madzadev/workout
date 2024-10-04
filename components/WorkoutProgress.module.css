@@ -1,6 +1,4 @@
 .wrapper {
     height: 80px;
-    border: 1px solid red;
-    /* background: linear-gradient(to right, red, orange, yellow, green, cyan, blue, violet, indigo, pink); */
-    background-color: aquamarine;
+    background: linear-gradient(to right, aquamarine 50%, transparent 50%);
 }
