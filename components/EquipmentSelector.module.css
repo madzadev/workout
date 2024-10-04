@@ -5,7 +5,7 @@
     /* Allow wrapping if container gets too small */
     justify-content: space-between;
     /* Add space between items */
-    max-width: 800px;
+    max-width: 1200px;
     /* Limit the container width */
     margin: 0 auto;
     /* Center the container */
@@ -17,7 +17,8 @@
     padding: 10px;
     margin: 5px;
     cursor: pointer;
-    border: 1px solid #ccc;
+    border: 1px solid #1a1a1a;
+    border-radius: 5px;
     text-align: center;
     /* Center align text inside the item */
     box-sizing: border-box;
@@ -29,7 +30,7 @@
 }
 
 .selected {
-    background-color: purple;
+    background-color: rgb(132, 24, 255);
     color: white;
 }
 

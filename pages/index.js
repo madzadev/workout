@@ -42,14 +42,14 @@ export default function Home() {
             setActiveWorkoutPreset(0);
           }}
         />
+        <WorkoutPresetCard workoutPresetName="Flex and Stretch" />
         <WorkoutPresetCard workoutPresetName="Total Body Blitz" />
-        <WorkoutPresetCard workoutPresetName="Flex and Burn" />
-        <WorkoutPresetCard workoutPresetName="Cardio Power Surge" />
-        <WorkoutPresetCard workoutPresetName="Strength Fusion Flow" />
-        <WorkoutPresetCard workoutPresetName="HIIT the Beat" />
         <WorkoutPresetCard workoutPresetName="Core Sculpt Session" />
-        <WorkoutPresetCard workoutPresetName="Warrior Boot Camp" />
+        <WorkoutPresetCard workoutPresetName="Strength Fusion Flow" />
         <WorkoutPresetCard workoutPresetName="Muscle Madness Circuit" />
+        <WorkoutPresetCard workoutPresetName="Cardio Power Surge" />
+        <WorkoutPresetCard workoutPresetName="HIIT the Beat" />
+        <WorkoutPresetCard workoutPresetName="Warrior Boot Camp" />
       </div>
 
       <StartWorkoutButton />

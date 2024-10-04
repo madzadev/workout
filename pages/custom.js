@@ -17,8 +17,8 @@ const Custom = () => {
   };
   return (
     <div>
-      <h1> Create your own workout</h1>
-      <h1>Select Your Equipment</h1>
+      <h1>Create a custom workout</h1>
+      <h2>1. Select Your Equipment:</h2>
       <EquipmentSelector
         selectedEquipment={selectedEquipment}
         handleSelect={handleSelect}
@@ -27,19 +27,23 @@ const Custom = () => {
         <p>Selected Equipment IDs: {selectedEquipment.join(", ")}</p>
       )}
 
+      <h2>Body parts to focus on:</h2>
+
+      <p>Legs</p>
+      <p>Core</p>
+
+      <h2>Available exercises:</h2>
+
+      <p>Burpees</p>
+      <p>Jumps</p>
+
       <h2>Add your first round</h2>
       <input type="text" placeholder="round name" />
       <input type="text" placeholder="action description (optional)" />
       <input type="text" placeholder="5 mins" />
-      <h4>Or select a preset</h4>
-      <h2>Add your round</h2>
-      <input type="text" placeholder="round name" />
-      <h2>Add your round</h2>
-      <input type="text" placeholder="round name" />
-      <h2>Add your round</h2>
-      <input type="text" placeholder="round name" />
+
       <h2>➕ Add more rounds</h2>
-      <h2>Time left: 15 mins</h2>
+      <h2>Total time: 15 mins</h2>
       <h3>Save workout</h3>
       <StartWorkoutButton />
       <a href="/">Back</a>
