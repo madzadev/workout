@@ -1,11 +1,24 @@
 const presets = [
   {
-    preset: 1,
-    difficulty: 1,
     name: "Quick Workout",
+    difficulty: 1,
+    rounds: 1,
+    breaks: 5,
     workout: [
       {
-        eyes,
+        name: "Mountain climbers",
+        description: "Start in plank, alternate knees towards chest.",
+        time: 20,
+      },
+      {
+        name: "AAA",
+        description: "Start in plank, alternate knees towards chest.",
+        time: 20,
+      },
+      {
+        name: "Mountain climbers",
+        description: "Start in plank, alternate knees towards chest.",
+        time: 20,
       },
     ],
   },

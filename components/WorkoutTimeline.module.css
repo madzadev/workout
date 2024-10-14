@@ -1,5 +1,12 @@
 .wrapper {
     height: 80px;
-    /* border: 1px solid red; */
-    background: linear-gradient(to right, red, orange, yellow, green, cyan, blue, violet, indigo, pink);
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.wrapper:hover {
+    cursor: pointer;
+    /* Changes the cursor to pointer */
+    filter: brightness(1.2);
+    /* Makes the block brighter */
 }
