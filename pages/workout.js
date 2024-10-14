@@ -7,9 +7,9 @@ import styles from "../styles/Workout.module.css";
 const Workout = () => {
   return (
     <div className={styles.wrapper}>
-      <WorkoutTimeline />
-      <WorkoutDisplay />
       <WorkoutProgress />
+      <WorkoutDisplay />
+      <WorkoutTimeline />
     </div>
   );
 };
