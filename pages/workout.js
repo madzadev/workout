@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
-
 import WorkoutTimeline from "../components/WorkoutTimeline";
 import WorkoutDisplay from "../components/WorkoutDisplay";
 import WorkoutProgress from "../components/WorkoutProgress";
-
 import styles from "../styles/Workout.module.css";
 import presets from "../data/workouts";
 
 const roundCount = presets[0].rounds;
 const breakLength = presets[0].breaks;
+const roundBreak = presets[0].roundBreaks; // Break time in seconds between rounds
 const colors = ["aquamarine", "grey", "yellow"];
 
 // Function to repeat the array based on the number of rounds
@@ -39,8 +38,10 @@ const Workout = () => {
   const [currentInterval, setCurrentInterval] = useState(0);
   const [timer, setTimer] = useState(timeIntervals[0]);
   const [isCooldown, setIsCooldown] = useState(false);
-  const [cooldownTimer, setCooldownTimer] = useState(breakLength); // 5-second cooldown
+  const [cooldownTimer, setCooldownTimer] = useState(breakLength);
+  const [isRoundComplete, setIsRoundComplete] = useState(false);
   const [isWorkoutComplete, setIsWorkoutComplete] = useState(false);
+  const [isPaused, setIsPaused] = useState(false); // New state for pausing the timer
 
   // Calculate the current round based on the currentInterval
   const exercisesPerRound = originalExerciseNames.length;
@@ -49,17 +50,32 @@ const Workout = () => {
   useEffect(() => {
     let interval;
 
+    // Handle pausing functionality
+    const handleKeydown = (event) => {
+      if (event.code === "Space") {
+        setIsPaused((prev) => !prev);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeydown);
+
+    if (isPaused) {
+      return () => window.removeEventListener("keydown", handleKeydown); // Stop the timer when paused
+    }
+
     if (isWorkoutComplete) {
-      return; // Stop all timers if the workout is complete
+      window.removeEventListener("keydown", handleKeydown);
+      return;
     }
 
     if (isCooldown) {
       interval = setInterval(() => {
         setCooldownTimer((prev) => {
           if (prev === 1) {
-            setIsCooldown(false); // End cooldown
-            setCooldownTimer(breakLength); // Reset cooldown for next phase
-            setTimer(timeIntervals[currentInterval]); // Start the next interval timer
+            setIsCooldown(false);
+            setIsRoundComplete(false);
+            setCooldownTimer(breakLength); // Reset to regular break length
+            setTimer(timeIntervals[currentInterval]); // Start the next exercise interval
             return 0;
           }
           return prev - 1;
@@ -71,13 +87,18 @@ const Workout = () => {
           setTimer((prev) => {
             if (prev === 1) {
               const nextInterval = currentInterval + 1;
+              const isNewRound = nextInterval % exercisesPerRound === 0; // Check if a new round starts
+
               if (nextInterval < timeIntervals.length) {
-                setIsCooldown(true); // Enter cooldown phase
+                setIsCooldown(true);
+                if (isNewRound) {
+                  setIsRoundComplete(true);
+                  setCooldownTimer(roundBreak); // Use roundBreak after a full round
+                }
                 setCurrentInterval(nextInterval);
               } else {
-                // When all intervals are done, complete the workout
                 clearInterval(interval);
-                setIsWorkoutComplete(true); // Set workout as complete
+                setIsWorkoutComplete(true);
               }
               return 0;
             }
@@ -87,14 +108,25 @@ const Workout = () => {
       }
     }
 
-    return () => clearInterval(interval); // Cleanup interval
-  }, [currentInterval, isCooldown, isWorkoutComplete]);
+    return () => {
+      clearInterval(interval); // Clear any existing interval
+      window.removeEventListener("keydown", handleKeydown);
+    };
+  }, [
+    currentInterval,
+    isCooldown,
+    isPaused,
+    isRoundComplete,
+    isWorkoutComplete,
+  ]);
 
   const handleDivClick = (index) => {
     setCurrentInterval(index);
     setTimer(timeIntervals[index]);
-    setIsCooldown(false);
-    setIsWorkoutComplete(false); // Reset completion if user clicks on a specific interval
+    setIsCooldown(false); // Reset cooldown
+    setIsRoundComplete(false); // Reset round completion
+    setIsWorkoutComplete(false); // Reset workout completion
+    setCooldownTimer(breakLength); // Reset cooldown timer to initial break length
   };
 
   return (
@@ -104,10 +136,9 @@ const Workout = () => {
         countdown={isCooldown ? cooldownTimer : timer}
         color={isCooldown ? colors[2] : colors[0]}
         isCooldown={isCooldown}
-        cooldownTimer={breakLength}
+        cooldownTimer={isRoundComplete ? roundBreak : breakLength}
         totalWorkoutTime={timeIntervals[currentInterval]}
       />
-
       {/* Adjust WorkoutDisplay based on workout completion */}
       <WorkoutDisplay
         round={currentRound}
@@ -116,7 +147,7 @@ const Workout = () => {
             ? "Great work"
             : isCooldown
             ? "Next up:"
-            : exerciseNames[currentInterval]
+            : `${exerciseNames[currentInterval]} (R${currentRound})`
         }
         timer={
           isWorkoutComplete ? "Awesome" : isCooldown ? cooldownTimer : timer
@@ -125,11 +156,10 @@ const Workout = () => {
           isWorkoutComplete
             ? "You have made it"
             : isCooldown
-            ? exerciseNames[currentInterval]
+            ? `${exerciseNames[currentInterval]} (R${currentRound})`
             : exerciseDescriptions[currentInterval]
         }
       />
-
       <WorkoutTimeline
         onClick={handleDivClick}
         timeIntervals={timeIntervals}

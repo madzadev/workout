@@ -11,9 +11,11 @@ const WorkoutProgress = ({
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    // Determine whether the current phase is cooldown or workout and calculate progress accordingly
+    // Calculate total time based on whether it's cooldown or workout
     const totalTime = isCooldown ? cooldownTimer : totalWorkoutTime;
+    console.log(cooldownTimer);
 
+    // Make sure totalTime and countdown are valid before calculating progress
     if (totalTime > 0) {
       const progressPercentage = ((totalTime - countdown) / totalTime) * 100;
       setProgress(progressPercentage);

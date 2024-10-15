@@ -4,6 +4,7 @@ const presets = [
     difficulty: 1,
     rounds: 3,
     breaks: 10, // 10 seconds break between exercises
+    roundBreaks: 60,
     workout: [
       {
         name: "Jumping Jacks",
@@ -38,7 +39,7 @@ const presets = [
       {
         name: "Burpees",
         description: "Squat, kick back, jump up explosively.",
-        time: 25, // Full-body explosive movement
+        time: 5, // Full-body explosive movement
       },
     ],
   },
