@@ -16,7 +16,7 @@ const Workout = () => {
   const [currentInterval, setCurrentInterval] = useState(0);
   const [timer, setTimer] = useState(timeIntervals[0]);
   const [isCooldown, setIsCooldown] = useState(false);
-  const [cooldownTimer, setCooldownTimer] = useState(10); // 5-second cooldown
+  const [cooldownTimer, setCooldownTimer] = useState(5); // 5-second cooldown
   const cooldownColor = "yellow"; // Color during cooldown
 
   useEffect(() => {
@@ -28,7 +28,7 @@ const Workout = () => {
         setCooldownTimer((prevCooldownTimer) => {
           if (prevCooldownTimer === 1) {
             setIsCooldown(false); // End cooldown
-            setCooldownTimer(10); // Reset cooldown for next phase
+            setCooldownTimer(5); // Reset cooldown for next phase
             setTimer(timeIntervals[currentInterval]); // Start the next interval timer
             return 0;
           }

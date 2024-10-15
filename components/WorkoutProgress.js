@@ -7,23 +7,17 @@ const WorkoutProgress = ({ countdown, color }) => {
 
   useEffect(() => {
     setTotalTime(countdown);
-  }, []);
+    setProgress(0);
+  }, [totalTime]);
 
   useEffect(() => {
-    if (countdown > 0 && totalTime > 0) {
-      const progressPercentage = ((totalTime - countdown) / totalTime) * 100;
+    if (totalTime > 0) {
+      // ((100-50)/100)*100
+      const progressPercentage =
+        ((totalTime + 1 - countdown) / totalTime) * 100;
       setProgress(progressPercentage);
     }
-
-    // Set progress to 100% when countdown finishes
-    if (countdown === 0) {
-      const timeout = setTimeout(() => {
-        setProgress(100);
-      }, 1000); // Wait for 1 second before reaching 100%
-
-      return () => clearTimeout(timeout); // Cleanup on unmount
-    }
-  }, [countdown, totalTime]);
+  }, [countdown]);
 
   return (
     <div className={styles.wrapper}>
@@ -32,7 +26,7 @@ const WorkoutProgress = ({ countdown, color }) => {
           width: `${progress}%`,
           backgroundColor: color,
           height: "80px",
-          transition: "width 1s linear", // Fixed transition duration
+          // transition: `width ${countdown < 1 ? 0 : 1}s linear`, // Fixed transition duration
         }}
       ></div>
     </div>
