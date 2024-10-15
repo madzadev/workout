@@ -1,13 +1,11 @@
 import styles from "./WorkoutDisplay.module.css";
 
-const WorkoutDisplay = () => {
+const WorkoutDisplay = ({ title, timer, description }) => {
   return (
     <div className={styles.wrapper}>
-      <h1 className={styles.title}>Mountain climbers</h1>
-      <h1 className={styles.time}>41</h1>
-      <h3 className={styles.description}>
-        Start in plank, alternate knees towards chest.
-      </h3>
+      <h1 className={styles.title}>{title}</h1>
+      <h1 className={styles.timer}>{timer}</h1>
+      <h3 className={styles.description}>{description}</h3>
     </div>
   );
 };
