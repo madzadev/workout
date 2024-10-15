@@ -50,18 +50,18 @@ const presets = [
     title: "Full Body Quick Workout",
     difficulty: 1,
     rounds: 3,
-    exerciseBreaks: 10, // 10 seconds break between exercises
+    exerciseBreaks: 20, // 10 seconds break between exercises
     roundBreaks: 60,
     workout: [
       {
         name: "Jumping Jacks",
         description: "Jump feet out, raise arms overhead.",
-        time: 5, // Adjusted to 30 seconds for a warm-up
+        time: 40, // Adjusted to 30 seconds for a warm-up
       },
       {
         name: "Bodyweight Squats",
         description: "Lower down, stand back up straight.",
-        time: 5, // Longer for a lower body workout
+        time: 30, // Longer for a lower body workout
       },
     ],
   },

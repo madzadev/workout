@@ -1,12 +1,10 @@
 import styles from "./StartWorkoutButton.module.css";
 
-const StartWorkoutButton = () => {
+const StartWorkoutButton = ({ onClick }) => {
   return (
-    <a href="/workout" className={styles.link}>
-      <div className={styles.wrapper}>
-        <p>Start</p>
-      </div>
-    </a>
+    <div className={styles.wrapper} onClick={onClick}>
+      <p>Start</p>
+    </div>
   );
 };
 

@@ -6,7 +6,7 @@ const WorkoutPresetCard = ({ workoutPresetName, isActive, onClick }) => {
       className={styles.wrapper}
       onClick={onClick}
       style={{
-        backgroundColor: isActive ? "yellow" : "white",
+        backgroundColor: isActive ? "yellow" : "#070F17",
         color: isActive ? "black" : "gray",
       }}
     >

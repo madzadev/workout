@@ -1,11 +1,10 @@
 .wrapper {
   color: white;
   height: 140px;
-  /* border: 1px solid #070F17; */
   padding: 10px;
   border-radius: 5px;
   transition: transform 0.3s ease;
-  background-color: #070F17;
+  /* background-color: #070F17; */
 }
 
 .wrapper:hover {
