@@ -8,12 +8,12 @@ const presets = [
       {
         name: "Jumping Jacks",
         description: "Jump feet out, raise arms overhead.",
-        time: 5, // Adjusted to 30 seconds for a warm-up
+        time: 20, // Adjusted to 30 seconds for a warm-up
       },
       {
         name: "Bodyweight Squats",
         description: "Lower down, stand back up straight.",
-        time: 5, // Longer for a lower body workout
+        time: 20, // Longer for a lower body workout
       },
       {
         name: "Push-ups",

@@ -32,7 +32,7 @@ const WorkoutTimeline = ({
               style={{
                 width: `${(interval / total) * 100}%`,
                 backgroundColor: progressPercentage > 0 ? colors[0] : colors[1],
-                opacity: isCurrent ? 1 : 0.5, // Make completed intervals semi-transparent
+                opacity: isCurrent ? 1 : 0.7, // Make completed intervals semi-transparent
               }}
             >
               {/* Show the progress percentage in each block (optional) */}
