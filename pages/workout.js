@@ -1,18 +1,39 @@
 import React, { useState, useEffect } from "react";
+
 import WorkoutTimeline from "../components/WorkoutTimeline";
 import WorkoutDisplay from "../components/WorkoutDisplay";
 import WorkoutProgress from "../components/WorkoutProgress";
+
 import styles from "../styles/Workout.module.css";
 import presets from "../data/workouts";
 
-const timeIntervals = presets[0].workout.map((exercise) => exercise.time);
-const exerciseNames = presets[0].workout.map((exercise) => exercise.name);
-const exerciseDescriptions = presets[0].workout.map(
+const roundCount = presets[0].rounds;
+const breakLength = presets[0].breaks;
+const colors = ["aquamarine", "grey", "yellow"];
+
+// Function to repeat the array based on the number of rounds
+const repeatArray = (arr, rounds) => {
+  return Array(rounds).fill(arr).flat();
+};
+
+// Get original time intervals, exercise names, and descriptions
+const originalTimeIntervals = presets[0].workout.map(
+  (exercise) => exercise.time
+);
+const originalExerciseNames = presets[0].workout.map(
+  (exercise) => exercise.name
+);
+const originalExerciseDescriptions = presets[0].workout.map(
   (exercise) => exercise.description
 );
-const breakLength = presets[0].breaks;
-const colors = ["aquamarine", "grey"];
-const cooldownColor = "yellow";
+
+// Repeat the arrays based on the number of rounds
+const timeIntervals = repeatArray(originalTimeIntervals, roundCount);
+const exerciseNames = repeatArray(originalExerciseNames, roundCount);
+const exerciseDescriptions = repeatArray(
+  originalExerciseDescriptions,
+  roundCount
+);
 
 const Workout = () => {
   const [currentInterval, setCurrentInterval] = useState(0);
@@ -77,7 +98,7 @@ const Workout = () => {
       {/* Pass down cooldownTimer and workout timer to WorkoutProgress */}
       <WorkoutProgress
         countdown={isCooldown ? cooldownTimer : timer}
-        color={isCooldown ? cooldownColor : colors[0]}
+        color={isCooldown ? colors[2] : colors[0]}
         isCooldown={isCooldown}
         cooldownTimer={breakLength}
         totalWorkoutTime={timeIntervals[currentInterval]}
@@ -92,7 +113,9 @@ const Workout = () => {
             ? "Next up:"
             : exerciseNames[currentInterval]
         }
-        timer={isWorkoutComplete ? "🏆" : isCooldown ? cooldownTimer : timer}
+        timer={
+          isWorkoutComplete ? "Awesome" : isCooldown ? cooldownTimer : timer
+        }
         description={
           isWorkoutComplete
             ? "You have made it"
