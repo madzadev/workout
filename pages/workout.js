@@ -6,7 +6,7 @@ import styles from "../styles/Workout.module.css";
 import presets from "../data/workouts";
 
 const roundCount = presets[0].rounds;
-const breakLength = presets[0].breaks;
+const breakLength = presets[0].exerciseBreaks;
 const roundBreak = presets[0].roundBreaks; // Break time in seconds between rounds
 const colors = ["aquamarine", "grey", "yellow"];
 

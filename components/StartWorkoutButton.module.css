@@ -14,7 +14,7 @@
 
 .wrapper:hover {
   cursor: pointer;
-  background-color: rgb(110, 0, 236);
+  background-color: aquamarine;
   transform: scale(1.1);
 }
 

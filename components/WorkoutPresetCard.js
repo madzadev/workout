@@ -1,8 +1,15 @@
 import styles from "./WorkoutPresetCard.module.css";
 
-const WorkoutPresetCard = ({ workoutPresetName, onClick }) => {
+const WorkoutPresetCard = ({ workoutPresetName, isActive, onClick }) => {
   return (
-    <div className={styles.wrapper} onClick={onClick}>
+    <div
+      className={styles.wrapper}
+      onClick={onClick}
+      style={{
+        backgroundColor: isActive ? "yellow" : "white",
+        color: isActive ? "black" : "gray",
+      }}
+    >
       <h2>{workoutPresetName}</h2>
       <p>Rounds: X4</p>
       <p>Difficulty: ⭐⭐⭐</p>

@@ -7,6 +7,8 @@ import WorkoutTimeSelector from "../components/WorkoutTimeSelector";
 import WorkoutPresetCard from "../components/WorkoutPresetCard";
 import StartWorkoutButton from "../components/StartWorkoutButton";
 
+import presets from "../data/workouts";
+
 export default function Home() {
   const [workoutTime, setWorkoutTime] = useState(15);
   const [activeWorkoutPreset, setActiveWorkoutPreset] = useState("");
@@ -36,20 +38,16 @@ export default function Home() {
 
       <h1 className={styles.title}>Pick a preset:</h1>
       <div className={styles.presetsWrapper}>
-        <WorkoutPresetCard
-          workoutPresetName="Quick Workout"
-          onClick={() => {
-            setActiveWorkoutPreset(0);
-          }}
-        />
-        <WorkoutPresetCard workoutPresetName="Flex and Stretch" />
-        <WorkoutPresetCard workoutPresetName="Total Body Blitz" />
-        <WorkoutPresetCard workoutPresetName="Core Sculpt Session" />
-        <WorkoutPresetCard workoutPresetName="Strength Fusion Flow" />
-        <WorkoutPresetCard workoutPresetName="Muscle Madness Circuit" />
-        <WorkoutPresetCard workoutPresetName="Cardio Power Surge" />
-        <WorkoutPresetCard workoutPresetName="HIIT the Beat" />
-        <WorkoutPresetCard workoutPresetName="Warrior Boot Camp" />
+        {presets.map((index, preset) => {
+          return (
+            <WorkoutPresetCard
+              key={index}
+              workoutPresetName={preset.title}
+              isActive={activeWorkoutPreset === index}
+              onClick={() => setActiveWorkoutPreset(index)}
+            />
+          );
+        })}
       </div>
 
       <StartWorkoutButton />
