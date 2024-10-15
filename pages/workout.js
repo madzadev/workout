@@ -19,9 +19,14 @@ const Workout = () => {
   const [timer, setTimer] = useState(timeIntervals[0]);
   const [isCooldown, setIsCooldown] = useState(false);
   const [cooldownTimer, setCooldownTimer] = useState(breakLength); // 5-second cooldown
+  const [isWorkoutComplete, setIsWorkoutComplete] = useState(false); // New state for workout completion
 
   useEffect(() => {
     let interval;
+
+    if (isWorkoutComplete) {
+      return; // Stop all timers if the workout is complete
+    }
 
     if (isCooldown) {
       interval = setInterval(() => {
@@ -45,7 +50,9 @@ const Workout = () => {
                 setIsCooldown(true); // Enter cooldown phase
                 setCurrentInterval(nextInterval);
               } else {
-                clearInterval(interval); // Stop when all intervals are done
+                // When all intervals are done, complete the workout
+                clearInterval(interval);
+                setIsWorkoutComplete(true); // Set workout as complete
               }
               return 0;
             }
@@ -56,12 +63,13 @@ const Workout = () => {
     }
 
     return () => clearInterval(interval); // Cleanup interval
-  }, [currentInterval, isCooldown]);
+  }, [currentInterval, isCooldown, isWorkoutComplete]);
 
   const handleDivClick = (index) => {
     setCurrentInterval(index);
     setTimer(timeIntervals[index]);
     setIsCooldown(false);
+    setIsWorkoutComplete(false); // Reset completion if user clicks on a specific interval
   };
 
   return (
@@ -75,11 +83,20 @@ const Workout = () => {
         totalWorkoutTime={timeIntervals[currentInterval]}
       />
 
+      {/* Adjust WorkoutDisplay based on workout completion */}
       <WorkoutDisplay
-        title={isCooldown ? "Next up:" : exerciseNames[currentInterval]}
-        timer={isCooldown ? cooldownTimer : timer}
+        title={
+          isWorkoutComplete
+            ? "Great work"
+            : isCooldown
+            ? "Next up:"
+            : exerciseNames[currentInterval]
+        }
+        timer={isWorkoutComplete ? "🏆" : isCooldown ? cooldownTimer : timer}
         description={
-          isCooldown
+          isWorkoutComplete
+            ? "You have made it"
+            : isCooldown
             ? exerciseNames[currentInterval]
             : exerciseDescriptions[currentInterval]
         }
@@ -88,9 +105,10 @@ const Workout = () => {
       <WorkoutTimeline
         onClick={handleDivClick}
         timeIntervals={timeIntervals}
-        colors={isCooldown ? cooldownColor : colors}
+        colors={colors}
         currentInterval={currentInterval}
         timer={isCooldown ? cooldownTimer : timer}
+        isCooldown={isCooldown}
       />
     </div>
   );

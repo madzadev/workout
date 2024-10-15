@@ -18,27 +18,27 @@ const presets = [
       {
         name: "Push-ups",
         description: "Lower chest to ground, push up.",
-        time: 5, // Upper body strength exercise
+        time: 25, // Upper body strength exercise
       },
       {
         name: "Mountain Climbers",
         description: "Drive knees toward chest quickly.",
-        time: 5, // Core and cardio combined
+        time: 25, // Core and cardio combined
       },
       {
         name: "Plank",
         description: "Hold straight body on elbows.",
-        time: 5, // Core stabilization
+        time: 25, // Core stabilization
       },
       {
         name: "Lunges",
         description: "Step forward, lower hips, step back.",
-        time: 5, // Targets the legs and glutes
+        time: 25, // Targets the legs and glutes
       },
       {
         name: "Burpees",
         description: "Squat, kick back, jump up explosively.",
-        time: 5, // Full-body explosive movement
+        time: 25, // Full-body explosive movement
       },
     ],
   },

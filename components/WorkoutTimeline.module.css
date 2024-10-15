@@ -1,7 +1,6 @@
 .progressBarContainer {
     display: flex;
     width: 100%;
-    /* background-color: #202024; */
 }
 
 .wrapper {
@@ -13,7 +12,7 @@
 
 .wrapper:hover {
     cursor: pointer;
-    filter: brightness(1.2);
+    filter: brightness(1.5);
 }
 
 /* Text color for the percentage */
