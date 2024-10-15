@@ -1,23 +1,24 @@
 import React, { useState, useEffect } from "react";
 import styles from "./WorkoutProgress.module.css";
 
-const WorkoutProgress = ({ countdown, color }) => {
+const WorkoutProgress = ({
+  countdown,
+  color,
+  isCooldown,
+  cooldownTimer,
+  totalWorkoutTime,
+}) => {
   const [progress, setProgress] = useState(0);
-  const [totalTime, setTotalTime] = useState(0);
 
   useEffect(() => {
-    setTotalTime(countdown);
-    setProgress(0);
-  }, [totalTime]);
+    // Determine whether the current phase is cooldown or workout and calculate progress accordingly
+    const totalTime = isCooldown ? cooldownTimer : totalWorkoutTime;
 
-  useEffect(() => {
     if (totalTime > 0) {
-      // ((100-50)/100)*100
-      const progressPercentage =
-        ((totalTime + 1 - countdown) / totalTime) * 100;
+      const progressPercentage = ((totalTime - countdown) / totalTime) * 100;
       setProgress(progressPercentage);
     }
-  }, [countdown]);
+  }, [countdown, isCooldown, cooldownTimer, totalWorkoutTime]);
 
   return (
     <div className={styles.wrapper}>
@@ -26,7 +27,7 @@ const WorkoutProgress = ({ countdown, color }) => {
           width: `${progress}%`,
           backgroundColor: color,
           height: "80px",
-          // transition: `width ${countdown < 1 ? 0 : 1}s linear`, // Fixed transition duration
+          // transition: "width 1s linear", // Smooth transition effect
         }}
       ></div>
     </div>

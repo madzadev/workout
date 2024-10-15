@@ -10,70 +10,71 @@ const exerciseNames = presets[0].workout.map((exercise) => exercise.name);
 const exerciseDescriptions = presets[0].workout.map(
   (exercise) => exercise.description
 );
-const colors = ["aquamarine", "grey"]; // Colors for active and inactive divs
+const breakLength = presets[0].breaks;
+const colors = ["aquamarine", "grey"];
+const cooldownColor = "yellow";
 
 const Workout = () => {
   const [currentInterval, setCurrentInterval] = useState(0);
   const [timer, setTimer] = useState(timeIntervals[0]);
   const [isCooldown, setIsCooldown] = useState(false);
-  const [cooldownTimer, setCooldownTimer] = useState(5); // 5-second cooldown
-  const cooldownColor = "yellow"; // Color during cooldown
+  const [cooldownTimer, setCooldownTimer] = useState(breakLength); // 5-second cooldown
 
   useEffect(() => {
     let interval;
 
     if (isCooldown) {
-      // Cooldown phase
       interval = setInterval(() => {
-        setCooldownTimer((prevCooldownTimer) => {
-          if (prevCooldownTimer === 1) {
+        setCooldownTimer((prev) => {
+          if (prev === 1) {
             setIsCooldown(false); // End cooldown
-            setCooldownTimer(5); // Reset cooldown for next phase
+            setCooldownTimer(breakLength); // Reset cooldown for next phase
             setTimer(timeIntervals[currentInterval]); // Start the next interval timer
             return 0;
           }
-          return prevCooldownTimer - 1; // Decrement cooldown timer
+          return prev - 1;
         });
       }, 1000);
     } else {
-      // Normal workout phase
       if (currentInterval < timeIntervals.length) {
         interval = setInterval(() => {
-          setTimer((prevTimer) => {
-            if (prevTimer === 1) {
+          setTimer((prev) => {
+            if (prev === 1) {
               const nextInterval = currentInterval + 1;
               if (nextInterval < timeIntervals.length) {
                 setIsCooldown(true); // Enter cooldown phase
-                setCurrentInterval(nextInterval); // Prepare for the next interval
+                setCurrentInterval(nextInterval);
               } else {
                 clearInterval(interval); // Stop when all intervals are done
               }
-              return 0; // Reset the timer
+              return 0;
             }
-            return prevTimer - 1; // Decrement workout timer
+            return prev - 1;
           });
         }, 1000);
       }
     }
 
-    // Cleanup interval when component unmounts or dependencies change
-    return () => clearInterval(interval);
+    return () => clearInterval(interval); // Cleanup interval
   }, [currentInterval, isCooldown]);
 
   const handleDivClick = (index) => {
     setCurrentInterval(index);
-    setTimer(timeIntervals[index]); // Reset timer to the clicked interval's time
-    setIsCooldown(false); // Reset cooldown if user skips
+    setTimer(timeIntervals[index]);
+    setIsCooldown(false);
   };
 
   return (
     <div className={styles.wrapper}>
-      {/* WorkoutProgress changes color during cooldown */}
+      {/* Pass down cooldownTimer and workout timer to WorkoutProgress */}
       <WorkoutProgress
         countdown={isCooldown ? cooldownTimer : timer}
         color={isCooldown ? cooldownColor : colors[0]}
+        isCooldown={isCooldown}
+        cooldownTimer={breakLength}
+        totalWorkoutTime={timeIntervals[currentInterval]}
       />
-      {/* WorkoutDisplay shows next exercise during cooldown */}
+
       <WorkoutDisplay
         title={isCooldown ? "Next up:" : exerciseNames[currentInterval]}
         timer={isCooldown ? cooldownTimer : timer}
@@ -83,11 +84,11 @@ const Workout = () => {
             : exerciseDescriptions[currentInterval]
         }
       />
-      {/* WorkoutTimeline changes color during cooldown */}
+
       <WorkoutTimeline
         onClick={handleDivClick}
         timeIntervals={timeIntervals}
-        colors={colors}
+        colors={isCooldown ? cooldownColor : colors}
         currentInterval={currentInterval}
         timer={isCooldown ? cooldownTimer : timer}
       />
