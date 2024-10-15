@@ -2,7 +2,7 @@ const presets = [
   {
     name: "Full Body Quick Workout",
     difficulty: 1,
-    rounds: 1,
+    rounds: 3,
     breaks: 10, // 10 seconds break between exercises
     workout: [
       {

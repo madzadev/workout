@@ -35,7 +35,7 @@ const WorkoutTimeline = ({
                 backgroundColor:
                   progressPercentage > 0
                     ? !isCooldown
-                      ? colors[0]
+                      ? colors[1]
                       : colors[1]
                     : colors[1],
                 opacity: isCurrent ? 1 : 0.7, // Make completed intervals semi-transparent

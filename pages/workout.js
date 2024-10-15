@@ -40,7 +40,11 @@ const Workout = () => {
   const [timer, setTimer] = useState(timeIntervals[0]);
   const [isCooldown, setIsCooldown] = useState(false);
   const [cooldownTimer, setCooldownTimer] = useState(breakLength); // 5-second cooldown
-  const [isWorkoutComplete, setIsWorkoutComplete] = useState(false); // New state for workout completion
+  const [isWorkoutComplete, setIsWorkoutComplete] = useState(false);
+
+  // Calculate the current round based on the currentInterval
+  const exercisesPerRound = originalExerciseNames.length;
+  const currentRound = Math.floor(currentInterval / exercisesPerRound) + 1;
 
   useEffect(() => {
     let interval;
@@ -106,6 +110,7 @@ const Workout = () => {
 
       {/* Adjust WorkoutDisplay based on workout completion */}
       <WorkoutDisplay
+        round={currentRound}
         title={
           isWorkoutComplete
             ? "Great work"

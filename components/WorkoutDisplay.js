@@ -1,8 +1,9 @@
 import styles from "./WorkoutDisplay.module.css";
 
-const WorkoutDisplay = ({ title, timer, description }) => {
+const WorkoutDisplay = ({ round, title, timer, description }) => {
   return (
     <div className={styles.wrapper}>
+      <h3 className={styles.round}>Round: {round}</h3>
       <h1 className={styles.title}>{title}</h1>
       <h1 className={styles.timer}>{timer}</h1>
       <h3 className={styles.description}>{description}</h3>
