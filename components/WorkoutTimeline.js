@@ -1,5 +1,4 @@
 // WorkoutTimeline.js
-import React from "react";
 import styles from "./WorkoutTimeline.module.css";
 
 const WorkoutTimeline = ({
@@ -13,7 +12,6 @@ const WorkoutTimeline = ({
 
   return (
     <div>
-      {/* <h1>{timer}</h1> */}
       <div className={styles.progressBarContainer}>
         {timeIntervals.map((interval, index) => {
           const isCurrent = index === currentInterval;
@@ -35,11 +33,10 @@ const WorkoutTimeline = ({
                 width: `${(interval / total) * 100}%`,
                 backgroundColor: progressPercentage > 0 ? colors[0] : colors[1],
                 opacity: isCurrent ? 1 : 0.5, // Make completed intervals semi-transparent
-                cursor: "pointer", // Change cursor to pointer
               }}
             >
               {/* Show the progress percentage in each block (optional) */}
-              {isCurrent && <span>{Math.round(progressPercentage)}%</span>}
+              {/* {isCurrent && <span>{Math.round(progressPercentage)}%</span>} */}
             </div>
           );
         })}

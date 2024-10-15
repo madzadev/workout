@@ -1,9 +1,7 @@
-// Workout.js
 import React, { useState, useEffect } from "react";
 import WorkoutTimeline from "../components/WorkoutTimeline";
 import WorkoutDisplay from "../components/WorkoutDisplay";
 import WorkoutProgress from "../components/WorkoutProgress";
-
 import styles from "../styles/Workout.module.css";
 import presets from "../data/workouts";
 
@@ -19,30 +17,31 @@ const Workout = () => {
   const [timer, setTimer] = useState(timeIntervals[0]);
 
   useEffect(() => {
-    let interval;
-
-    // Only start timer if currentInterval is valid
     if (currentInterval < timeIntervals.length) {
-      interval = setInterval(() => {
+      const interval = setInterval(() => {
         setTimer((prevTimer) => {
           if (prevTimer === 1) {
-            // Move to the next interval
+            // Move to the next interval if we aren't at the last one
             setCurrentInterval((prevInterval) => {
-              // Prevent going out of bounds
               const nextInterval = prevInterval + 1;
-              return nextInterval < timeIntervals.length
-                ? nextInterval
-                : prevInterval;
+              if (nextInterval < timeIntervals.length) {
+                // Reset timer for the next interval
+                setTimer(timeIntervals[nextInterval]);
+                return nextInterval;
+              }
+              return prevInterval;
             });
-            return timeIntervals[currentInterval + 1] || 0; // Reset to the next interval
+            return 0; // Timer reaches 0 for the current interval
+          } else {
+            return prevTimer - 1; // Decrement timer
           }
-          return prevTimer - 1; // Decrement timer
         });
       }, 1000);
-    }
 
-    return () => clearInterval(interval); // Clear interval on unmount
-  }, [currentInterval, timer]); // Depend on currentInterval and timer
+      // Clear interval on component unmount
+      return () => clearInterval(interval);
+    }
+  }, [currentInterval]);
 
   const handleDivClick = (index) => {
     setCurrentInterval(index);
@@ -51,7 +50,7 @@ const Workout = () => {
 
   return (
     <div className={styles.wrapper}>
-      <WorkoutProgress />
+      <WorkoutProgress countdown={timer} />
       <WorkoutDisplay
         title={exerciseNames[currentInterval]}
         timer={timer}

@@ -1,4 +1,14 @@
 .wrapper {
     height: 80px;
-    background: linear-gradient(to right, aquamarine 50%, transparent 50%);
+    /* background: linear-gradient(to right, aquamarine 50%, transparent 50%); */
+    /* position: relative; */
+}
+
+.progress {
+    /* background-color: aquamarine; */
+    /* transition: width 0.5s ease; */
+    background-color: transparent;
+    /* Transparent background since we're using gradient */
+    transition: background 0.5s ease;
+    height: 80px
 }
