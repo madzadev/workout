@@ -17,35 +17,35 @@ const Workout = () => {
   const [timer, setTimer] = useState(timeIntervals[0]);
 
   useEffect(() => {
+    let interval;
+
+    // Start the timer if currentInterval is valid
     if (currentInterval < timeIntervals.length) {
-      const interval = setInterval(() => {
+      interval = setInterval(() => {
         setTimer((prevTimer) => {
           if (prevTimer === 1) {
-            // Move to the next interval if we aren't at the last one
-            setCurrentInterval((prevInterval) => {
-              const nextInterval = prevInterval + 1;
-              if (nextInterval < timeIntervals.length) {
-                // Reset timer for the next interval
-                setTimer(timeIntervals[nextInterval]);
-                return nextInterval;
-              }
-              return prevInterval;
-            });
-            return 0; // Timer reaches 0 for the current interval
-          } else {
-            return prevTimer - 1; // Decrement timer
+            const nextInterval = currentInterval + 1;
+            // Update interval safely and set timer
+            if (nextInterval < timeIntervals.length) {
+              setCurrentInterval(nextInterval);
+              setTimer(timeIntervals[nextInterval]); // Reset to next interval's time
+            } else {
+              clearInterval(interval); // Stop when we've completed all intervals
+            }
+            return 0; // Reset the timer to avoid negative countdown
           }
+          return prevTimer - 1; // Decrement the timer
         });
-      }, 1000);
-
-      // Clear interval on component unmount
-      return () => clearInterval(interval);
+      }, 1000); // Run every second
     }
-  }, [currentInterval]);
+
+    // Cleanup interval when component unmounts or dependencies change
+    return () => clearInterval(interval);
+  }, [currentInterval]); // Depend only on currentInterval, no need to track timer
 
   const handleDivClick = (index) => {
     setCurrentInterval(index);
-    setTimer(timeIntervals[index]);
+    setTimer(timeIntervals[index]); // Reset timer to the clicked interval's time
   };
 
   return (
