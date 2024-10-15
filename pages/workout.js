@@ -123,6 +123,7 @@ const Workout = () => {
   const handleDivClick = (index) => {
     setCurrentInterval(index);
     setTimer(timeIntervals[index]);
+    setIsPaused(false);
     setIsCooldown(false); // Reset cooldown
     setIsRoundComplete(false); // Reset round completion
     setIsWorkoutComplete(false); // Reset workout completion
