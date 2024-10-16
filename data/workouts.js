@@ -57,7 +57,7 @@
 
 const presets = [
   {
-    title: "Quick Workout",
+    title: "Easy Workout",
     difficulty: 1,
     rounds: 3,
     exerciseBreaks: 20, // 10 seconds break between exercises

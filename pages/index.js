@@ -11,7 +11,7 @@ import presets from "../data/workouts";
 
 export default function Home() {
   const [workoutTime, setWorkoutTime] = useState(15);
-  const [activeWorkoutPreset, setActiveWorkoutPreset] = useState("");
+  const [activeWorkoutPreset, setActiveWorkoutPreset] = useState(null);
   const router = useRouter();
 
   const handleStartWorkout = () => {
@@ -51,7 +51,9 @@ export default function Home() {
         ))}
       </div>
 
-      <StartWorkoutButton onClick={handleStartWorkout} />
+      {activeWorkoutPreset !== null && (
+        <StartWorkoutButton onClick={handleStartWorkout} />
+      )}
 
       <a href="/custom">
         <p style={{ color: "white" }}>Create a custom workout</p>

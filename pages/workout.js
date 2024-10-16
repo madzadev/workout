@@ -1,83 +1,94 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-
 import WorkoutTimeline from "../components/WorkoutTimeline";
 import WorkoutDisplay from "../components/WorkoutDisplay";
 import WorkoutProgress from "../components/WorkoutProgress";
-
 import styles from "../styles/Workout.module.css";
 import presets from "../data/workouts";
 
-// const [presetIndex, setPresetIndex] = useState(1);
-const presetIndex = 1;
-
-const roundCount = presets[presetIndex].rounds;
-const breakLength = presets[presetIndex].exerciseBreaks;
-const roundBreak = presets[presetIndex].roundBreaks; // Break time in seconds between rounds
-const colors = ["aquamarine", "grey", "yellow"];
-
-// Function to repeat the array based on the number of rounds
-const repeatArray = (arr, rounds) => {
-  return Array(rounds).fill(arr).flat();
-};
-
-// Get original time intervals, exercise names, and descriptions
-const originalTimeIntervals = presets[presetIndex].workout.map(
-  (exercise) => exercise.time
-);
-const originalExerciseNames = presets[presetIndex].workout.map(
-  (exercise) => exercise.name
-);
-const originalExerciseDescriptions = presets[presetIndex].workout.map(
-  (exercise) => exercise.description
-);
-
-// Repeat the arrays based on the number of rounds
-const timeIntervals = repeatArray(originalTimeIntervals, roundCount);
-const exerciseNames = repeatArray(originalExerciseNames, roundCount);
-const exerciseDescriptions = repeatArray(
-  originalExerciseDescriptions,
-  roundCount
-);
-
 const Workout = () => {
   const router = useRouter();
-  const { preset } = router.query; // Access the preset from the query parameter
 
-  const [currentInterval, setCurrentInterval] = useState(0);
-  const [timer, setTimer] = useState(timeIntervals[0]);
+  // Set presetIndex to a default value to avoid conditional hooks
+  const [presetIndex, setPresetIndex] = useState(null);
+  const [roundCount, setRoundCount] = useState(0);
+  const [breakLength, setBreakLength] = useState(0);
+  const [roundBreak, setRoundBreak] = useState(0);
+  const [timeIntervals, setTimeIntervals] = useState([]);
+  const [exerciseNames, setExerciseNames] = useState([]);
+  const [exerciseDescriptions, setExerciseDescriptions] = useState([]);
+
+  // State for the workout logic
+  const [timer, setTimer] = useState(0);
+  const [currentInterval, setCurrentInterval] = useState(null);
   const [isCooldown, setIsCooldown] = useState(false);
-  const [cooldownTimer, setCooldownTimer] = useState(breakLength);
+  const [cooldownTimer, setCooldownTimer] = useState(0);
   const [isRoundComplete, setIsRoundComplete] = useState(false);
   const [isWorkoutComplete, setIsWorkoutComplete] = useState(false);
-  const [isPaused, setIsPaused] = useState(false); // New state for pausing the timer
+  const [isPaused, setIsPaused] = useState(false);
 
-  // Calculate the current round based on the currentInterval
-  const exercisesPerRound = originalExerciseNames.length;
+  // Fetch the preset data based on query params
+  useEffect(() => {
+    if (router.query.preset) {
+      const index = router.query.preset;
+      setPresetIndex(index);
+
+      const preset = presets[index];
+      const rounds = preset.rounds;
+      const exerciseBreaks = preset.exerciseBreaks;
+      const roundBreaks = preset.roundBreaks;
+
+      setRoundCount(rounds);
+      setBreakLength(exerciseBreaks);
+      setRoundBreak(roundBreaks);
+
+      // Original arrays
+      const originalTimeIntervals = preset.workout.map(
+        (exercise) => exercise.time
+      );
+      const originalExerciseNames = preset.workout.map(
+        (exercise) => exercise.name
+      );
+      const originalExerciseDescriptions = preset.workout.map(
+        (exercise) => exercise.description
+      );
+
+      // Repeat the arrays based on the number of rounds
+      const repeatArray = (arr, rounds) => Array(rounds).fill(arr).flat();
+
+      const repeatedTimeIntervals = repeatArray(originalTimeIntervals, rounds);
+      const repeatedExerciseNames = repeatArray(originalExerciseNames, rounds);
+      const repeatedExerciseDescriptions = repeatArray(
+        originalExerciseDescriptions,
+        rounds
+      );
+
+      setTimeIntervals(repeatedTimeIntervals);
+      setExerciseNames(repeatedExerciseNames);
+      setExerciseDescriptions(repeatedExerciseDescriptions);
+
+      // Set initial values for timer and cooldown based on the fetched data
+      setTimer(repeatedTimeIntervals[0]);
+      setCurrentInterval(0);
+      setCooldownTimer(exerciseBreaks);
+    }
+  }, [router.query.preset]);
+
+  // The exercise logic for the workout will stay the same as before
+  const exercisesPerRound = exerciseNames.length / roundCount;
   const currentRound = Math.floor(currentInterval / exercisesPerRound) + 1;
-
-  // useEffect(() => {
-  //   // Check if `preset` is available, then update state
-  //   if (preset) {
-  //     setPresetIndex(preset || 0); // Ensure preset exists in `presets`
-  //   }
-  // }, [preset]);
 
   useEffect(() => {
     let interval;
-
-    // Handle pausing functionality
     const handleKeydown = (event) => {
       if (event.code === "Space") {
         setIsPaused((prev) => !prev);
       }
     };
-
     window.addEventListener("keydown", handleKeydown);
 
-    if (isPaused) {
-      return () => window.removeEventListener("keydown", handleKeydown); // Stop the timer when paused
-    }
+    if (isPaused)
+      return () => window.removeEventListener("keydown", handleKeydown);
 
     if (isWorkoutComplete) {
       window.removeEventListener("keydown", handleKeydown);
@@ -90,8 +101,8 @@ const Workout = () => {
           if (prev === 1) {
             setIsCooldown(false);
             setIsRoundComplete(false);
-            setCooldownTimer(breakLength); // Reset to regular break length
-            setTimer(timeIntervals[currentInterval]); // Start the next exercise interval
+            setCooldownTimer(breakLength);
+            setTimer(timeIntervals[currentInterval]);
             return 0;
           }
           return prev - 1;
@@ -103,13 +114,13 @@ const Workout = () => {
           setTimer((prev) => {
             if (prev === 1) {
               const nextInterval = currentInterval + 1;
-              const isNewRound = nextInterval % exercisesPerRound === 0; // Check if a new round starts
+              const isNewRound = nextInterval % exercisesPerRound === 0;
 
               if (nextInterval < timeIntervals.length) {
                 setIsCooldown(true);
                 if (isNewRound) {
                   setIsRoundComplete(true);
-                  setCooldownTimer(roundBreak); // Use roundBreak after a full round
+                  setCooldownTimer(roundBreak);
                 }
                 setCurrentInterval(nextInterval);
               } else {
@@ -124,12 +135,8 @@ const Workout = () => {
       }
     }
 
-    // if (!preset) {
-    //   return <p>Loading...</p>; // Render a loading state until the query is available
-    // }
-
     return () => {
-      clearInterval(interval); // Clear any existing interval
+      clearInterval(interval);
       window.removeEventListener("keydown", handleKeydown);
     };
   }, [
@@ -144,15 +151,18 @@ const Workout = () => {
     setCurrentInterval(index);
     setTimer(timeIntervals[index]);
     setIsPaused(false);
-    setIsCooldown(false); // Reset cooldown
-    setIsRoundComplete(false); // Reset round completion
-    setIsWorkoutComplete(false); // Reset workout completion
-    setCooldownTimer(breakLength); // Reset cooldown timer to initial break length
+    setIsCooldown(false);
+    setIsRoundComplete(false);
+    setIsWorkoutComplete(false);
+    setCooldownTimer(breakLength);
   };
+
+  // if (presetIndex === null) return null; // Avoid rendering until presetIndex is available
+
+  const colors = ["aquamarine", "grey", "yellow"];
 
   return (
     <div className={styles.wrapper}>
-      {/* Pass down cooldownTimer and workout timer to WorkoutProgress */}
       <WorkoutProgress
         countdown={isCooldown ? cooldownTimer : timer}
         color={isCooldown ? colors[2] : colors[0]}
@@ -160,7 +170,6 @@ const Workout = () => {
         cooldownTimer={isRoundComplete ? roundBreak : breakLength}
         totalWorkoutTime={timeIntervals[currentInterval]}
       />
-      {/* Adjust WorkoutDisplay based on workout completion */}
       <WorkoutDisplay
         round={currentRound}
         title={
