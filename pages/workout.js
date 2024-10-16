@@ -174,17 +174,15 @@ const Workout = () => {
         round={currentRound}
         title={
           isWorkoutComplete
-            ? "Great work"
+            ? "Workout completed!"
             : isCooldown
             ? "Next up:"
             : `${exerciseNames[currentInterval]} (R${currentRound})`
         }
-        timer={
-          isWorkoutComplete ? "Awesome" : isCooldown ? cooldownTimer : timer
-        }
+        timer={isWorkoutComplete ? "🏆" : isCooldown ? cooldownTimer : timer}
         description={
           isWorkoutComplete
-            ? "You have made it"
+            ? "Keep up the great work!"
             : isCooldown
             ? `${exerciseNames[currentInterval]} (R${currentRound})`
             : exerciseDescriptions[currentInterval]
