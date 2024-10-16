@@ -3,4 +3,6 @@ Calendar
 Milestones
 Customize screen 
 Settings (pick colorscheme, keyboard shortcuts, etc)
-Countdown before start (ready set go)
+Countdown before start (ready set go)]
+Listen to music
+Track workouts/exercises completed and show on homepage

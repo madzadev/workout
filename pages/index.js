@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
+import Navigation from "../components/Navigation";
 import Header from "../components/SEO/Header";
 import WorkoutTimeSelector from "../components/WorkoutTimeSelector";
 import WorkoutPresetCard from "../components/WorkoutPresetCard";
@@ -25,6 +26,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Header />
+      <Navigation />
       <h1 className={styles.title}>Select time:</h1>
       <WorkoutTimeSelector
         workoutTime={workoutTime}

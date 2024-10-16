@@ -13,12 +13,29 @@ const WorkoutPresetCard = ({
       onClick={onClick}
       style={{
         backgroundColor: isActive ? "yellow" : "#1F2129",
-        color: isActive ? "black" : "white",
       }}
     >
-      <h2>{workoutPresetName}</h2>
-      <p>{exercisesCount} exercises</p>
-      <p>{roundsCount} rounds</p>
+      <h2
+        style={{
+          color: isActive ? "black" : "white",
+        }}
+      >
+        {workoutPresetName}
+      </h2>
+      <p
+        style={{
+          color: isActive ? "black" : "grey",
+        }}
+      >
+        {exercisesCount} exercises
+      </p>
+      <p
+        style={{
+          color: isActive ? "black" : "grey",
+        }}
+      >
+        {roundsCount} rounds
+      </p>
       {/* <p>Total time: 23 mins</p> */}
       <p>Difficulty: ⭐⭐⭐</p>
     </div>
