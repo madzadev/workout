@@ -45,6 +45,8 @@ export default function Home() {
           <WorkoutPresetCard
             key={index}
             workoutPresetName={preset.title}
+            roundsCount={preset.rounds}
+            exercisesCount={preset.workout.length}
             isActive={activeWorkoutPreset === index}
             onClick={() => setActiveWorkoutPreset(index)}
           />

@@ -1,6 +1,12 @@
 import styles from "./WorkoutPresetCard.module.css";
 
-const WorkoutPresetCard = ({ workoutPresetName, isActive, onClick }) => {
+const WorkoutPresetCard = ({
+  workoutPresetName,
+  roundsCount,
+  exercisesCount,
+  isActive,
+  onClick,
+}) => {
   return (
     <div
       className={styles.wrapper}
@@ -11,7 +17,8 @@ const WorkoutPresetCard = ({ workoutPresetName, isActive, onClick }) => {
       }}
     >
       <h2>{workoutPresetName}</h2>
-      <p>Rounds: X4</p>
+      <p>Exercises: {exercisesCount}</p>
+      <p>Rounds: {roundsCount}</p>
       <p>Difficulty: ⭐⭐⭐</p>
     </div>
   );
