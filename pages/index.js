@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
+import Wrapper from "../components/Wrapper";
 import Navigation from "../components/Navigation";
 import Header from "../components/SEO/Header";
 import WorkoutTimeSelector from "../components/WorkoutTimeSelector";
@@ -24,10 +25,10 @@ export default function Home() {
   };
 
   return (
-    <div className={styles.container}>
+    <Wrapper>
       <Header />
       <Navigation />
-      <h1 className={styles.title}>Select time:</h1>
+      {/* <h1 className={styles.title}>Select time:</h1>
       <WorkoutTimeSelector
         workoutTime={workoutTime}
         increaseWorkoutTime={() => {
@@ -40,9 +41,9 @@ export default function Home() {
             setWorkoutTime(workoutTime - 5);
           }
         }}
-      />
+      /> */}
 
-      <h1 className={styles.title}>Pick a preset:</h1>
+      {/* <h1 className={styles.title}>Pick a preset:</h1> */}
       <div className={styles.presetsWrapper}>
         {presets.map((preset, index) => (
           <WorkoutPresetCard
@@ -60,9 +61,9 @@ export default function Home() {
         <StartWorkoutButton onClick={handleStartWorkout} />
       )}
 
-      <Link href="/custom">
-        <p style={{ color: "white" }}>Create a custom workout</p>
+      <Link href="/custom" style={{ color: "white" }}>
+        Create a custom workout
       </Link>
-    </div>
+    </Wrapper>
   );
 }

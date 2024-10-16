@@ -1,5 +1,5 @@
 .wrapper {
-    max-width: 1400px;
+    /* max-width: 1400px; */
     height: 70px;
     display: flex;
     justify-content: space-between;
@@ -13,6 +13,10 @@
     /* Optional styling for the logo */
 }
 
+.logo:hover {
+    cursor: pointer;
+}
+
 .links {
     display: flex;
     /* Place links side by side */
@@ -23,6 +27,10 @@
 .links a {
     text-decoration: none;
     /* Optional: remove underline from links */
-    color: #000;
+    color: grey;
     /* Optional: link color */
+}
+
+.links a:hover {
+    color: white;
 }

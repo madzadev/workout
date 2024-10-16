@@ -5,12 +5,14 @@ const Navigation = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.logo}>
-        <h1>FitDevs logo</h1>
+        <Link href="/">
+          <h1>FitDevs logo</h1>
+        </Link>
         {/* <img src="" alt="My logo" /> */}
       </div>
       <div className={styles.links}>
-        <Link href="#">Link 1</Link>
-        <Link href="#">Link 2</Link>
+        <Link href="/settings">Settings</Link>
+        <Link href="/about">About</Link>
       </div>
     </div>
   );

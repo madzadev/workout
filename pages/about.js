@@ -1,6 +1,10 @@
+import Wrapper from "../components/Wrapper";
+import Navigation from "../components/Navigation";
+
 const About = () => {
   return (
-    <div>
+    <Wrapper>
+      <Navigation />
       <h1>About the app</h1>
       <p>Having workout is important</p>
       <h1>Note about programs</h1>
@@ -10,7 +14,7 @@ const About = () => {
         to get more special program specific to you.
       </p>
       ;
-    </div>
+    </Wrapper>
   );
 };
 

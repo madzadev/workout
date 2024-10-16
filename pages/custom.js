@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 
+import Wrapper from "../components/Wrapper";
 import Navigation from "../components/Navigation";
 import StartWorkoutButton from "../components/StartWorkoutButton";
 import EquipmentSelector from "../components/EquipmentSelector";
@@ -19,7 +20,7 @@ const Custom = () => {
     });
   };
   return (
-    <div>
+    <Wrapper>
       <Navigation />
       <h1>Create a custom workout</h1>
       <h2>1. Select Your Equipment:</h2>
@@ -51,7 +52,7 @@ const Custom = () => {
       <h3>Save workout</h3>
       <StartWorkoutButton />
       <Link href="/">Back</Link>
-    </div>
+    </Wrapper>
   );
 };
 
