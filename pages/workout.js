@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+
 import WorkoutTimeline from "../components/WorkoutTimeline";
 import WorkoutDisplay from "../components/WorkoutDisplay";
 import WorkoutProgress from "../components/WorkoutProgress";
+
 import styles from "../styles/Workout.module.css";
 import presets from "../data/workouts";
 
-const roundCount = presets[0].rounds;
-const breakLength = presets[0].exerciseBreaks;
-const roundBreak = presets[0].roundBreaks; // Break time in seconds between rounds
+// const [presetIndex, setPresetIndex] = useState(1);
+const presetIndex = 1;
+
+const roundCount = presets[presetIndex].rounds;
+const breakLength = presets[presetIndex].exerciseBreaks;
+const roundBreak = presets[presetIndex].roundBreaks; // Break time in seconds between rounds
 const colors = ["aquamarine", "grey", "yellow"];
 
 // Function to repeat the array based on the number of rounds
@@ -16,13 +22,13 @@ const repeatArray = (arr, rounds) => {
 };
 
 // Get original time intervals, exercise names, and descriptions
-const originalTimeIntervals = presets[0].workout.map(
+const originalTimeIntervals = presets[presetIndex].workout.map(
   (exercise) => exercise.time
 );
-const originalExerciseNames = presets[0].workout.map(
+const originalExerciseNames = presets[presetIndex].workout.map(
   (exercise) => exercise.name
 );
-const originalExerciseDescriptions = presets[0].workout.map(
+const originalExerciseDescriptions = presets[presetIndex].workout.map(
   (exercise) => exercise.description
 );
 
@@ -35,6 +41,9 @@ const exerciseDescriptions = repeatArray(
 );
 
 const Workout = () => {
+  const router = useRouter();
+  const { preset } = router.query; // Access the preset from the query parameter
+
   const [currentInterval, setCurrentInterval] = useState(0);
   const [timer, setTimer] = useState(timeIntervals[0]);
   const [isCooldown, setIsCooldown] = useState(false);
@@ -46,6 +55,13 @@ const Workout = () => {
   // Calculate the current round based on the currentInterval
   const exercisesPerRound = originalExerciseNames.length;
   const currentRound = Math.floor(currentInterval / exercisesPerRound) + 1;
+
+  // useEffect(() => {
+  //   // Check if `preset` is available, then update state
+  //   if (preset) {
+  //     setPresetIndex(preset || 0); // Ensure preset exists in `presets`
+  //   }
+  // }, [preset]);
 
   useEffect(() => {
     let interval;
@@ -107,6 +123,10 @@ const Workout = () => {
         }, 1000);
       }
     }
+
+    // if (!preset) {
+    //   return <p>Loading...</p>; // Render a loading state until the query is available
+    // }
 
     return () => {
       clearInterval(interval); // Clear any existing interval

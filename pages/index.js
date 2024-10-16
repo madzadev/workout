@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
-import Head from "next/head";
-import styles from "../styles/Home.module.css";
+
+import Header from "../components/SEO/Header";
 import WorkoutTimeSelector from "../components/WorkoutTimeSelector";
 import WorkoutPresetCard from "../components/WorkoutPresetCard";
 import StartWorkoutButton from "../components/StartWorkoutButton";
+
+import styles from "../styles/Home.module.css";
 import presets from "../data/workouts";
 
 export default function Home() {
@@ -21,12 +23,7 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-      <Head>
-        <title>Workout app</title>
-        <meta name="description" content="Workout app for developers" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
+      <Header />
       <h1 className={styles.title}>Select time:</h1>
       <WorkoutTimeSelector
         workoutTime={workoutTime}
