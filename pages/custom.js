@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Link from "next/link";
+
 import StartWorkoutButton from "../components/StartWorkoutButton";
 import EquipmentSelector from "../components/EquipmentSelector";
 
@@ -46,7 +48,7 @@ const Custom = () => {
       <h2>Total time: 15 mins</h2>
       <h3>Save workout</h3>
       <StartWorkoutButton />
-      <a href="/">Back</a>
+      <Link href="/">Back</Link>
     </div>
   );
 };

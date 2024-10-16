@@ -17,8 +17,9 @@ const WorkoutPresetCard = ({
       }}
     >
       <h2>{workoutPresetName}</h2>
-      <p>Exercises: {exercisesCount}</p>
-      <p>Rounds: {roundsCount}</p>
+      <p>{exercisesCount} exercises</p>
+      <p>{roundsCount} rounds</p>
+      {/* <p>Total time: 23 mins</p> */}
       <p>Difficulty: ⭐⭐⭐</p>
     </div>
   );

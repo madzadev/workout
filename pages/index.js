@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 import Header from "../components/SEO/Header";
 import WorkoutTimeSelector from "../components/WorkoutTimeSelector";
@@ -57,9 +58,9 @@ export default function Home() {
         <StartWorkoutButton onClick={handleStartWorkout} />
       )}
 
-      <a href="/custom">
+      <Link href="/custom">
         <p style={{ color: "white" }}>Create a custom workout</p>
-      </a>
+      </Link>
     </div>
   );
 }
