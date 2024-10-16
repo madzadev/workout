@@ -78,6 +78,11 @@ const Workout = () => {
   const exercisesPerRound = exerciseNames.length / roundCount;
   const currentRound = Math.floor(currentInterval / exercisesPerRound) + 1;
 
+  const handlePauseToggle = (e) => {
+    e.preventDefault();
+    setIsPaused(!isPaused);
+  };
+
   useEffect(() => {
     let interval;
     const handleKeydown = (event) => {
@@ -187,6 +192,8 @@ const Workout = () => {
             ? `${exerciseNames[currentInterval]} (R${currentRound})`
             : exerciseDescriptions[currentInterval]
         }
+        isPaused={isPaused}
+        onClick={handlePauseToggle}
       />
       <WorkoutTimeline
         onClick={handleDivClick}
