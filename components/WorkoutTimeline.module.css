@@ -6,7 +6,7 @@
 .wrapper {
     height: 80px;
     display: inline-block;
-    transition: background-color 0.5s ease, width 0.5s ease, background 0.5s ease;
+    /* transition: background-color 0.5s ease, width 0.5s ease, background 0.5s ease; */
     border: 3px solid rgb(73, 73, 73);
 }
 
@@ -17,9 +17,9 @@
 
 
 /* Text color for the percentage */
-/* .wrapper span {
+.wrapper span {
     position: absolute;
     right: 5px;
     top: 5px;
     color: black;
-} */
+}

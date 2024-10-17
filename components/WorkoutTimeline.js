@@ -39,7 +39,7 @@ const WorkoutTimeline = ({
                   ? colors[0] // Previous intervals in colors[0]
                   : colors[1], // Incomplete intervals in colors[1]
                 opacity: isCurrent ? 1 : 0.7,
-                transition: "background-color 0.5s ease-in-out",
+                // transition: "background-color 0.5s ease-in-out",
               }}
             >
               {/* Show the progress percentage in each block (optional) */}

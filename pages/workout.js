@@ -39,19 +39,6 @@ const Workout = () => {
     setCompleteAudio(new Audio("/audio/done3.wav"));
   }, []);
 
-  // useEffect(() => {
-  //   const enablePlayback = async () => {
-  //     const tempAudio = new Audio("/audio/first.mp3"); // A very short, silent audio file
-  //     await tempAudio
-  //       .play()
-  //       .catch((error) => console.log("Play failed:", error));
-  //     setFirstAudio(new Audio("/audio/first.mp3"));
-  //     setSecondAudio(new Audio("/audio/second.mp3"));
-  //   };
-
-  //   enablePlayback();
-  // }, []);
-
   // Fetch the preset data based on query params
   useEffect(() => {
     if (router.query.preset) {
