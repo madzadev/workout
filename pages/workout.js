@@ -217,7 +217,6 @@ const Workout = () => {
         totalWorkoutTime={timeIntervals[currentInterval]}
       />
       <WorkoutDisplay
-        round={currentRound}
         title={
           isWorkoutComplete
             ? "Workout completed!"
@@ -225,12 +224,17 @@ const Workout = () => {
             ? "Next up:"
             : `${exerciseNames[currentInterval]}`
         }
+        round={
+          isCooldown
+            ? exerciseNames[currentInterval]
+            : `${currentRound} of ${roundCount}`
+        }
         timer={isWorkoutComplete ? "🏆" : isCooldown ? cooldownTimer : timer}
         description={
           isWorkoutComplete
             ? "Keep up the great work!"
             : isCooldown
-            ? `${exerciseNames[currentInterval]}`
+            ? `Duration: ${timeIntervals[currentInterval]} seconds`
             : exerciseDescriptions[currentInterval]
         }
         isPaused={isPaused}
