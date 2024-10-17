@@ -15,10 +15,14 @@ const WorkoutDisplay = ({
       <h3 className={styles.round}>{round}</h3>
       <h1 className={styles.timer}>{timer}</h1>
       <h3 className={styles.description}>{description}</h3>
-      <h3 className={styles.progressToggle} onClick={onClick}>
-        {isPaused ? "Resume" : "Pause"}
-      </h3>
-      <Link href="/">Exit</Link>
+      <div className={styles.controls}>
+        <h3 className={styles.progress} onClick={onClick}>
+          {isPaused ? "Resume" : "Pause"}
+        </h3>
+        <Link href="/">
+          <a className={styles.exit}>Exit</a>
+        </Link>
+      </div>
     </div>
   );
 };
