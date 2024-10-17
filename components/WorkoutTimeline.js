@@ -1,4 +1,3 @@
-// WorkoutTimeline.js
 import styles from "./WorkoutTimeline.module.css";
 
 const WorkoutTimeline = ({
@@ -29,16 +28,18 @@ const WorkoutTimeline = ({
             <div
               key={index}
               className={styles.wrapper}
-              onClick={() => onClick(index)} // Call onClick prop
+              onClick={() => onClick(index)}
               style={{
                 width: `${(interval / total) * 100}%`,
-                backgroundColor:
-                  progressPercentage > 0
-                    ? !isCooldown
-                      ? colors[1]
-                      : colors[1]
-                    : colors[1],
-                opacity: isCurrent ? 1 : 0.7, // Make completed intervals semi-transparent
+                backgroundColor: isCurrent
+                  ? isCooldown
+                    ? colors[2] // When isCooldown is true and isCurrent is true, use colors[2]
+                    : colors[0] // When isCooldown is false and isCurrent is true, use colors[0]
+                  : isCompleted
+                  ? colors[0] // Previous intervals in colors[0]
+                  : colors[1], // Incomplete intervals in colors[1]
+                opacity: isCurrent ? 1 : 0.7,
+                transition: "background-color 0.5s ease-in-out",
               }}
             >
               {/* Show the progress percentage in each block (optional) */}

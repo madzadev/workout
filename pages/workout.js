@@ -28,13 +28,15 @@ const Workout = () => {
   const [isPaused, setIsPaused] = useState(false);
 
   // Audio files
-  const [firstAudio, setFirstAudio] = useState(null);
-  const [secondAudio, setSecondAudio] = useState(null);
+  const [countAudio, setCountAudio] = useState(null);
+  const [startAudio, setStartAudio] = useState(null);
+  const [completeAudio, setCompleteAudio] = useState(null);
 
   useEffect(() => {
     // Ensure this runs only on the client side
-    setFirstAudio(new Audio("/audio/first.mp3"));
-    setSecondAudio(new Audio("/audio/second.mp3"));
+    setCountAudio(new Audio("/audio/count5.wav"));
+    setStartAudio(new Audio("/audio/done.mp3")); //done2 ok,
+    setCompleteAudio(new Audio("/audio/done3.wav"));
   }, []);
 
   // useEffect(() => {
@@ -101,12 +103,12 @@ const Workout = () => {
   useEffect(() => {
     if (router.query.preset) {
       if (timer === 3 || timer === 2 || timer === 1) {
-        firstAudio.play();
+        countAudio.play();
       }
 
       if (timer === 1) {
         setTimeout(() => {
-          secondAudio.play();
+          completeAudio.play();
         }, 1000); // 1 second after the timer hits 1
       }
     }
@@ -116,12 +118,12 @@ const Workout = () => {
   useEffect(() => {
     if (router.query.preset) {
       if (cooldownTimer === 3 || cooldownTimer === 2 || cooldownTimer === 1) {
-        firstAudio.play();
+        countAudio.play();
       }
 
       if (cooldownTimer === 1) {
         setTimeout(() => {
-          secondAudio.play();
+          startAudio.play();
         }, 1000); // 1 second after the timer hits 1
       }
     }
