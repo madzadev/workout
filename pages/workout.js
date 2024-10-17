@@ -223,14 +223,14 @@ const Workout = () => {
             ? "Workout completed!"
             : isCooldown
             ? "Next up:"
-            : `${exerciseNames[currentInterval]} (R${currentRound})`
+            : `${exerciseNames[currentInterval]}`
         }
         timer={isWorkoutComplete ? "🏆" : isCooldown ? cooldownTimer : timer}
         description={
           isWorkoutComplete
             ? "Keep up the great work!"
             : isCooldown
-            ? `${exerciseNames[currentInterval]} (R${currentRound})`
+            ? `${exerciseNames[currentInterval]}`
             : exerciseDescriptions[currentInterval]
         }
         isPaused={isPaused}
