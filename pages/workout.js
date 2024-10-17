@@ -27,6 +27,29 @@ const Workout = () => {
   const [isWorkoutComplete, setIsWorkoutComplete] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
 
+  // Audio files
+  const [firstAudio, setFirstAudio] = useState(null);
+  const [secondAudio, setSecondAudio] = useState(null);
+
+  useEffect(() => {
+    // Ensure this runs only on the client side
+    setFirstAudio(new Audio("/audio/first.mp3"));
+    setSecondAudio(new Audio("/audio/second.mp3"));
+  }, []);
+
+  // useEffect(() => {
+  //   const enablePlayback = async () => {
+  //     const tempAudio = new Audio("/audio/first.mp3"); // A very short, silent audio file
+  //     await tempAudio
+  //       .play()
+  //       .catch((error) => console.log("Play failed:", error));
+  //     setFirstAudio(new Audio("/audio/first.mp3"));
+  //     setSecondAudio(new Audio("/audio/second.mp3"));
+  //   };
+
+  //   enablePlayback();
+  // }, []);
+
   // Fetch the preset data based on query params
   useEffect(() => {
     if (router.query.preset) {
@@ -73,6 +96,36 @@ const Workout = () => {
       setCooldownTimer(exerciseBreaks);
     }
   }, [router.query.preset]);
+
+  // Play audio when the timer hits specific values
+  useEffect(() => {
+    if (router.query.preset) {
+      if (timer === 3 || timer === 2 || timer === 1) {
+        firstAudio.play();
+      }
+
+      if (timer === 1) {
+        setTimeout(() => {
+          secondAudio.play();
+        }, 1000); // 1 second after the timer hits 1
+      }
+    }
+  }, [timer]);
+
+  // Play audio when the timer hits specific values
+  useEffect(() => {
+    if (router.query.preset) {
+      if (cooldownTimer === 3 || cooldownTimer === 2 || cooldownTimer === 1) {
+        firstAudio.play();
+      }
+
+      if (cooldownTimer === 1) {
+        setTimeout(() => {
+          secondAudio.play();
+        }, 1000); // 1 second after the timer hits 1
+      }
+    }
+  }, [cooldownTimer]);
 
   // The exercise logic for the workout will stay the same as before
   const exercisesPerRound = exerciseNames.length / roundCount;
@@ -163,7 +216,6 @@ const Workout = () => {
   };
 
   // if (presetIndex === null) return null; // Avoid rendering until presetIndex is available
-
   const colors = ["aquamarine", "grey", "yellow"];
 
   return (

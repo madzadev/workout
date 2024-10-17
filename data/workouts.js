@@ -66,7 +66,7 @@ const presets = [
       {
         name: "Jumping Jacks",
         description: "Jump feet out, raise arms overhead.",
-        time: 30,
+        time: 5,
       },
       {
         name: "Push-Ups",
