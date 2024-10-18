@@ -43,7 +43,7 @@ export default function Home() {
         }}
       /> */}
 
-      {/* <h1 className={styles.title}>Pick a preset:</h1> */}
+      <h1 className={styles.title}>Beginner workouts:</h1>
       <div className={styles.presetsWrapper}>
         {presets.map((preset, index) => (
           <WorkoutPresetCard
