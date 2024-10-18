@@ -1,5 +1,6 @@
 import Wrapper from "../components/Wrapper";
 import Navigation from "../components/Navigation";
+import Footer from "../components/Footer";
 
 const About = () => {
   return (
@@ -13,7 +14,7 @@ const About = () => {
         the doctor first or arrange a consultation with the exercise specialist
         to get more special program specific to you.
       </p>
-      ;
+      <Footer />
     </Wrapper>
   );
 };

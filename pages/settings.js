@@ -1,5 +1,6 @@
 import Wrapper from "../components/Wrapper";
 import Navigation from "../components/Navigation";
+import Footer from "../components/Footer";
 
 const Settings = () => {
   return (
@@ -21,6 +22,7 @@ const Settings = () => {
       <p>Audio</p>
       <p>Audio</p>
       <p>Audio</p>
+      <Footer />
     </Wrapper>
   );
 };

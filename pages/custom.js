@@ -5,6 +5,7 @@ import Wrapper from "../components/Wrapper";
 import Navigation from "../components/Navigation";
 import StartWorkoutButton from "../components/StartWorkoutButton";
 import EquipmentSelector from "../components/EquipmentSelector";
+import Footer from "../components/Footer";
 
 const Custom = () => {
   const [selectedEquipment, setSelectedEquipment] = useState([]);
@@ -59,6 +60,7 @@ const Custom = () => {
       <h1>Exercise timeline:</h1>
       <StartWorkoutButton />
       <Link href="/">Back</Link>
+      <Footer />
     </Wrapper>
   );
 };

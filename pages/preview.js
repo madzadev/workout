@@ -1,6 +1,8 @@
 import Wrapper from "../components/Wrapper";
 import Navigation from "../components/Navigation";
 import StartWorkoutButton from "../components/StartWorkoutButton";
+import Footer from "../components/Footer";
+
 import styles from "../styles/Preview.module.css";
 
 const Preview = () => {
@@ -37,6 +39,7 @@ const Preview = () => {
         </div>
       </div>
       <StartWorkoutButton />
+      <Footer />
     </Wrapper>
   );
 };

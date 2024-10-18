@@ -9,6 +9,7 @@ import WorkoutTimeSelector from "../components/WorkoutTimeSelector";
 import WorkoutPresetCard from "../components/WorkoutPresetCard";
 import PreviewWorkoutButton from "../components/PreviewWorkoutButton";
 import StartWorkoutButton from "../components/StartWorkoutButton";
+import Footer from "../components/Footer";
 
 import styles from "../styles/Home.module.css";
 import { presets, presets2, presets3 } from "../data/workouts";
@@ -105,6 +106,7 @@ export default function Home() {
       <Link href="/custom" style={{ color: "white" }}>
         Create a custom workout
       </Link>
+      <Footer />
     </Wrapper>
   );
 }
