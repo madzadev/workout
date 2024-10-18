@@ -102,7 +102,7 @@ const presets = [
       {
         name: "Bicycle Crunches",
         description: "Alternate knees towards opposite elbows.",
-        time: 30,
+        time: 10,
       },
     ],
   },

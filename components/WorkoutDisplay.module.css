@@ -29,18 +29,35 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 100px;
+    width: 100%;
+    /* Ensure the container spans the full width of the screen */
+    padding-left: 50px;
+    padding-right: 50px;
+    box-sizing: border-box;
+    /* Include padding in the width calculation */
 }
 
 .progress {
-    color: aquamarine;
+    color: rgb(104, 104, 104);
     cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.progress:hover {
+    color: white;
+    transform: scale(1.1);
 }
 
 .exit {
     text-decoration: none;
-    color: tomato;
+    color: rgb(104, 104, 104);
     cursor: pointer;
     font-size: 20px;
     font-weight: bold;
+    transition: transform 0.3s ease;
+}
+
+.exit:hover {
+    color: tomato;
+    transform: scale(1.1);
 }

@@ -4,6 +4,7 @@ import WorkoutTimeline from "../components/WorkoutTimeline";
 import WorkoutDisplay from "../components/WorkoutDisplay";
 import WorkoutProgress from "../components/WorkoutProgress";
 import styles from "../styles/Workout.module.css";
+import { sumExercises, sumBreaks, formatTime } from "../helpers/convertTime";
 import presets from "../data/workouts";
 
 const Workout = () => {
@@ -225,14 +226,24 @@ const Workout = () => {
             : `${exerciseNames[currentInterval]}`
         }
         round={
-          isCooldown
+          isWorkoutComplete
+            ? `You did ${timeIntervals.length} exercises`
+            : isCooldown
             ? exerciseNames[currentInterval]
             : `${currentRound} of ${roundCount}`
         }
         timer={isWorkoutComplete ? "🏆" : isCooldown ? cooldownTimer : timer}
         description={
           isWorkoutComplete
-            ? "Keep up the great work!"
+            ? `in ${formatTime(
+                sumExercises(timeIntervals) +
+                  sumBreaks(
+                    timeIntervals.length,
+                    roundCount,
+                    breakLength,
+                    roundBreak
+                  )
+              )}`
             : isCooldown
             ? `Duration: ${timeIntervals[currentInterval]} seconds`
             : exerciseDescriptions[currentInterval]
