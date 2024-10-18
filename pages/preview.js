@@ -25,8 +25,14 @@ const Preview = () => {
       <div className={styles.columnWrapper}>
         <div>
           <h3>Lunges</h3>
+          <h3>Lunges</h3>
+          <h3>Lunges</h3>
+          <h3>Lunges</h3>
         </div>
         <div>
+          <h3>Do a pushup on the floor and jump up.</h3>
+          <h3>Do a pushup on the floor and jump up.</h3>
+          <h3>Do a pushup on the floor and jump up.</h3>
           <h3>Do a pushup on the floor and jump up.</h3>
         </div>
       </div>

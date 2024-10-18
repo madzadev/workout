@@ -11,7 +11,7 @@ import PreviewWorkoutButton from "../components/PreviewWorkoutButton";
 import StartWorkoutButton from "../components/StartWorkoutButton";
 
 import styles from "../styles/Home.module.css";
-import presets from "../data/workouts";
+import { presets, presets2, presets3 } from "../data/workouts";
 
 export default function Home() {
   const [workoutTime, setWorkoutTime] = useState(15);
@@ -54,6 +54,34 @@ export default function Home() {
       <h1 className={styles.title}>Beginner workouts:</h1>
       <div className={styles.presetsWrapper}>
         {presets.map((preset, index) => (
+          <WorkoutPresetCard
+            key={index}
+            workoutPresetName={preset.title}
+            roundsCount={preset.rounds}
+            exercisesCount={preset.workout.length}
+            isActive={activeWorkoutPreset === index}
+            onClick={() => setActiveWorkoutPreset(index)}
+          />
+        ))}
+      </div>
+
+      <h1 className={styles.title}>HIIT workouts:</h1>
+      <div className={styles.presetsWrapper}>
+        {presets2.map((preset, index) => (
+          <WorkoutPresetCard
+            key={index}
+            workoutPresetName={preset.title}
+            roundsCount={preset.rounds}
+            exercisesCount={preset.workout.length}
+            isActive={activeWorkoutPreset === index}
+            onClick={() => setActiveWorkoutPreset(index)}
+          />
+        ))}
+      </div>
+
+      <h1 className={styles.title}>Full body workouts:</h1>
+      <div className={styles.presetsWrapper}>
+        {presets3.map((preset, index) => (
           <WorkoutPresetCard
             key={index}
             workoutPresetName={preset.title}

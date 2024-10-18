@@ -1,50 +1,3 @@
-// const presets = [
-//   {
-//     title: "Full Body Quick Workout",
-//     difficulty: 1,
-//     rounds: 3,
-//     exerciseBreaks: 10, // 10 seconds break between exercises
-//     roundBreaks: 60,
-//     workout: [
-//       {
-//         name: "Jumping Jacks",
-//         description: "Jump feet out, raise arms overhead.",
-//         time: 5, // Adjusted to 30 seconds for a warm-up
-//       },
-//       {
-//         name: "Bodyweight Squats",
-//         description: "Lower down, stand back up straight.",
-//         time: 5, // Longer for a lower body workout
-//       },
-//       {
-//         name: "Push-ups",
-//         description: "Lower chest to ground, push up.",
-//         time: 25, // Upper body strength exercise
-//       },
-//       {
-//         name: "Mountain Climbers",
-//         description: "Drive knees toward chest quickly.",
-//         time: 25, // Core and cardio combined
-//       },
-//       {
-//         name: "Plank",
-//         description: "Hold straight body on elbows.",
-//         time: 25, // Core stabilization
-//       },
-//       {
-//         name: "Lunges",
-//         description: "Step forward, lower hips, step back.",
-//         time: 25, // Targets the legs and glutes
-//       },
-//       {
-//         name: "Burpees",
-//         description: "Squat, kick back, jump up explosively.",
-//         time: 5, // Full-body explosive movement
-//       },
-//     ],
-//   },
-// ];
-
 // Quick Workout: Combines cardio and strength in a compact format.
 // Flex and Stretch: Focuses on mobility, stretching, and recovery.
 // Total Body Blitz: Balanced for full-body workout.
@@ -514,14 +467,130 @@ const presets = [
   },
 ];
 
-{
-  /* <WorkoutPresetCard workoutPresetName="Total Body Blitz" />
-        <WorkoutPresetCard workoutPresetName="Core Sculpt Session" />
-        <WorkoutPresetCard workoutPresetName="Strength Fusion Flow" />
-        <WorkoutPresetCard workoutPresetName="Muscle Madness Circuit" />
-        <WorkoutPresetCard workoutPresetName="Cardio Power Surge" />
-        <WorkoutPresetCard workoutPresetName="HIIT the Beat" />
-        <WorkoutPresetCard workoutPresetName="Warrior Boot Camp" /> */
-}
+const presets2 = [
+  {
+    title: "Easy Workout",
+    difficulty: 1,
+    rounds: 3,
+    exerciseBreaks: 20, // 10 seconds break between exercises
+    roundBreaks: 60,
+    completionEmoji: "🏆",
+    workout: [
+      {
+        name: "Jumping Jacks",
+        description: "Jump feet out, raise arms overhead.",
+        time: 30,
+      },
+      {
+        name: "Push-Ups",
+        description: "Lower body towards the ground, push back up.",
+        time: 30,
+      },
+    ],
+  },
+  {
+    title: "Easy Workout",
+    difficulty: 1,
+    rounds: 3,
+    exerciseBreaks: 20, // 10 seconds break between exercises
+    roundBreaks: 60,
+    completionEmoji: "🏆",
+    workout: [
+      {
+        name: "Jumping Jacks",
+        description: "Jump feet out, raise arms overhead.",
+        time: 30,
+      },
+      {
+        name: "Push-Ups",
+        description: "Lower body towards the ground, push back up.",
+        time: 30,
+      },
+    ],
+  },
+  {
+    title: "Easy Workout",
+    difficulty: 1,
+    rounds: 3,
+    exerciseBreaks: 20, // 10 seconds break between exercises
+    roundBreaks: 60,
+    completionEmoji: "🏆",
+    workout: [
+      {
+        name: "Jumping Jacks",
+        description: "Jump feet out, raise arms overhead.",
+        time: 30,
+      },
+      {
+        name: "Push-Ups",
+        description: "Lower body towards the ground, push back up.",
+        time: 30,
+      },
+    ],
+  },
+];
 
-export default presets;
+const presets3 = [
+  {
+    title: "Easy Workout",
+    difficulty: 1,
+    rounds: 3,
+    exerciseBreaks: 20, // 10 seconds break between exercises
+    roundBreaks: 60,
+    completionEmoji: "🏆",
+    workout: [
+      {
+        name: "Jumping Jacks",
+        description: "Jump feet out, raise arms overhead.",
+        time: 30,
+      },
+      {
+        name: "Push-Ups",
+        description: "Lower body towards the ground, push back up.",
+        time: 30,
+      },
+    ],
+  },
+  {
+    title: "Easy Workout",
+    difficulty: 1,
+    rounds: 3,
+    exerciseBreaks: 20, // 10 seconds break between exercises
+    roundBreaks: 60,
+    completionEmoji: "🏆",
+    workout: [
+      {
+        name: "Jumping Jacks",
+        description: "Jump feet out, raise arms overhead.",
+        time: 30,
+      },
+      {
+        name: "Push-Ups",
+        description: "Lower body towards the ground, push back up.",
+        time: 30,
+      },
+    ],
+  },
+  {
+    title: "Easy Workout",
+    difficulty: 1,
+    rounds: 3,
+    exerciseBreaks: 20, // 10 seconds break between exercises
+    roundBreaks: 60,
+    completionEmoji: "🏆",
+    workout: [
+      {
+        name: "Jumping Jacks",
+        description: "Jump feet out, raise arms overhead.",
+        time: 30,
+      },
+      {
+        name: "Push-Ups",
+        description: "Lower body towards the ground, push back up.",
+        time: 30,
+      },
+    ],
+  },
+];
+
+export { presets, presets2, presets3 };
