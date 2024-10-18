@@ -1,0 +1,14 @@
+.columnWrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 50px;
+    color: grey
+}
+
+.title {
+    margin-bottom: 30px;
+    color: white
+}
+
+.content {}
