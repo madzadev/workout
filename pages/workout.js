@@ -36,7 +36,7 @@ const Workout = () => {
   useEffect(() => {
     // Ensure this runs only on the client side
     setCountAudio(new Audio("/audio/count5.wav"));
-    setStartAudio(new Audio("/audio/done.mp3")); //done2 ok,
+    setStartAudio(new Audio("/audio/done4.wav")); //done2.wav = beep, done.mp3 = rocket
     setCompleteAudio(new Audio("/audio/done3.wav"));
   }, []);
 
@@ -108,7 +108,7 @@ const Workout = () => {
             const utterance = new SpeechSynthesisUtterance(`Workout complete!`);
             window.speechSynthesis.speak(utterance);
           }
-        }, 2000); // 1 second after the timer hits 1
+        }, 2000); // 2 seconds after the timer hits 1
       }
     }
   }, [timer]);
@@ -129,7 +129,7 @@ const Workout = () => {
             `Begin ${exerciseNames[currentInterval]}`
           );
           window.speechSynthesis.speak(utterance);
-        }, 3000); // 2 second after the timer hits 1
+        }, 3000); // 2 seconds after the timer hits 1
       }
     }
   }, [cooldownTimer]);
