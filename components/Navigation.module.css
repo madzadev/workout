@@ -10,10 +10,6 @@
 }
 
 .logo {
-    /* Optional styling for the logo */
-}
-
-.logo:hover {
     cursor: pointer;
 }
 

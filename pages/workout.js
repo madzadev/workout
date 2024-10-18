@@ -232,7 +232,13 @@ const Workout = () => {
             ? exerciseNames[currentInterval]
             : `${currentRound} of ${roundCount}`
         }
-        timer={isWorkoutComplete ? "🏆" : isCooldown ? cooldownTimer : timer}
+        timer={
+          isWorkoutComplete
+            ? presets[presetIndex].completionEmoji
+            : isCooldown
+            ? cooldownTimer
+            : timer
+        }
         description={
           isWorkoutComplete
             ? `in ${formatTime(
