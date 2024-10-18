@@ -60,13 +60,13 @@ const presets = [
     title: "Easy Workout",
     difficulty: 1,
     rounds: 3,
-    exerciseBreaks: 5, // 10 seconds break between exercises
+    exerciseBreaks: 20, // 10 seconds break between exercises
     roundBreaks: 60,
     workout: [
       {
         name: "Jumping Jacks",
         description: "Jump feet out, raise arms overhead.",
-        time: 5,
+        time: 30,
       },
       {
         name: "Push-Ups",
@@ -102,7 +102,7 @@ const presets = [
       {
         name: "Bicycle Crunches",
         description: "Alternate knees towards opposite elbows.",
-        time: 10,
+        time: 30,
       },
     ],
   },
