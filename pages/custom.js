@@ -47,8 +47,13 @@ const Custom = () => {
       <input type="text" placeholder="action description (optional)" />
       <input type="text" placeholder="5 mins" />
 
-      <h2>➕ Add more rounds</h2>
-      <h2>Total time: 15 mins</h2>
+      <h1>Exercise settings:</h1>
+      <h2>Warmup: 05:00</h2>
+      <h2>Exercise interval: 00:20</h2>
+      <h2>Exercise rest interval: 00:15</h2>
+      <h2>Rounds: 5</h2>
+      <h2>Rest between rounds: 01:00</h2>
+      <h2>Total time: 15 minutes 23 seconds</h2>
       <h3>Save workout</h3>
       <StartWorkoutButton />
       <Link href="/">Back</Link>
