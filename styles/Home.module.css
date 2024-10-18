@@ -12,3 +12,13 @@
   gap: 20px;
   margin-bottom: 50px;
 }
+
+.buttonWrapper {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+
+  /* gap: 100px; */
+  /* background-color: red; */
+}

@@ -7,6 +7,7 @@ import Navigation from "../components/Navigation";
 import Header from "../components/SEO/Header";
 import WorkoutTimeSelector from "../components/WorkoutTimeSelector";
 import WorkoutPresetCard from "../components/WorkoutPresetCard";
+import PreviewWorkoutButton from "../components/PreviewWorkoutButton";
 import StartWorkoutButton from "../components/StartWorkoutButton";
 
 import styles from "../styles/Home.module.css";
@@ -20,6 +21,13 @@ export default function Home() {
   const handleStartWorkout = () => {
     router.push({
       pathname: "/workout",
+      query: { preset: activeWorkoutPreset },
+    });
+  };
+
+  const handlePreviewWorkout = () => {
+    router.push({
+      pathname: "/preview",
       query: { preset: activeWorkoutPreset },
     });
   };
@@ -57,9 +65,14 @@ export default function Home() {
         ))}
       </div>
 
-      {activeWorkoutPreset !== null && (
-        <StartWorkoutButton onClick={handleStartWorkout} />
-      )}
+      <div className={styles.buttonWrapper}>
+        {activeWorkoutPreset !== null && (
+          <PreviewWorkoutButton onClick={handlePreviewWorkout} />
+        )}
+        {activeWorkoutPreset !== null && (
+          <StartWorkoutButton onClick={handleStartWorkout} />
+        )}
+      </div>
 
       <Link href="/custom" style={{ color: "white" }}>
         Create a custom workout
