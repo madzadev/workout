@@ -97,18 +97,18 @@ const Workout = () => {
       if (timer === 1) {
         setTimeout(() => {
           completeAudio.play();
-        }, 1000); // 1 second after the timer hits 1
-        setTimeout(() => {
-          if (currentInterval != timeIntervals.length - 1) {
-            const utterance = new SpeechSynthesisUtterance(
-              `Next up: ${exerciseNames[currentInterval + 1]}`
-            );
-            window.speechSynthesis.speak(utterance);
-          } else {
-            const utterance = new SpeechSynthesisUtterance(`Workout complete!`);
-            window.speechSynthesis.speak(utterance);
-          }
-        }, 2000); // 2 seconds after the timer hits 1
+        }, 1000);
+        // setTimeout(() => {
+        //   if (currentInterval != timeIntervals.length - 1) {
+        //     const utterance = new SpeechSynthesisUtterance(
+        //       `Next up: ${exerciseNames[currentInterval + 1]}`
+        //     );
+        //     window.speechSynthesis.speak(utterance);
+        //   } else {
+        //     const utterance = new SpeechSynthesisUtterance(`Workout complete!`);
+        //     window.speechSynthesis.speak(utterance);
+        //   }
+        // }, 2000);
       }
     }
   }, [timer]);
@@ -123,13 +123,13 @@ const Workout = () => {
       if (cooldownTimer === 1) {
         setTimeout(() => {
           startAudio.play();
-        }, 1000); // 1 second after the timer hits 1
-        setTimeout(() => {
-          const utterance = new SpeechSynthesisUtterance(
-            `Begin ${exerciseNames[currentInterval]}`
-          );
-          window.speechSynthesis.speak(utterance);
-        }, 3000); // 2 seconds after the timer hits 1
+        }, 1000);
+        // setTimeout(() => {
+        //   const utterance = new SpeechSynthesisUtterance(
+        //     `Begin ${exerciseNames[currentInterval]}`
+        //   );
+        //   window.speechSynthesis.speak(utterance);
+        // }, 3000);
       }
     }
   }, [cooldownTimer]);
