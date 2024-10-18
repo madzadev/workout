@@ -98,6 +98,17 @@ const Workout = () => {
         setTimeout(() => {
           completeAudio.play();
         }, 1000); // 1 second after the timer hits 1
+        setTimeout(() => {
+          if (currentInterval != timeIntervals.length - 1) {
+            const utterance = new SpeechSynthesisUtterance(
+              `Next up: ${exerciseNames[currentInterval + 1]}`
+            );
+            window.speechSynthesis.speak(utterance);
+          } else {
+            const utterance = new SpeechSynthesisUtterance(`Workout complete!`);
+            window.speechSynthesis.speak(utterance);
+          }
+        }, 2000); // 1 second after the timer hits 1
       }
     }
   }, [timer]);
@@ -113,6 +124,12 @@ const Workout = () => {
         setTimeout(() => {
           startAudio.play();
         }, 1000); // 1 second after the timer hits 1
+        setTimeout(() => {
+          const utterance = new SpeechSynthesisUtterance(
+            `Begin ${exerciseNames[currentInterval]}`
+          );
+          window.speechSynthesis.speak(utterance);
+        }, 3000); // 2 second after the timer hits 1
       }
     }
   }, [cooldownTimer]);
@@ -220,7 +237,7 @@ const Workout = () => {
       <WorkoutDisplay
         title={
           isWorkoutComplete
-            ? "Workout completed!"
+            ? "Workout complete!"
             : isCooldown
             ? "Next up:"
             : `${exerciseNames[currentInterval]}`
@@ -251,7 +268,7 @@ const Workout = () => {
                   )
               )}`
             : isCooldown
-            ? `Duration: ${timeIntervals[currentInterval]} seconds`
+            ? `${timeIntervals[currentInterval]} seconds`
             : exerciseDescriptions[currentInterval]
         }
         isPaused={isPaused}

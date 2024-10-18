@@ -13,24 +13,24 @@ const presets = [
     title: "Easy Workout",
     difficulty: 1,
     rounds: 3,
-    exerciseBreaks: 20, // 10 seconds break between exercises
+    exerciseBreaks: 5, // 10 seconds break between exercises
     roundBreaks: 60,
     completionEmoji: "🏆",
     workout: [
       {
         name: "Jumping Jacks",
         description: "Jump feet out, raise arms overhead.",
-        time: 30,
+        time: 10,
       },
       {
-        name: "Push-Ups",
+        name: "Pushups",
         description: "Lower body towards the ground, push back up.",
-        time: 30,
+        time: 10,
       },
       {
         name: "Bodyweight Squats",
         description: "Lower down, stand back up straight.",
-        time: 30,
+        time: 10,
       },
       {
         name: "High Knees",
@@ -56,7 +56,7 @@ const presets = [
       {
         name: "Bicycle Crunches",
         description: "Alternate knees towards opposite elbows.",
-        time: 30,
+        time: 10,
       },
     ],
   },
@@ -114,7 +114,7 @@ const presets = [
         time: 30,
       },
       {
-        name: "Push-Ups",
+        name: "Pushups",
         description: "Lower body towards the ground, push back up.",
         time: 30,
       },
@@ -211,7 +211,7 @@ const presets = [
     completionEmoji: "🏆",
     workout: [
       {
-        name: "Push-Ups",
+        name: "Pushups",
         description: "Lower body towards the ground, push back up.",
         time: 30,
       },
@@ -267,7 +267,7 @@ const presets = [
         time: 30,
       },
       {
-        name: "Push-Ups",
+        name: "Pushups",
         description: "Lower body towards the ground, push back up.",
         time: 30,
       },
@@ -408,7 +408,7 @@ const presets = [
         time: 30,
       },
       {
-        name: "Push-Ups",
+        name: "Pushups",
         description: "Lower body towards the ground, push back up.",
         time: 30,
       },
@@ -433,7 +433,7 @@ const presets = [
         time: 30,
       },
       {
-        name: "Push-Ups",
+        name: "Pushups",
         description: "Lower body towards the ground, push back up.",
         time: 30,
       },
@@ -482,7 +482,7 @@ const presets2 = [
         time: 30,
       },
       {
-        name: "Push-Ups",
+        name: "Pushups",
         description: "Lower body towards the ground, push back up.",
         time: 30,
       },
@@ -502,7 +502,7 @@ const presets2 = [
         time: 30,
       },
       {
-        name: "Push-Ups",
+        name: "Pushups",
         description: "Lower body towards the ground, push back up.",
         time: 30,
       },
@@ -522,7 +522,7 @@ const presets2 = [
         time: 30,
       },
       {
-        name: "Push-Ups",
+        name: "Pushups",
         description: "Lower body towards the ground, push back up.",
         time: 30,
       },
@@ -545,7 +545,7 @@ const presets3 = [
         time: 30,
       },
       {
-        name: "Push-Ups",
+        name: "Pushups",
         description: "Lower body towards the ground, push back up.",
         time: 30,
       },
@@ -565,7 +565,7 @@ const presets3 = [
         time: 30,
       },
       {
-        name: "Push-Ups",
+        name: "Pushups",
         description: "Lower body towards the ground, push back up.",
         time: 30,
       },
@@ -585,7 +585,7 @@ const presets3 = [
         time: 30,
       },
       {
-        name: "Push-Ups",
+        name: "Pushups",
         description: "Lower body towards the ground, push back up.",
         time: 30,
       },
