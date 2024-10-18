@@ -62,7 +62,7 @@ const presets = [
     rounds: 3,
     exerciseBreaks: 20, // 10 seconds break between exercises
     roundBreaks: 60,
-    completionEmoji: "💪",
+    completionEmoji: "🏆",
     workout: [
       {
         name: "Jumping Jacks",
@@ -113,7 +113,7 @@ const presets = [
     rounds: 3,
     exerciseBreaks: 10, // 10 seconds break between exercises
     roundBreaks: 60,
-    completionEmoji: "💪",
+    completionEmoji: "🏆",
     workout: [
       {
         name: "Standing Forward Bend",
@@ -153,7 +153,7 @@ const presets = [
     rounds: 3,
     exerciseBreaks: 10, // 10 seconds break between exercises
     roundBreaks: 60,
-    completionEmoji: "💪",
+    completionEmoji: "🏆",
     workout: [
       {
         name: "Jumping Jacks",
@@ -204,7 +204,7 @@ const presets = [
     rounds: 3,
     exerciseBreaks: 10, // 10 seconds break between exercises
     roundBreaks: 60,
-    completionEmoji: "💪",
+    completionEmoji: "🏆",
     workout: [
       { name: "Plank", description: "Hold body in plank position.", time: 30 },
       {
@@ -255,7 +255,7 @@ const presets = [
     rounds: 3,
     exerciseBreaks: 10, // 10 seconds break between exercises
     roundBreaks: 60,
-    completionEmoji: "💪",
+    completionEmoji: "🏆",
     workout: [
       {
         name: "Push-Ups",
@@ -306,7 +306,7 @@ const presets = [
     rounds: 3,
     exerciseBreaks: 10, // 10 seconds break between exercises
     roundBreaks: 60,
-    completionEmoji: "💪",
+    completionEmoji: "🏆",
     workout: [
       {
         name: "Bodyweight Squats",
@@ -357,7 +357,7 @@ const presets = [
     rounds: 3,
     exerciseBreaks: 10, // 10 seconds break between exercises
     roundBreaks: 60,
-    completionEmoji: "💪",
+    completionEmoji: "🏆",
     workout: [
       {
         name: "Jumping Jacks",
@@ -412,7 +412,7 @@ const presets = [
     rounds: 3,
     exerciseBreaks: 10, // 10 seconds break between exercises
     roundBreaks: 60,
-    completionEmoji: "💪",
+    completionEmoji: "🏆",
     workout: [
       {
         name: "Jumping Jacks",
@@ -467,7 +467,7 @@ const presets = [
     rounds: 3,
     exerciseBreaks: 10, // 10 seconds break between exercises
     roundBreaks: 60,
-    completionEmoji: "💪",
+    completionEmoji: "🏆",
     workout: [
       {
         name: "Burpees",
