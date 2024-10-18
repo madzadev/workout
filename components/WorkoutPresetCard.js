@@ -1,6 +1,7 @@
 import styles from "./WorkoutPresetCard.module.css";
 
 const WorkoutPresetCard = ({
+  backgroundColor,
   workoutPresetName,
   roundsCount,
   exercisesCount,
@@ -12,12 +13,13 @@ const WorkoutPresetCard = ({
       className={styles.wrapper}
       onClick={onClick}
       style={{
-        backgroundColor: isActive ? "yellow" : "#1F2129",
+        backgroundColor: isActive ? "yellow" : backgroundColor, //#1F2129
       }}
     >
       <h2
         style={{
-          color: isActive ? "black" : "white",
+          color: isActive ? "black" : "black",
+          fontSize: "22px",
         }}
       >
         {workoutPresetName}
@@ -36,8 +38,14 @@ const WorkoutPresetCard = ({
       >
         {roundsCount} rounds
       </p>
-      {/* <p>Total time: 23 mins</p> */}
-      <p>Difficulty: ⭐⭐⭐</p>
+      <p
+        style={{
+          color: isActive ? "black" : "grey",
+        }}
+      >
+        Total time: 23 mins
+      </p>
+      {/* <p>Difficulty: ⭐⭐⭐</p> */}
     </div>
   );
 };

@@ -14,6 +14,8 @@ import Footer from "../components/Footer";
 import styles from "../styles/Home.module.css";
 import { presets, presets2, presets3 } from "../data/workouts";
 
+const colors = ["yellow", "tomato", "aquamarine"];
+
 export default function Home() {
   const [workoutTime, setWorkoutTime] = useState(15);
   const [activeWorkoutPreset, setActiveWorkoutPreset] = useState(null);
@@ -51,12 +53,29 @@ export default function Home() {
           }
         }}
       /> */}
+      <div className={styles.heroWrapper}>
+        <div>
+          <h1>This is developers</h1>
+          <p>This is a description</p>
+          <p>This is a description</p>
+          <p>This is a description</p>
+          <p>This is a description</p>
+          <p>This is a description</p>
+          <p>This is a description</p>
+        </div>
+        <div className={styles.customWorkoutWrapper}>
+          <Link href="/custom" style={{ color: "white" }}>
+            Create a custom workout
+          </Link>
+        </div>
+      </div>
 
-      <h1 className={styles.title}>Beginner workouts:</h1>
+      <h1 className={styles.sectionTitle}>Beginner workouts:</h1>
       <div className={styles.presetsWrapper}>
         {presets.map((preset, index) => (
           <WorkoutPresetCard
             key={index}
+            backgroundColor={colors[0]}
             workoutPresetName={preset.title}
             roundsCount={preset.rounds}
             exercisesCount={preset.workout.length}
@@ -66,11 +85,12 @@ export default function Home() {
         ))}
       </div>
 
-      <h1 className={styles.title}>HIIT workouts:</h1>
+      <h1 className={styles.sectionTitle}>HIIT workouts:</h1>
       <div className={styles.presetsWrapper}>
         {presets2.map((preset, index) => (
           <WorkoutPresetCard
             key={index}
+            backgroundColor={colors[1]}
             workoutPresetName={preset.title}
             roundsCount={preset.rounds}
             exercisesCount={preset.workout.length}
@@ -80,11 +100,12 @@ export default function Home() {
         ))}
       </div>
 
-      <h1 className={styles.title}>Full body workouts:</h1>
+      <h1 className={styles.sectionTitle}>Full body workouts:</h1>
       <div className={styles.presetsWrapper}>
         {presets3.map((preset, index) => (
           <WorkoutPresetCard
             key={index}
+            backgroundColor={colors[2]}
             workoutPresetName={preset.title}
             roundsCount={preset.rounds}
             exercisesCount={preset.workout.length}
@@ -103,9 +124,6 @@ export default function Home() {
         )}
       </div>
 
-      <Link href="/custom" style={{ color: "white" }}>
-        Create a custom workout
-      </Link>
       <Footer />
     </Wrapper>
   );
