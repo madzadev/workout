@@ -33,6 +33,13 @@ const Preview = () => {
     }
   }, [router.query.preset]);
 
+  const handleStartWorkout = (index) => {
+    router.push({
+      pathname: "/workout",
+      query: { preset: index },
+    });
+  };
+
   return (
     <Wrapper>
       <Navigation />
@@ -66,39 +73,19 @@ const Preview = () => {
           <h3>Lunges</h3>
           <h3>Lunges</h3>
           <h3>Lunges</h3>
-          <br />
-          <br />
-          <h3>Lunges</h3>
-          <h3>Lunges</h3>
-          <h3>Lunges</h3>
-          <h3>Lunges</h3>
-          <br />
-          <br />
-          <h3>Lunges</h3>
-          <h3>Lunges</h3>
-          <h3>Lunges</h3>
-          <h3>Lunges</h3>
         </div>
         <div>
           <h3>Do a pushup on the floor and jump up.</h3>
           <h3>Do a pushup on the floor and jump up.</h3>
           <h3>Do a pushup on the floor and jump up.</h3>
           <h3>Do a pushup on the floor and jump up.</h3>
-          <br />
-          <br />
-          <h3>Do a pushup on the floor and jump up.</h3>
-          <h3>Do a pushup on the floor and jump up.</h3>
-          <h3>Do a pushup on the floor and jump up.</h3>
-          <h3>Do a pushup on the floor and jump up.</h3>
-          <br />
-          <br />
-          <h3>Do a pushup on the floor and jump up.</h3>
-          <h3>Do a pushup on the floor and jump up.</h3>
-          <h3>Do a pushup on the floor and jump up.</h3>
-          <h3>Do a pushup on the floor and jump up.</h3>
         </div>
       </div>
-      <StartWorkoutButton />
+      <StartWorkoutButton
+        onClick={() => {
+          handleStartWorkout(presetIndex);
+        }}
+      />
       <Footer />
     </Wrapper>
   );

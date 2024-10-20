@@ -5,7 +5,13 @@ import WorkoutDisplay from "../components/WorkoutDisplay";
 import WorkoutProgress from "../components/WorkoutProgress";
 import styles from "../styles/Workout.module.css";
 import { sumExercises, sumBreaks, formatTime } from "../helpers/convertTime";
-import { presets } from "../data/workouts";
+// import { presets } from "../data/workouts";
+
+import beginnerPresets from "../data/workouts/beginner";
+import hiitPresets from "../data/workouts/hiit";
+import fullbodyPresets from "../data/workouts/full_body";
+
+const presets = [...beginnerPresets, ...hiitPresets, ...fullbodyPresets];
 
 const Workout = () => {
   const router = useRouter();

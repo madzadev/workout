@@ -26,12 +26,12 @@ export default function Home() {
   const [activeWorkoutPreset, setActiveWorkoutPreset] = useState(null);
   const router = useRouter();
 
-  const handleStartWorkout = () => {
-    router.push({
-      pathname: "/workout",
-      query: { preset: activeWorkoutPreset },
-    });
-  };
+  // const handleStartWorkout = () => {
+  //   router.push({
+  //     pathname: "/workout",
+  //     query: { preset: activeWorkoutPreset },
+  //   });
+  // };
 
   const handlePreviewWorkout = (presetId) => {
     router.push({
@@ -107,7 +107,7 @@ export default function Home() {
             workoutPresetName={preset.title}
             roundsCount={preset.rounds}
             exercisesCount={preset.workout.length}
-            isActive={activeWorkoutPreset === index}
+            // isActive={activeWorkoutPreset === index}
             onClick={() => handlePreviewWorkout(preset.id)}
           />
         ))}
