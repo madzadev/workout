@@ -8,7 +8,7 @@
 // HIIT the Beat: High-intensity interval training with fast, rhythmic moves.
 // Warrior Boot Camp: Bootcamp-style with bodyweight training and conditioning.
 
-const presets = [
+const beginnerPresets = [
   {
     id: 1,
     title: "Easy Workout",
@@ -476,4 +476,4 @@ const presets = [
   },
 ];
 
-export default presets;
+export default beginnerPresets;

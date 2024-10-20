@@ -1,4 +1,4 @@
-const presets = [
+const fullbodyPresets = [
   {
     id: 16,
     title: "Easy Workout",
@@ -64,4 +64,4 @@ const presets = [
   },
 ];
 
-export default presets;
+export default fullbodyPresets;

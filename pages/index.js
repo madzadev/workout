@@ -13,6 +13,11 @@ import Footer from "../components/Footer";
 
 import styles from "../styles/Home.module.css";
 import { presets, presets2, presets3 } from "../data/workouts";
+import beginnerPresets from "../data/workouts/beginner";
+import hiitPresets from "../data/workouts/hiit";
+import fullbodyPresets from "../data/workouts/full_body";
+
+const presets = [...beginnerPresets, ...hiitPresets, ...fullbodyPresets];
 
 const colors = ["yellow", "tomato", "aquamarine"];
 

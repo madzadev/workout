@@ -1,4 +1,4 @@
-const presets = [
+const hiitPresets = [
   {
     id: 10,
     title: "Easy Workout",
@@ -64,4 +64,4 @@ const presets = [
   },
 ];
 
-export default presets;
+export default hiitPresets;
