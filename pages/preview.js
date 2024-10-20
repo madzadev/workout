@@ -9,6 +9,8 @@ import beginnerPresets from "../data/workouts/beginner";
 import hiitPresets from "../data/workouts/hiit";
 import fullbodyPresets from "../data/workouts/full_body";
 
+import { formatTime } from "../helpers/convertTime";
+
 const presets = [...beginnerPresets, ...hiitPresets, ...fullbodyPresets];
 
 import styles from "../styles/Preview.module.css";
@@ -46,9 +48,9 @@ const Preview = () => {
           <h1 className={styles.title}>Timer Settings:</h1>
           {/* <h3>Warmup: 05:00</h3> */}
           <h3>Exercise interval: 00:20</h3>
-          <h3>Exercise rest interval: 00:15</h3>
-          <h3>Rounds: 5</h3>
-          <h3>Rest between rounds: 01:00</h3>
+          <h3>Exercise rest interval: {formatTime(preset.exerciseBreaks)}</h3>
+          <h3>Rounds: {preset.rounds}</h3>
+          <h3>Rest between rounds: {formatTime(preset.roundBreaks)}</h3>
         </div>
         <div>
           <h1 className={styles.title}>Audio Settings:</h1>

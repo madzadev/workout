@@ -19,11 +19,21 @@ export function formatTime(seconds) {
   const minutes = Math.floor((seconds % 3600) / 60);
   const remainingSeconds = seconds % 60;
 
+  let timeString = "";
+
   if (hours > 0) {
-    return `${hours} hours ${minutes} minutes ${remainingSeconds} seconds`;
-  } else if (minutes > 0) {
-    return `${minutes} minutes ${remainingSeconds} seconds`;
-  } else {
-    return `${remainingSeconds} seconds`;
+    timeString += `${hours} ${hours === 1 ? "hour" : "hours"}`;
   }
+  if (minutes > 0) {
+    if (timeString) timeString += " ";
+    timeString += `${minutes} ${minutes === 1 ? "minute" : "minutes"}`;
+  }
+  if (remainingSeconds > 0) {
+    if (timeString) timeString += " ";
+    timeString += `${remainingSeconds} ${
+      remainingSeconds === 1 ? "second" : "seconds"
+    }`;
+  }
+
+  return timeString;
 }
