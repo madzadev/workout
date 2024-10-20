@@ -13,6 +13,8 @@ const beginnerPresets = [
     id: 1,
     title: "Easy Workout",
     description: "This workout is good for.....",
+    targets: ["core", "back", "torso"],
+    equipment: ["none", "yoga mat"],
     difficulty: 1,
     rounds: 3,
     exerciseBreaks: 5, // 10 seconds break between exercises
@@ -66,6 +68,8 @@ const beginnerPresets = [
     id: 2,
     title: "Flex and Stretch",
     description: "This workout is good for.....",
+    targets: ["core", "back", "torso"],
+    equipment: ["none", "yoga mat"],
     difficulty: 1,
     rounds: 3,
     exerciseBreaks: 10, // 10 seconds break between exercises
@@ -160,6 +164,8 @@ const beginnerPresets = [
     id: 4,
     title: "Core Sculpt Session",
     description: "This workout is good for.....",
+    targets: ["core", "back", "torso"],
+    equipment: ["none", "yoga mat"],
     difficulty: 1,
     rounds: 3,
     exerciseBreaks: 10, // 10 seconds break between exercises
@@ -213,6 +219,8 @@ const beginnerPresets = [
     id: 5,
     title: "Strength Fusion Flow",
     description: "This workout is good for.....",
+    targets: ["core", "back", "torso"],
+    equipment: ["none", "yoga mat"],
     difficulty: 1,
     rounds: 3,
     exerciseBreaks: 10, // 10 seconds break between exercises
@@ -266,6 +274,8 @@ const beginnerPresets = [
     id: 6,
     title: "Muscle Madness Circuit",
     description: "This workout is good for.....",
+    targets: ["core", "back", "torso"],
+    equipment: ["none", "yoga mat"],
     difficulty: 1,
     rounds: 3,
     exerciseBreaks: 10, // 10 seconds break between exercises
@@ -319,6 +329,8 @@ const beginnerPresets = [
     id: 7,
     title: "Cardio Power Surge",
     description: "This workout is good for.....",
+    targets: ["core", "back", "torso"],
+    equipment: ["none", "yoga mat"],
     difficulty: 1,
     rounds: 3,
     exerciseBreaks: 10, // 10 seconds break between exercises
@@ -376,6 +388,8 @@ const beginnerPresets = [
     id: 8,
     title: "HIIT the Beat",
     description: "This workout is good for.....",
+    targets: ["core", "back", "torso"],
+    equipment: ["none", "yoga mat"],
     difficulty: 1,
     rounds: 3,
     exerciseBreaks: 10, // 10 seconds break between exercises
@@ -433,6 +447,8 @@ const beginnerPresets = [
     id: 9,
     title: "Warrior Boot Camp",
     description: "This workout is good for.....",
+    targets: ["core", "back", "torso"],
+    equipment: ["none", "yoga mat"],
     difficulty: 1,
     rounds: 3,
     exerciseBreaks: 10, // 10 seconds break between exercises

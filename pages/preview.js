@@ -69,16 +69,16 @@ const Preview = () => {
       <h1 className={styles.title}>Workout structure:</h1>
       <div className={styles.columnWrapper}>
         <div>
-          <h3>Lunges</h3>
-          <h3>Lunges</h3>
-          <h3>Lunges</h3>
-          <h3>Lunges</h3>
+          {preset &&
+            preset.workout.map((exercise, index) => {
+              return <h3 key={index}>{exercise.name}</h3>;
+            })}
         </div>
         <div>
-          <h3>Do a pushup on the floor and jump up.</h3>
-          <h3>Do a pushup on the floor and jump up.</h3>
-          <h3>Do a pushup on the floor and jump up.</h3>
-          <h3>Do a pushup on the floor and jump up.</h3>
+          {preset &&
+            preset.workout.map((exercise, index) => {
+              return <h3 key={index}>{exercise.description}</h3>;
+            })}
         </div>
       </div>
       <StartWorkoutButton

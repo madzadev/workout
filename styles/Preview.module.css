@@ -11,4 +11,6 @@
     color: white
 }
 
-.content {}
+.columnWrapper h3 {
+    line-height: 1.5;
+}

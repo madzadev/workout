@@ -5,6 +5,7 @@ const WorkoutPresetCard = ({
   workoutPresetName,
   roundsCount,
   exercisesCount,
+  totalDuration,
   isActive,
   onClick,
 }) => {
@@ -43,7 +44,7 @@ const WorkoutPresetCard = ({
           color: isActive ? "black" : "grey",
         }}
       >
-        Total time: 23 mins
+        Total duration: {totalDuration}
       </p>
       {/* <p>Difficulty: ⭐⭐⭐</p> */}
     </div>

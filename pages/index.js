@@ -16,6 +16,7 @@ import styles from "../styles/Home.module.css";
 import beginnerPresets from "../data/workouts/beginner";
 import hiitPresets from "../data/workouts/hiit";
 import fullbodyPresets from "../data/workouts/full_body";
+import { sumExercises, sumBreaks, formatTime } from "../helpers/convertTime";
 
 const presets = [...beginnerPresets, ...hiitPresets, ...fullbodyPresets];
 
@@ -24,6 +25,7 @@ const colors = ["yellow", "tomato", "aquamarine"];
 export default function Home() {
   const [workoutTime, setWorkoutTime] = useState(15);
   const [activeWorkoutPreset, setActiveWorkoutPreset] = useState(null);
+  // const [timeIntervals, setTimeIntervals] = useState([]);
   const router = useRouter();
 
   // const handleStartWorkout = () => {
@@ -38,6 +40,16 @@ export default function Home() {
       pathname: "/preview",
       query: { preset: presetId },
     });
+  };
+
+  const timeIntervals = (preset, rounds) => {
+    const originalTimeIntervals = preset.workout.map(
+      (exercise) => exercise.time
+    );
+
+    const repeatArray = (arr, rounds) => Array(rounds).fill(arr).flat();
+
+    return repeatArray(originalTimeIntervals, rounds);
   };
 
   return (
@@ -60,7 +72,7 @@ export default function Home() {
       /> */}
       <div className={styles.heroWrapper}>
         <div>
-          <h1 className={styles.sectionTitle}>
+          <h1 className={styles.heroTitle}>
             Transform Your Fitness Journey Today
           </h1>
           <p className={styles.heroDescription}>
@@ -92,6 +104,15 @@ export default function Home() {
             workoutPresetName={preset.title}
             roundsCount={preset.rounds}
             exercisesCount={preset.workout.length}
+            totalDuration={`${formatTime(
+              sumExercises(timeIntervals(preset, preset.rounds)) +
+                sumBreaks(
+                  preset.workout.length,
+                  preset.rounds,
+                  preset.exerciseBreaks,
+                  preset.roundBreaks
+                )
+            )}`}
             // isActive={activeWorkoutPreset === index}
             onClick={() => handlePreviewWorkout(preset.id)}
           />

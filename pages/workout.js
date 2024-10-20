@@ -16,8 +16,6 @@ const presets = [...beginnerPresets, ...hiitPresets, ...fullbodyPresets];
 const Workout = () => {
   const router = useRouter();
 
-  // Set presetIndex to a default value to avoid conditional hooks
-  // const [presetIndex, setPresetIndex] = useState(null);
   const [roundCount, setRoundCount] = useState(0);
   const [breakLength, setBreakLength] = useState(0);
   const [roundBreak, setRoundBreak] = useState(0);
@@ -50,13 +48,10 @@ const Workout = () => {
   useEffect(() => {
     if (router.query.preset) {
       const index = router.query.preset;
-      // setPresetIndex(index);
-
       const preset = presets.find(
         (preset) => Number(preset.id) === Number(index)
       );
 
-      // const preset = presets[index];
       const rounds = preset.rounds;
       const exerciseBreaks = preset.exerciseBreaks;
       const roundBreaks = preset.roundBreaks;
@@ -232,7 +227,6 @@ const Workout = () => {
     setCooldownTimer(breakLength);
   };
 
-  // if (presetIndex === null) return null; // Avoid rendering until presetIndex is available
   const colors = ["aquamarine", "grey", "yellow"];
 
   return (
