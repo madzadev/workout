@@ -2,6 +2,7 @@ const hiitPresets = [
   {
     id: 10,
     title: "Easy Workout",
+    description: "This workout is good for.....",
     difficulty: 1,
     rounds: 3,
     exerciseBreaks: 20, // 10 seconds break between exercises
@@ -23,6 +24,7 @@ const hiitPresets = [
   {
     id: 11,
     title: "Easy Workout",
+    description: "This workout is good for.....",
     difficulty: 1,
     rounds: 3,
     exerciseBreaks: 20, // 10 seconds break between exercises
@@ -44,6 +46,7 @@ const hiitPresets = [
   {
     id: 12,
     title: "Easy Workout",
+    description: "This workout is good for.....",
     difficulty: 1,
     rounds: 3,
     exerciseBreaks: 20, // 10 seconds break between exercises

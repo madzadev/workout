@@ -1,25 +1,50 @@
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import Wrapper from "../components/Wrapper";
 import Navigation from "../components/Navigation";
 import StartWorkoutButton from "../components/StartWorkoutButton";
 import Footer from "../components/Footer";
 
+import beginnerPresets from "../data/workouts/beginner";
+import hiitPresets from "../data/workouts/hiit";
+import fullbodyPresets from "../data/workouts/full_body";
+
+const presets = [...beginnerPresets, ...hiitPresets, ...fullbodyPresets];
+
 import styles from "../styles/Preview.module.css";
 
 const Preview = () => {
+  const router = useRouter();
+
+  const [presetIndex, setPresetIndex] = useState("");
+  const [preset, setPreset] = useState("");
+
+  useEffect(() => {
+    if (router.query.preset) {
+      const index = router.query.preset;
+      setPresetIndex(index);
+      const workout = presets.find(
+        (preset) => Number(preset.id) === Number(index)
+      );
+      setPreset(workout);
+      console.log(presets);
+    }
+  }, [router.query.preset]);
+
   return (
     <Wrapper>
       <Navigation />
       <div className={styles.columnWrapper}>
         <div>
-          <h1 className={styles.title}>Workout name: AAAAAA</h1>
-          <h3>Workout description: AAAAAAAAA</h3>
+          <h1 className={styles.title}>{preset.title}</h1>
+          <h3>{preset.description}</h3>
           <h3>Targeted body parts: AAA, BBB, CCC</h3>
           <h3>Equipment needed: none</h3>
           <h3>Total time: 15 minutes 23 seconds</h3>
         </div>
         <div>
           <h1 className={styles.title}>Timer Settings:</h1>
-          <h3>Warmup: 05:00</h3>
+          {/* <h3>Warmup: 05:00</h3> */}
           <h3>Exercise interval: 00:20</h3>
           <h3>Exercise rest interval: 00:15</h3>
           <h3>Rounds: 5</h3>

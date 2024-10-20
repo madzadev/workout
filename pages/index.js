@@ -12,7 +12,7 @@ import StartWorkoutButton from "../components/StartWorkoutButton";
 import Footer from "../components/Footer";
 
 import styles from "../styles/Home.module.css";
-import { presets, presets2, presets3 } from "../data/workouts";
+// import { presets, presets2, presets3 } from "../data/workouts";
 import beginnerPresets from "../data/workouts/beginner";
 import hiitPresets from "../data/workouts/hiit";
 import fullbodyPresets from "../data/workouts/full_body";
@@ -85,7 +85,7 @@ export default function Home() {
 
       <h1 className={styles.sectionTitle}>Beginner workouts:</h1>
       <div className={styles.presetsWrapper}>
-        {presets.map((preset, index) => (
+        {beginnerPresets.map((preset, index) => (
           <WorkoutPresetCard
             key={index}
             backgroundColor={colors[0]}
@@ -100,7 +100,7 @@ export default function Home() {
 
       <h1 className={styles.sectionTitle}>HIIT workouts:</h1>
       <div className={styles.presetsWrapper}>
-        {presets2.map((preset, index) => (
+        {hiitPresets.map((preset, index) => (
           <WorkoutPresetCard
             key={index}
             backgroundColor={colors[1]}
@@ -115,7 +115,7 @@ export default function Home() {
 
       <h1 className={styles.sectionTitle}>Full body workouts:</h1>
       <div className={styles.presetsWrapper}>
-        {presets3.map((preset, index) => (
+        {fullbodyPresets.map((preset, index) => (
           <WorkoutPresetCard
             key={index}
             backgroundColor={colors[2]}

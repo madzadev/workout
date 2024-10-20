@@ -2,6 +2,7 @@ const fullbodyPresets = [
   {
     id: 16,
     title: "Easy Workout",
+    description: "This workout is good for.....",
     difficulty: 1,
     rounds: 3,
     exerciseBreaks: 20, // 10 seconds break between exercises
@@ -23,6 +24,7 @@ const fullbodyPresets = [
   {
     id: 17,
     title: "Easy Workout",
+    description: "This workout is good for.....",
     difficulty: 1,
     rounds: 3,
     exerciseBreaks: 20, // 10 seconds break between exercises
@@ -44,6 +46,7 @@ const fullbodyPresets = [
   {
     id: 18,
     title: "Easy Workout",
+    description: "This workout is good for.....",
     difficulty: 1,
     rounds: 3,
     exerciseBreaks: 20, // 10 seconds break between exercises
