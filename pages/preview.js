@@ -47,8 +47,14 @@ const Preview = () => {
         <div>
           <h1 className={styles.title}>{preset.title}</h1>
           <h3>{preset.description}</h3>
-          <h3>Targeted body parts: AAA, BBB, CCC</h3>
-          <h3>Equipment needed: none</h3>
+          <h3>
+            Targeted body parts:{" "}
+            {preset && preset.targets.map((item) => item).join(", ")}
+          </h3>
+          <h3>
+            Equipment needed:{" "}
+            {preset && preset.equipment.map((item) => item).join(", ")}
+          </h3>
           <h3>Total time: 15 minutes 23 seconds</h3>
         </div>
         <div>
