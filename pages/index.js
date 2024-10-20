@@ -28,10 +28,10 @@ export default function Home() {
     });
   };
 
-  const handlePreviewWorkout = () => {
+  const handlePreviewWorkout = (presetId) => {
     router.push({
       pathname: "/preview",
-      query: { preset: activeWorkoutPreset },
+      query: { preset: presetId },
     });
   };
 
@@ -55,19 +55,27 @@ export default function Home() {
       /> */}
       <div className={styles.heroWrapper}>
         <div>
-          <h1>This is developers</h1>
-          <p>This is a description</p>
-          <p>This is a description</p>
-          <p>This is a description</p>
-          <p>This is a description</p>
-          <p>This is a description</p>
-          <p>This is a description</p>
+          <h1 className={styles.sectionTitle}>
+            Transform Your Fitness Journey Today
+          </h1>
+          <p className={styles.heroDescription}>
+            Take control of your health with personalized workouts tailored to
+            your goals. Whether you’re a beginner or a fitness enthusiast, our
+            app adapts to your needs, guiding you every step of the way with
+            expert routines and progress tracking.
+          </p>
+          <p className={styles.heroDescription}>
+            Stay motivated with real-time feedback, goal-setting tools, and a
+            supportive community to keep you on track. It’s time to elevate your
+            fitness and unlock your full potential — all from the palm of your
+            hand.
+          </p>
         </div>
-        <div className={styles.customWorkoutWrapper}>
-          <Link href="/custom" style={{ color: "white" }}>
-            Create a custom workout
-          </Link>
-        </div>
+        <Link href="/custom">
+          <div className={styles.customWorkoutWrapper}>
+            <h1 style={{ color: "white" }}>Create my workout</h1>
+          </div>
+        </Link>
       </div>
 
       <h1 className={styles.sectionTitle}>Beginner workouts:</h1>
@@ -79,8 +87,8 @@ export default function Home() {
             workoutPresetName={preset.title}
             roundsCount={preset.rounds}
             exercisesCount={preset.workout.length}
-            isActive={activeWorkoutPreset === index}
-            onClick={() => setActiveWorkoutPreset(index)}
+            // isActive={activeWorkoutPreset === index}
+            onClick={() => handlePreviewWorkout(preset.id)}
           />
         ))}
       </div>
@@ -95,7 +103,7 @@ export default function Home() {
             roundsCount={preset.rounds}
             exercisesCount={preset.workout.length}
             isActive={activeWorkoutPreset === index}
-            onClick={() => setActiveWorkoutPreset(index)}
+            onClick={() => handlePreviewWorkout(preset.id)}
           />
         ))}
       </div>
@@ -110,18 +118,18 @@ export default function Home() {
             roundsCount={preset.rounds}
             exercisesCount={preset.workout.length}
             isActive={activeWorkoutPreset === index}
-            onClick={() => setActiveWorkoutPreset(index)}
+            onClick={() => handlePreviewWorkout(preset.id)}
           />
         ))}
       </div>
 
       <div className={styles.buttonWrapper}>
-        {activeWorkoutPreset !== null && (
+        {/* {activeWorkoutPreset !== null && (
           <PreviewWorkoutButton onClick={handlePreviewWorkout} />
-        )}
-        {activeWorkoutPreset !== null && (
+        )} */}
+        {/* {activeWorkoutPreset !== null && (
           <StartWorkoutButton onClick={handleStartWorkout} />
-        )}
+        )} */}
       </div>
 
       <Footer />

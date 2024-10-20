@@ -7,6 +7,8 @@ import StartWorkoutButton from "../components/StartWorkoutButton";
 import EquipmentSelector from "../components/EquipmentSelector";
 import Footer from "../components/Footer";
 
+import styles from "../styles/Custom.module.css";
+
 const Custom = () => {
   const [selectedEquipment, setSelectedEquipment] = useState([]);
 
@@ -23,8 +25,32 @@ const Custom = () => {
   return (
     <Wrapper>
       <Navigation />
-      <h1>Create a custom workout</h1>
-      <h3>1. Select Your Equipment:</h3>
+      <h1 className={styles.title}>Create your workout:</h1>
+
+      <div className={styles.settingsWrapper}>
+        <div>
+          <h1 className={styles.title}>Instructions:</h1>
+          <h3>First open</h3>
+          <h3>First open</h3>
+          <h3>First open</h3>
+        </div>
+        <div>
+          <h1 className={styles.title}>Exercise settings:</h1>
+          {/* <h3>Warmup: 05:00</h3> */}
+          <h3>Exercise interval: 00:20</h3>
+          <h3>Exercise rest interval: 00:15</h3>
+          <h3>Rounds: 5</h3>
+          <h3>Rest between rounds: 01:00</h3>
+          <h3>Total time: 15 minutes 23 seconds</h3>
+        </div>
+        <div>
+          <h1 className={styles.title}>Audio Settings:</h1>
+          <h3>Music: on</h3>
+          <h3>Voiceover: on</h3>
+          <h3>Effects: on</h3>
+        </div>
+      </div>
+      {/* <h3>1. Select Your Equipment:</h3>
       <EquipmentSelector
         selectedEquipment={selectedEquipment}
         handleSelect={handleSelect}
@@ -36,30 +62,79 @@ const Custom = () => {
       <h3>Body parts to focus on:</h3>
 
       <p>Legs</p>
-      <p>Core</p>
+      <p>Core</p> */}
 
-      <h3>Available exercises:</h3>
+      <h1 className={styles.title}>Add a custom exercise</h1>
+      <input
+        type="text"
+        placeholder="Exercise title"
+        className={styles.input}
+      />
+      <input
+        type="text"
+        placeholder="Exercise description"
+        className={styles.input}
+      />
+      <input
+        type="text"
+        placeholder="Exercise duration (in seconds)"
+        className={styles.input}
+      />
 
-      <p>Burpees</p>
-      <p>Jumps</p>
+      <h1 className={styles.title}>Available exercises:</h1>
+      <div className={styles.availableExercisesWrapper}>
+        <div>
+          <h3>None</h3>
+          <h3>None</h3>
+          <h3>Yoga mat</h3>
+          <h3>Barbells</h3>
+        </div>
+        <div>
+          <h3>Lunges</h3>
+          <h3>Lunges</h3>
+          <h3>Lunges</h3>
+          <h3>Lunges</h3>
+        </div>
 
-      <h3>Add your first round</h3>
-      <input type="text" placeholder="round name" />
-      <input type="text" placeholder="action description (optional)" />
-      <input type="text" placeholder="5 mins" />
+        <div>
+          <h3>Do a pushup on the floor and jump up.</h3>
+          <h3>Do a pushup on the floor and jump up.</h3>
+          <h3>Do a pushup on the floor and jump up.</h3>
+          <h3>Do a pushup on the floor and jump up.</h3>
+        </div>
+        <div>
+          <h3>➕</h3>
+          <h3>➕</h3>
+          <h3>➕</h3>
+          <h3>➕</h3>
+        </div>
+      </div>
 
-      <h1>Exercise settings:</h1>
-      <h3>Warmup: 05:00</h3>
-      <h3>Exercise interval: 00:20</h3>
-      <h3>Exercise rest interval: 00:15</h3>
-      <h3>Rounds: 5</h3>
-      <h3>Rest between rounds: 01:00</h3>
-      <h3>Total time: 15 minutes 23 seconds</h3>
-      <h3>Save workout</h3>
+      <h1 className={styles.title}>Exercise timeline:</h1>
+      <div className={styles.exerciseTimelineWrapper}>
+        <div>
+          <h3>Lunges</h3>
+          <h3>Lunges</h3>
+          <h3>Lunges</h3>
+          <h3>Lunges</h3>
+        </div>
 
-      <h1>Exercise timeline:</h1>
-      <StartWorkoutButton />
-      <Link href="/">Back</Link>
+        <div>
+          <h3>Do a pushup on the floor and jump up.</h3>
+          <h3>Do a pushup on the floor and jump up.</h3>
+          <h3>Do a pushup on the floor and jump up.</h3>
+          <h3>Do a pushup on the floor and jump up.</h3>
+        </div>
+        <div>
+          <h3>⬆️⬇️</h3>
+          <h3>⬆️⬇️</h3>
+          <h3>⬆️⬇️</h3>
+          <h3>⬆️⬇️</h3>
+        </div>
+        <StartWorkoutButton />
+      </div>
+
+      {/* <Link href="/">Back</Link> */}
       <Footer />
     </Wrapper>
   );

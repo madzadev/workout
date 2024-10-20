@@ -1,0 +1,40 @@
+.title {
+    margin-bottom: 20px;
+}
+
+.settingsWrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 50px;
+    color: grey
+}
+
+
+
+.input {
+    margin-right: 30px;
+    margin-bottom: 50px;
+    height: 30px;
+    width: 300px;
+    border: none;
+    background-color: rgb(235, 235, 235);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.availableExercisesWrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 50px;
+    color: grey
+}
+
+.exerciseTimelineWrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 50px;
+    color: grey
+}

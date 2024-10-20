@@ -18,7 +18,7 @@ const WorkoutPresetCard = ({
     >
       <h2
         style={{
-          color: isActive ? "black" : "black",
+          color: "black",
           fontSize: "22px",
         }}
       >
@@ -26,14 +26,14 @@ const WorkoutPresetCard = ({
       </h2>
       <p
         style={{
-          color: isActive ? "black" : "grey",
+          color: "black",
         }}
       >
         {exercisesCount} exercises
       </p>
       <p
         style={{
-          color: isActive ? "black" : "grey",
+          color: "black",
         }}
       >
         {roundsCount} rounds
