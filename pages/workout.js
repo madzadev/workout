@@ -17,7 +17,7 @@ const Workout = () => {
   const router = useRouter();
 
   // Set presetIndex to a default value to avoid conditional hooks
-  const [presetIndex, setPresetIndex] = useState(null);
+  // const [presetIndex, setPresetIndex] = useState(null);
   const [roundCount, setRoundCount] = useState(0);
   const [breakLength, setBreakLength] = useState(0);
   const [roundBreak, setRoundBreak] = useState(0);
@@ -50,9 +50,13 @@ const Workout = () => {
   useEffect(() => {
     if (router.query.preset) {
       const index = router.query.preset;
-      setPresetIndex(index);
+      // setPresetIndex(index);
 
-      const preset = presets[index];
+      const preset = presets.find(
+        (preset) => Number(preset.id) === Number(index)
+      );
+
+      // const preset = presets[index];
       const rounds = preset.rounds;
       const exerciseBreaks = preset.exerciseBreaks;
       const roundBreaks = preset.roundBreaks;
@@ -257,7 +261,7 @@ const Workout = () => {
         }
         timer={
           isWorkoutComplete
-            ? presets[presetIndex].completionEmoji
+            ? presets[currentInterval].completionEmoji
             : isCooldown
             ? cooldownTimer
             : timer
