@@ -9,7 +9,7 @@ import beginnerPresets from "../data/workouts/beginner";
 import hiitPresets from "../data/workouts/hiit";
 import fullbodyPresets from "../data/workouts/full_body";
 
-import { formatTime } from "../helpers/convertTime";
+import { sumExercises, sumBreaks, formatTime } from "../helpers/convertTime";
 
 const presets = [...beginnerPresets, ...hiitPresets, ...fullbodyPresets];
 
@@ -40,6 +40,16 @@ const Preview = () => {
     });
   };
 
+  const timeIntervals = (preset, rounds) => {
+    const originalTimeIntervals = preset.workout.map(
+      (exercise) => exercise.time
+    );
+
+    const repeatArray = (arr, rounds) => Array(rounds).fill(arr).flat();
+
+    return repeatArray(originalTimeIntervals, rounds);
+  };
+
   return (
     <Wrapper>
       <Navigation />
@@ -55,7 +65,21 @@ const Preview = () => {
             Equipment needed:{" "}
             {preset && preset.equipment.map((item) => item).join(", ")}
           </h3>
-          <h3>Total time: 15 minutes 23 seconds</h3>
+          <h3>
+            Total time:{" "}
+            {`${
+              preset &&
+              formatTime(
+                sumExercises(timeIntervals(preset, preset.rounds)) +
+                  sumBreaks(
+                    preset.workout.length,
+                    preset.rounds,
+                    preset.exerciseBreaks,
+                    preset.roundBreaks
+                  )
+              )
+            }`}
+          </h3>
         </div>
         <div>
           <h1 className={styles.title}>Timer Settings:</h1>

@@ -111,6 +111,9 @@ const beginnerPresets = [
   {
     id: 3,
     title: "Total Body Blitz",
+    description: "This workout is good for.....",
+    targets: ["core", "back", "torso"],
+    equipment: ["none", "yoga mat"],
     difficulty: 1,
     rounds: 3,
     exerciseBreaks: 10, // 10 seconds break between exercises
