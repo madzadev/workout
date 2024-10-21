@@ -25,9 +25,9 @@
 }
 
 .startButton {
-    background-color: aquamarine;
+    background-color: mediumspringgreen;
     color: white;
-    height: 80px;
+    height: 250px;
     border-radius: 10px;
     display: grid;
     place-items: center;
@@ -38,12 +38,12 @@
 }
 
 .startButton:hover {
-    background-color: rgb(78, 255, 196);
+    background-color: mediumaquamarine;
     transform: scale(1.1);
 }
 
 .customizeButton {
-    background-color: yellow;
+    background-color: rgb(109, 109, 109);
     color: white;
     height: 50px;
     border-radius: 10px;
@@ -56,6 +56,6 @@
 }
 
 .customizeButton:hover {
-    background-color: rgb(238, 253, 18);
+    background-color: rgb(156, 49, 255);
     transform: scale(1.1);
 }

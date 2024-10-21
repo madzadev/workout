@@ -1,5 +1,6 @@
 .wrapper {
     height: 70px;
     text-align: center;
-    color: white;
+    color: rgb(97, 97, 97);
+    font-size: 18px;
 }
