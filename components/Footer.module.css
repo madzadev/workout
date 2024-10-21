@@ -1,8 +1,5 @@
-.links {
+.wrapper {
     height: 70px;
     text-align: center;
-
-    /* Add 50px margin between the items */
-    /* margin: 0 auto 50px auto; */
     color: white;
 }
