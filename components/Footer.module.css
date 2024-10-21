@@ -1,7 +1,11 @@
-.wrapper {
+.links {
     height: 70px;
     display: flex;
     align-items: center;
-    /* border: 1px solid red; */
-    margin: 0px auto 50px auto;
+    justify-content: center;
+    /* Center items horizontally */
+    gap: 50px;
+    /* Add 50px margin between the items */
+    margin: 0 auto 50px auto;
+    color: white;
 }
