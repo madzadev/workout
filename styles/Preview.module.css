@@ -3,12 +3,16 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
     margin-bottom: 50px;
-    color: grey
+    color: rgb(73, 73, 73)
 }
 
 .title {
     margin-bottom: 30px;
     color: white
+}
+
+.parameter {
+    color: rgb(73, 73, 73);
 }
 
 .columnWrapper h3 {

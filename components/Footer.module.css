@@ -1,11 +1,8 @@
 .links {
     height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* Center items horizontally */
-    gap: 50px;
+    text-align: center;
+
     /* Add 50px margin between the items */
-    margin: 0 auto 50px auto;
+    /* margin: 0 auto 50px auto; */
     color: white;
 }

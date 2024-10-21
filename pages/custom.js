@@ -28,6 +28,10 @@ const Custom = () => {
   const [rounds, setRounds] = useState(3);
   const [roundBreaks, setRoundBreaks] = useState(60);
 
+  const [isMusicEnabled, setIsMusicEnabled] = useState(false);
+  const [isVoiceEnabled, setIsVoiceEnabled] = useState(false);
+  const [isEffectsEnabled, setIsEffectsEnabled] = useState(true);
+
   const [presetIndex, setPresetIndex] = useState("");
   const [preset, setPreset] = useState("");
   const [customInputExercise, setCustomInputExercise] = useState({
@@ -57,6 +61,15 @@ const Custom = () => {
   //     }
   //   });
   // };
+
+  const increaseExerciseBreak = () => {
+    setExerciseBreaks((prev) => Math.min(prev + 5, 120)); // Max limit is 120
+  };
+
+  // Function to decrease the rest interval
+  const decreaseExerciseBreak = () => {
+    setExerciseBreaks((prev) => Math.max(prev - 5, 5)); // Min limit is 5
+  };
   return (
     <Wrapper>
       <Navigation />
@@ -67,30 +80,35 @@ const Custom = () => {
           <h1 className={styles.title}>Instructions:</h1>
           <h3>First open</h3>
           <h3>First open</h3>
-          <h3>First open</h3>
+          <h3>Total time: 15 minutes 23 seconds</h3>
         </div>
         <div>
           <h1 className={styles.title}>Exercise settings:</h1>
           {/* <h3>Warmup: 05:00</h3> */}
           {/* <h3>Exercise interval: {formatTime(exerciseDuration)}</h3> */}
           <h3>
-            Exercise rest interval:{" "}
+            Exercise rest interval:
+            <span onClick={decreaseExerciseBreak}>➖</span>{" "}
             {preset
               ? formatTime(preset.exerciseBreaks)
               : formatTime(exerciseBreaks)}
+            <span onClick={increaseExerciseBreak}>➕</span>
           </h3>
-          <h3>Rounds: {preset ? preset.rounds : rounds}</h3>
           <h3>
-            Rest between rounds:{" "}
-            {preset ? formatTime(preset.roundBreaks) : formatTime(roundBreaks)}
+            Rounds: <span>➖</span> {preset ? preset.rounds : rounds}{" "}
+            <span>➕</span>
           </h3>
-          <h3>Total time: 15 minutes 23 seconds</h3>
+          <h3>
+            Rest between rounds:<span>➖</span>{" "}
+            {preset ? formatTime(preset.roundBreaks) : formatTime(roundBreaks)}
+            <span>➕</span>
+          </h3>
         </div>
         <div>
           <h1 className={styles.title}>Audio Settings:</h1>
-          <h3>Music: on</h3>
-          <h3>Voiceover: on</h3>
-          <h3>Effects: on</h3>
+          <h3>Music: {!isMusicEnabled ? "Off" : "On"}</h3>
+          <h3>Voiceover: {!isVoiceEnabled ? "Off" : "On"}</h3>
+          <h3>Effects: {!isEffectsEnabled ? "Off" : "On"}</h3>
         </div>
       </div>
       {/* <h3>1. Select Your Equipment:</h3>
@@ -109,16 +127,19 @@ const Custom = () => {
 
       <h1 className={styles.title}>Add a custom exercise</h1>
       <input
+        required
         type="text"
         placeholder="Exercise title"
         className={styles.input}
       />
       <input
+        required
         type="text"
         placeholder="Exercise description"
         className={styles.input}
       />
       <input
+        required
         type="text"
         placeholder="Exercise duration (in seconds)"
         className={styles.input}
@@ -126,6 +147,12 @@ const Custom = () => {
 
       <h1 className={styles.title}>Available exercises:</h1>
       <div className={styles.availableExercisesWrapper}>
+        <div>
+          <h3>➕</h3>
+          <h3>➕</h3>
+          <h3>➕</h3>
+          <h3>➕</h3>
+        </div>
         <div>
           <h3>None</h3>
           <h3>None</h3>
@@ -145,16 +172,16 @@ const Custom = () => {
           <h3>Do a pushup on the floor and jump up.</h3>
           <h3>Do a pushup on the floor and jump up.</h3>
         </div>
-        <div>
-          <h3>➕</h3>
-          <h3>➕</h3>
-          <h3>➕</h3>
-          <h3>➕</h3>
-        </div>
       </div>
 
       <h1 className={styles.title}>Exercise timeline:</h1>
       <div className={styles.exerciseTimelineWrapper}>
+        <div>
+          <h3>➖</h3>
+          <h3>➖</h3>
+          <h3>➖</h3>
+          <h3>➖</h3>
+        </div>
         <div>
           <h3>Lunges</h3>
           <h3>Lunges</h3>

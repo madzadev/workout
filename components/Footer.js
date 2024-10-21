@@ -5,8 +5,8 @@ const Footer = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.links}>
-        <Link href="/#">Twitter</Link>
-        <Link href="/#">LinkedIn</Link>
+        <p>Created with 💖 by Madza</p>
+        <p>Created with NextJS and Vercel</p>
       </div>
     </div>
   );

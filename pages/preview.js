@@ -63,17 +63,20 @@ const Preview = () => {
       <div className={styles.columnWrapper}>
         <div>
           <h1 className={styles.title}>{preset.title}</h1>
-          <h3>{preset.description}</h3>
           <h3>
-            Targeted body parts:{" "}
+            <span className={styles.parameter}>Description: </span>
+            {preset.description}
+          </h3>
+          <h3>
+            <span className={styles.parameter}>Targeted body parts: </span>
             {preset && preset.targets.map((item) => item).join(", ")}
           </h3>
           <h3>
-            Equipment needed:{" "}
+            <span className={styles.parameter}>Equipment needed: </span>
             {preset && preset.equipment.map((item) => item).join(", ")}
           </h3>
           <h3>
-            Total time:{" "}
+            <span className={styles.parameter}>Total time: </span>
             {`${
               preset &&
               formatTime(
@@ -91,25 +94,44 @@ const Preview = () => {
         <div>
           <h1 className={styles.title}>Timer Settings:</h1>
           {/* <h3>Warmup: 05:00</h3> */}
-          <h3>Exercise interval: 00:20</h3>
-          <h3>Exercise rest interval: {formatTime(preset.exerciseBreaks)}</h3>
-          <h3>Rounds: {preset.rounds}</h3>
-          <h3>Rest between rounds: {formatTime(preset.roundBreaks)}</h3>
+          <h3>
+            <span className={styles.parameter}>Exercise interval: </span>00:20
+          </h3>
+          <h3>
+            <span className={styles.parameter}>Exercise rest interval: </span>
+            {formatTime(preset.exerciseBreaks)}
+          </h3>
+          <h3>
+            <span className={styles.parameter}>Rounds: </span>
+            {preset.rounds}
+          </h3>
+          <h3>
+            <span className={styles.parameter}>Rest between rounds: </span>
+            {formatTime(preset.roundBreaks)}
+          </h3>
         </div>
         <div>
           <h1 className={styles.title}>Audio Settings:</h1>
-          <h3>Music: off</h3>
-          <h3>Voiceover: off</h3>
-          <h3>Effects: on</h3>
+          <h3>
+            <span className={styles.parameter}>Music: </span>off
+          </h3>
+          <h3>
+            <span className={styles.parameter}>Voiceover: </span>off
+          </h3>
+          <h3>
+            <span className={styles.parameter}>Effects: </span>on
+          </h3>
         </div>
       </div>
       <h1 className={styles.title}>Workout structure:</h1>
       <div className={styles.columnWrapper}>
         <div>
-          {preset &&
-            preset.workout.map((exercise, index) => {
-              return <h3 key={index}>{exercise.name}</h3>;
-            })}
+          <span className={styles.parameter}>
+            {preset &&
+              preset.workout.map((exercise, index) => {
+                return <h3 key={index}>{exercise.name}</h3>;
+              })}
+          </span>
         </div>
         <div>
           {preset &&
