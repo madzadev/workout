@@ -98,8 +98,8 @@ const Preview = () => {
         </div>
         <div>
           <h1 className={styles.title}>Audio Settings:</h1>
-          <h3>Music: on</h3>
-          <h3>Voiceover: on</h3>
+          <h3>Music: off</h3>
+          <h3>Voiceover: off</h3>
           <h3>Effects: on</h3>
         </div>
       </div>

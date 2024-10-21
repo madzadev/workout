@@ -29,7 +29,7 @@
     place-items: center;
     font-size: 32px;
     cursor: pointer;
-    width: 200px;
+    width: 250px;
     transition: transform 0.3s ease;
 }
 
@@ -39,7 +39,7 @@
 }
 
 .customizeButton {
-    background-color: rgb(242, 255, 63);
+    background-color: yellow;
     color: white;
     height: 50px;
     border-radius: 10px;

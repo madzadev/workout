@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import Link from "next/link";
 
 import Wrapper from "../components/Wrapper";
@@ -7,21 +8,55 @@ import StartWorkoutButton from "../components/StartWorkoutButton";
 import EquipmentSelector from "../components/EquipmentSelector";
 import Footer from "../components/Footer";
 
+import beginnerPresets from "../data/workouts/beginner";
+import hiitPresets from "../data/workouts/hiit";
+import fullbodyPresets from "../data/workouts/full_body";
+
+import { sumExercises, sumBreaks, formatTime } from "../helpers/convertTime";
+
+const presets = [...beginnerPresets, ...hiitPresets, ...fullbodyPresets];
+
 import styles from "../styles/Custom.module.css";
 
 const Custom = () => {
-  const [selectedEquipment, setSelectedEquipment] = useState([]);
+  // const [selectedEquipment, setSelectedEquipment] = useState([]);
 
-  const handleSelect = (id) => {
-    setSelectedEquipment((prevSelected) => {
-      // Toggle selection: if it's already selected, remove it; otherwise, add it
-      if (prevSelected.includes(id)) {
-        return prevSelected.filter((item) => item !== id);
-      } else {
-        return [...prevSelected, id];
-      }
-    });
-  };
+  const router = useRouter();
+
+  // const [exerciseBreaks, setExerciseBreaks] = useState(30);
+  const [exerciseBreaks, setExerciseBreaks] = useState(15);
+  const [rounds, setRounds] = useState(3);
+  const [roundBreaks, setRoundBreaks] = useState(60);
+
+  const [presetIndex, setPresetIndex] = useState("");
+  const [preset, setPreset] = useState("");
+  const [customInputExercise, setCustomInputExercise] = useState({
+    name: "Exercise title",
+    description: "Exercise description",
+    duration: 20,
+  });
+
+  useEffect(() => {
+    if (router.query.preset) {
+      const index = router.query.preset;
+      setPresetIndex(index);
+      const workout = presets.find(
+        (preset) => Number(preset.id) === Number(index)
+      );
+      setPreset(workout);
+      console.log(presets);
+    }
+  }, [router.query.preset]);
+
+  // const handleSelect = (id) => {
+  //   setSelectedEquipment((prevSelected) => {
+  //     if (prevSelected.includes(id)) {
+  //       return prevSelected.filter((item) => item !== id);
+  //     } else {
+  //       return [...prevSelected, id];
+  //     }
+  //   });
+  // };
   return (
     <Wrapper>
       <Navigation />
@@ -37,10 +72,18 @@ const Custom = () => {
         <div>
           <h1 className={styles.title}>Exercise settings:</h1>
           {/* <h3>Warmup: 05:00</h3> */}
-          <h3>Exercise interval: 00:20</h3>
-          <h3>Exercise rest interval: 00:15</h3>
-          <h3>Rounds: 5</h3>
-          <h3>Rest between rounds: 01:00</h3>
+          {/* <h3>Exercise interval: {formatTime(exerciseDuration)}</h3> */}
+          <h3>
+            Exercise rest interval:{" "}
+            {preset
+              ? formatTime(preset.exerciseBreaks)
+              : formatTime(exerciseBreaks)}
+          </h3>
+          <h3>Rounds: {preset ? preset.rounds : rounds}</h3>
+          <h3>
+            Rest between rounds:{" "}
+            {preset ? formatTime(preset.roundBreaks) : formatTime(roundBreaks)}
+          </h3>
           <h3>Total time: 15 minutes 23 seconds</h3>
         </div>
         <div>
