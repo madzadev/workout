@@ -156,16 +156,6 @@ const Preview = () => {
           >
             <h3> Configure</h3>
           </div>
-          {/* <StartWorkoutButton
-            onClick={() => {
-              handleStartWorkout(presetIndex);
-            }}
-          /> */}
-          {/* <StartWorkoutButton
-            onClick={() => {
-              handleCustomizeWorkout(presetIndex);
-            }}
-          /> */}
         </div>
       </div>
 
