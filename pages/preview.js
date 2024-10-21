@@ -40,6 +40,13 @@ const Preview = () => {
     });
   };
 
+  const handleCustomizeWorkout = (index) => {
+    router.push({
+      pathname: "/custom",
+      query: { preset: index },
+    });
+  };
+
   const timeIntervals = (preset, rounds) => {
     const originalTimeIntervals = preset.workout.map(
       (exercise) => exercise.time
@@ -110,12 +117,36 @@ const Preview = () => {
               return <h3 key={index}>{exercise.description}</h3>;
             })}
         </div>
+        <div className={styles.buttonWrapper}>
+          <div
+            className={styles.startButton}
+            onClick={() => {
+              handleStartWorkout(presetIndex);
+            }}
+          >
+            <h3>Start</h3>
+          </div>
+          <div
+            className={styles.customizeButton}
+            onClick={() => {
+              handleCustomizeWorkout(presetIndex);
+            }}
+          >
+            <h3> Configure</h3>
+          </div>
+          {/* <StartWorkoutButton
+            onClick={() => {
+              handleStartWorkout(presetIndex);
+            }}
+          /> */}
+          {/* <StartWorkoutButton
+            onClick={() => {
+              handleCustomizeWorkout(presetIndex);
+            }}
+          /> */}
+        </div>
       </div>
-      <StartWorkoutButton
-        onClick={() => {
-          handleStartWorkout(presetIndex);
-        }}
-      />
+
       <Footer />
     </Wrapper>
   );

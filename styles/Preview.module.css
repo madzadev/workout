@@ -12,5 +12,46 @@
 }
 
 .columnWrapper h3 {
-    line-height: 1.5;
+    line-height: 1.8;
+}
+
+.buttonWrapper {
+    display: grid;
+    place-items: center;
+}
+
+.startButton {
+    background-color: aquamarine;
+    color: white;
+    height: 80px;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    font-size: 32px;
+    cursor: pointer;
+    width: 200px;
+    transition: transform 0.3s ease;
+}
+
+.startButton:hover {
+    background-color: rgb(78, 255, 196);
+    transform: scale(1.1);
+}
+
+.customizeButton {
+    background-color: rgb(242, 255, 63);
+    color: white;
+    height: 50px;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    font-size: 22px;
+    cursor: pointer;
+    width: 200px;
+    transition: transform 0.3s ease;
+}
+
+.customizeButton:hover {
+    background-color: rgb(238, 253, 18);
+    transform: scale(1.1);
 }

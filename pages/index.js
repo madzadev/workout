@@ -128,6 +128,15 @@ export default function Home() {
             workoutPresetName={preset.title}
             roundsCount={preset.rounds}
             exercisesCount={preset.workout.length}
+            totalDuration={`${formatTime(
+              sumExercises(timeIntervals(preset, preset.rounds)) +
+                sumBreaks(
+                  preset.workout.length,
+                  preset.rounds,
+                  preset.exerciseBreaks,
+                  preset.roundBreaks
+                )
+            )}`}
             // isActive={activeWorkoutPreset === index}
             onClick={() => handlePreviewWorkout(preset.id)}
           />
@@ -143,7 +152,16 @@ export default function Home() {
             workoutPresetName={preset.title}
             roundsCount={preset.rounds}
             exercisesCount={preset.workout.length}
-            isActive={activeWorkoutPreset === index}
+            totalDuration={`${formatTime(
+              sumExercises(timeIntervals(preset, preset.rounds)) +
+                sumBreaks(
+                  preset.workout.length,
+                  preset.rounds,
+                  preset.exerciseBreaks,
+                  preset.roundBreaks
+                )
+            )}`}
+            // isActive={activeWorkoutPreset === index}
             onClick={() => handlePreviewWorkout(preset.id)}
           />
         ))}
