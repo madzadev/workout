@@ -20,7 +20,7 @@ const WorkoutDisplay = ({
           {isPaused ? "Resume" : "Pause"}
         </h3>
         <Link href="/">
-          <a className={styles.exit}>Exit</a>
+          <h3 className={styles.exit}>Exit</h3>
         </Link>
       </div>
     </div>

@@ -90,7 +90,9 @@ export default function Home() {
         </div>
         <Link href="/custom">
           <div className={styles.customWorkoutWrapper}>
-            <h1 style={{ color: "white" }}>Create my workout</h1>
+            <h1 className={styles.customWorkoutWrapperStart}>
+              Create my workout
+            </h1>
           </div>
         </Link>
       </div>

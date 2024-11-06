@@ -13,6 +13,11 @@
     cursor: pointer;
 }
 
+.logo a {
+    text-decoration: none;
+    color: white;
+}
+
 .links {
     display: flex;
     /* Place links side by side */
