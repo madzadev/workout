@@ -28,7 +28,7 @@ export function formatTime(seconds) {
     if (timeString) timeString += " ";
     timeString += `${minutes} ${minutes === 1 ? "minute" : "minutes"}`;
   }
-  if (remainingSeconds > 0) {
+  if (remainingSeconds > 0 || timeString === "") {
     if (timeString) timeString += " ";
     timeString += `${remainingSeconds} ${
       remainingSeconds === 1 ? "second" : "seconds"
