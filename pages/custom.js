@@ -1,210 +1,284 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import Link from "next/link";
-
 import Wrapper from "../components/Wrapper";
 import Navigation from "../components/Navigation";
 import StartWorkoutButton from "../components/StartWorkoutButton";
-import EquipmentSelector from "../components/EquipmentSelector";
 import Footer from "../components/Footer";
-
-import beginnerPresets from "../data/workouts/beginner";
-import hiitPresets from "../data/workouts/hiit";
-import fullbodyPresets from "../data/workouts/full_body";
-
-import { sumExercises, sumBreaks, formatTime } from "../helpers/convertTime";
-
-const presets = [...beginnerPresets, ...hiitPresets, ...fullbodyPresets];
-
 import styles from "../styles/Custom.module.css";
 
 const Custom = () => {
-  // const [selectedEquipment, setSelectedEquipment] = useState([]);
-
   const router = useRouter();
-
-  // const [exerciseBreaks, setExerciseBreaks] = useState(30);
-  const [exerciseBreaks, setExerciseBreaks] = useState(15);
-  const [rounds, setRounds] = useState(3);
-  const [roundBreaks, setRoundBreaks] = useState(60);
-
-  const [isMusicEnabled, setIsMusicEnabled] = useState(false);
-  const [isVoiceEnabled, setIsVoiceEnabled] = useState(false);
-  const [isEffectsEnabled, setIsEffectsEnabled] = useState(true);
-
-  const [presetIndex, setPresetIndex] = useState("");
-  const [preset, setPreset] = useState("");
-  const [customInputExercise, setCustomInputExercise] = useState({
-    name: "Exercise title",
-    description: "Exercise description",
-    duration: 20,
+  const [customWorkout, setCustomWorkout] = useState({
+    title: "",
+    description: "",
+    rounds: 3,
+    exerciseBreaks: 15,
+    roundBreaks: 60,
+    workout: [],
   });
 
+  const [newExercise, setNewExercise] = useState({
+    name: "",
+    description: "",
+    time: 30,
+  });
+
+  // Load preset if provided
   useEffect(() => {
     if (router.query.preset) {
-      const index = router.query.preset;
-      setPresetIndex(index);
-      const workout = presets.find(
-        (preset) => Number(preset.id) === Number(index)
-      );
-      setPreset(workout);
-      console.log(presets);
+      const presetId = router.query.preset;
+      // Fetch preset data and set it as initial state
+      // This would be implemented when connecting to data source
     }
   }, [router.query.preset]);
 
-  // const handleSelect = (id) => {
-  //   setSelectedEquipment((prevSelected) => {
-  //     if (prevSelected.includes(id)) {
-  //       return prevSelected.filter((item) => item !== id);
-  //     } else {
-  //       return [...prevSelected, id];
-  //     }
-  //   });
-  // };
-
-  const increaseExerciseBreak = () => {
-    setExerciseBreaks((prev) => Math.min(prev + 5, 120)); // Max limit is 120
+  const handleWorkoutParamChange = (param, value) => {
+    setCustomWorkout((prev) => ({
+      ...prev,
+      [param]: value,
+    }));
   };
 
-  // Function to decrease the rest interval
-  const decreaseExerciseBreak = () => {
-    setExerciseBreaks((prev) => Math.max(prev - 5, 5)); // Min limit is 5
+  const handleAddExercise = (e) => {
+    e.preventDefault();
+    if (newExercise.name && newExercise.description && newExercise.time > 0) {
+      setCustomWorkout((prev) => ({
+        ...prev,
+        workout: [...prev.workout, { ...newExercise }],
+      }));
+      setNewExercise({
+        name: "",
+        description: "",
+        time: 30,
+      });
+    }
   };
+
+  const handleRemoveExercise = (index) => {
+    setCustomWorkout((prev) => ({
+      ...prev,
+      workout: prev.workout.filter((_, i) => i !== index),
+    }));
+  };
+
+  const handleStartWorkout = () => {
+    if (customWorkout.workout.length === 0) {
+      alert("Please add at least one exercise");
+      return;
+    }
+
+    // Create a workout preset in the format expected by the workout page
+    const workoutPreset = {
+      id: Date.now(), // Generate temporary ID
+      ...customWorkout,
+    };
+
+    // Store workout in session storage for the workout page to access
+    sessionStorage.setItem("customWorkout", JSON.stringify(workoutPreset));
+
+    // Navigate to workout page with the custom workout
+    router.push({
+      pathname: "/workout",
+      query: { preset: workoutPreset.id, isCustom: true },
+    });
+  };
+
   return (
     <Wrapper>
       <Navigation />
-      <h1 className={styles.title}>Create your workout:</h1>
+      <div className={styles.customWorkoutContainer}>
+        <h1 className={styles.title}>Create Custom Workout</h1>
 
-      <div className={styles.settingsWrapper}>
-        <div>
-          <h1 className={styles.title}>Instructions:</h1>
-          <h3>First open</h3>
-          <h3>First open</h3>
-          <h3>Total time: 15 minutes 23 seconds</h3>
+        {/* Basic Settings */}
+        <div className={styles.settingsSection}>
+          <h2>Workout Settings</h2>
+          <div className={styles.settingField}>
+            <label>Title:</label>
+            <input
+              type="text"
+              value={customWorkout.title}
+              onChange={(e) =>
+                handleWorkoutParamChange("title", e.target.value)
+              }
+              placeholder="Workout Title"
+              className={styles.input}
+            />
+          </div>
+
+          <div className={styles.settingField}>
+            <label>Description:</label>
+            <textarea
+              value={customWorkout.description}
+              onChange={(e) =>
+                handleWorkoutParamChange("description", e.target.value)
+              }
+              placeholder="Workout Description"
+              className={styles.textarea}
+            />
+          </div>
+
+          <div className={styles.settingField}>
+            <label>Number of Rounds:</label>
+            <div className={styles.numberControl}>
+              <button
+                onClick={() =>
+                  handleWorkoutParamChange(
+                    "rounds",
+                    Math.max(1, customWorkout.rounds - 1)
+                  )
+                }
+              >
+                -
+              </button>
+              <span>{customWorkout.rounds}</span>
+              <button
+                onClick={() =>
+                  handleWorkoutParamChange("rounds", customWorkout.rounds + 1)
+                }
+              >
+                +
+              </button>
+            </div>
+          </div>
+
+          <div className={styles.settingField}>
+            <label>Exercise Break Duration (seconds):</label>
+            <div className={styles.numberControl}>
+              <button
+                onClick={() =>
+                  handleWorkoutParamChange(
+                    "exerciseBreaks",
+                    Math.max(5, customWorkout.exerciseBreaks - 5)
+                  )
+                }
+              >
+                -
+              </button>
+              <span>{customWorkout.exerciseBreaks}</span>
+              <button
+                onClick={() =>
+                  handleWorkoutParamChange(
+                    "exerciseBreaks",
+                    customWorkout.exerciseBreaks + 5
+                  )
+                }
+              >
+                +
+              </button>
+            </div>
+          </div>
+
+          <div className={styles.settingField}>
+            <label>Round Break Duration (seconds):</label>
+            <div className={styles.numberControl}>
+              <button
+                onClick={() =>
+                  handleWorkoutParamChange(
+                    "roundBreaks",
+                    Math.max(5, customWorkout.roundBreaks - 5)
+                  )
+                }
+              >
+                -
+              </button>
+              <span>{customWorkout.roundBreaks}</span>
+              <button
+                onClick={() =>
+                  handleWorkoutParamChange(
+                    "roundBreaks",
+                    customWorkout.roundBreaks + 5
+                  )
+                }
+              >
+                +
+              </button>
+            </div>
+          </div>
         </div>
-        <div>
-          <h1 className={styles.title}>Exercise settings:</h1>
-          {/* <h3>Warmup: 05:00</h3> */}
-          {/* <h3>Exercise interval: {formatTime(exerciseDuration)}</h3> */}
-          <h3>
-            Exercise rest interval:
-            <span onClick={decreaseExerciseBreak}>➖</span>{" "}
-            {preset
-              ? formatTime(preset.exerciseBreaks)
-              : formatTime(exerciseBreaks)}
-            <span onClick={increaseExerciseBreak}>➕</span>
-          </h3>
-          <h3>
-            Rounds: <span>➖</span> {preset ? preset.rounds : rounds}{" "}
-            <span>➕</span>
-          </h3>
-          <h3>
-            Rest between rounds:<span>➖</span>{" "}
-            {preset ? formatTime(preset.roundBreaks) : formatTime(roundBreaks)}
-            <span>➕</span>
-          </h3>
+
+        {/* Exercise Addition Form */}
+        <div className={styles.exerciseSection}>
+          <h2>Add Exercise</h2>
+          <form onSubmit={handleAddExercise} className={styles.exerciseForm}>
+            <input
+              type="text"
+              value={newExercise.name}
+              onChange={(e) =>
+                setNewExercise((prev) => ({ ...prev, name: e.target.value }))
+              }
+              placeholder="Exercise Name"
+              className={styles.input}
+            />
+            <input
+              type="text"
+              value={newExercise.description}
+              onChange={(e) =>
+                setNewExercise((prev) => ({
+                  ...prev,
+                  description: e.target.value,
+                }))
+              }
+              placeholder="Exercise Description"
+              className={styles.input}
+            />
+            <div className={styles.numberControl}>
+              <label>Duration (seconds):</label>
+              <button
+                type="button"
+                onClick={() =>
+                  setNewExercise((prev) => ({
+                    ...prev,
+                    time: Math.max(5, prev.time - 5),
+                  }))
+                }
+              >
+                -
+              </button>
+              <span>{newExercise.time}</span>
+              <button
+                type="button"
+                onClick={() =>
+                  setNewExercise((prev) => ({ ...prev, time: prev.time + 5 }))
+                }
+              >
+                +
+              </button>
+            </div>
+            <button type="submit" className={styles.addButton}>
+              Add Exercise
+            </button>
+          </form>
         </div>
-        <div>
-          <h1 className={styles.title}>Audio Settings:</h1>
-          <h3>Music: {!isMusicEnabled ? "Off" : "On"}</h3>
-          <h3>Voiceover: {!isVoiceEnabled ? "Off" : "On"}</h3>
-          <h3>Effects: {!isEffectsEnabled ? "Off" : "On"}</h3>
+
+        {/* Exercise List */}
+        <div className={styles.exerciseList}>
+          <h2>Workout Exercises</h2>
+          {customWorkout.workout.map((exercise, index) => (
+            <div key={index} className={styles.exerciseItem}>
+              <div className={styles.exerciseInfo}>
+                <h3>{exercise.name}</h3>
+                <p>{exercise.description}</p>
+                <p>{exercise.time} seconds</p>
+              </div>
+              <button
+                onClick={() => handleRemoveExercise(index)}
+                className={styles.removeButton}
+              >
+                Remove
+              </button>
+            </div>
+          ))}
         </div>
+
+        {/* Start Button */}
+        {customWorkout.workout.length > 0 && (
+          <div className={styles.startButtonContainer}>
+            <button onClick={handleStartWorkout} className={styles.startButton}>
+              Start Workout
+            </button>
+          </div>
+        )}
       </div>
-      {/* <h3>1. Select Your Equipment:</h3>
-      <EquipmentSelector
-        selectedEquipment={selectedEquipment}
-        handleSelect={handleSelect}
-      />
-      {selectedEquipment.length > 0 && (
-        <p>Selected Equipment IDs: {selectedEquipment.join(", ")}</p>
-      )}
-
-      <h3>Body parts to focus on:</h3>
-
-      <p>Legs</p>
-      <p>Core</p> */}
-
-      <h1 className={styles.title}>Add a custom exercise</h1>
-      <input
-        required
-        type="text"
-        placeholder="Exercise title"
-        className={styles.input}
-      />
-      <input
-        required
-        type="text"
-        placeholder="Exercise description"
-        className={styles.input}
-      />
-      <input
-        required
-        type="text"
-        placeholder="Exercise duration (in seconds)"
-        className={styles.input}
-      />
-
-      <h1 className={styles.title}>Available exercises:</h1>
-      <div className={styles.availableExercisesWrapper}>
-        <div>
-          <h3>➕</h3>
-          <h3>➕</h3>
-          <h3>➕</h3>
-          <h3>➕</h3>
-        </div>
-        <div>
-          <h3>None</h3>
-          <h3>None</h3>
-          <h3>Yoga mat</h3>
-          <h3>Barbells</h3>
-        </div>
-        <div>
-          <h3>Lunges</h3>
-          <h3>Lunges</h3>
-          <h3>Lunges</h3>
-          <h3>Lunges</h3>
-        </div>
-
-        <div>
-          <h3>Do a pushup on the floor and jump up.</h3>
-          <h3>Do a pushup on the floor and jump up.</h3>
-          <h3>Do a pushup on the floor and jump up.</h3>
-          <h3>Do a pushup on the floor and jump up.</h3>
-        </div>
-      </div>
-
-      <h1 className={styles.title}>Exercise timeline:</h1>
-      <div className={styles.exerciseTimelineWrapper}>
-        <div>
-          <h3>➖</h3>
-          <h3>➖</h3>
-          <h3>➖</h3>
-          <h3>➖</h3>
-        </div>
-        <div>
-          <h3>Lunges</h3>
-          <h3>Lunges</h3>
-          <h3>Lunges</h3>
-          <h3>Lunges</h3>
-        </div>
-
-        <div>
-          <h3>Do a pushup on the floor and jump up.</h3>
-          <h3>Do a pushup on the floor and jump up.</h3>
-          <h3>Do a pushup on the floor and jump up.</h3>
-          <h3>Do a pushup on the floor and jump up.</h3>
-        </div>
-        <div>
-          <h3>⬆️⬇️</h3>
-          <h3>⬆️⬇️</h3>
-          <h3>⬆️⬇️</h3>
-          <h3>⬆️⬇️</h3>
-        </div>
-        <StartWorkoutButton />
-      </div>
-
-      {/* <Link href="/">Back</Link> */}
       <Footer />
     </Wrapper>
   );

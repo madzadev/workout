@@ -3,40 +3,144 @@
     color: white;
 }
 
-.settingsWrapper {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    margin-bottom: 50px;
-    color: grey;
-    line-height: 1.8;
+.customWorkoutContainer {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
+.settingsSection,
+.exerciseSection {
+    background-color: #1a1a1a;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
 
+.settingField {
+    margin-bottom: 15px;
+}
 
 .input {
-    margin-right: 30px;
-    margin-bottom: 50px;
-    height: 30px;
-    width: 300px;
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background-color: #2a2a2a;
+    color: white;
+}
+
+.textarea {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background-color: #2a2a2a;
+    color: white;
+    min-height: 100px;
+    resize: vertical;
+}
+
+.numberControl {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.numberControl button {
+    padding: 5px 10px;
+    background-color: #333;
     border: none;
-    background-color: rgb(235, 235, 235);
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+}
+
+.numberControl button:hover {
+    background-color: #444;
+}
+
+.exerciseForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.addButton {
     padding: 10px;
-    border-radius: 5px;
+    background-color: #7f5af0;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    margin-top: 10px;
 }
 
-.availableExercisesWrapper {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    margin-bottom: 50px;
-    color: grey
+.addButton:hover {
+    background-color: #6b4acc;
 }
 
-.exerciseTimelineWrapper {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
-    margin-bottom: 50px;
-    color: grey
+.exerciseList {
+    margin-top: 20px;
+}
+
+.exerciseItem {
+    background-color: #1a1a1a;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.exerciseInfo {
+    flex-grow: 1;
+}
+
+.exerciseInfo h3 {
+    margin: 0;
+    color: white;
+}
+
+.exerciseInfo p {
+    margin: 5px 0;
+    color: #94a1b2;
+}
+
+.removeButton {
+    padding: 5px 10px;
+    background-color: #e53e3e;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+}
+
+.removeButton:hover {
+    background-color: #c53030;
+}
+
+.startButtonContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.startButton {
+    padding: 15px 30px;
+    background-color: #2ecc71;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.startButton:hover {
+    background-color: #27ae60;
+    transform: scale(1.05);
 }
