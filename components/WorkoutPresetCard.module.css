@@ -1,20 +1,18 @@
 .wrapper {
-  color: white;
-  height: 140px;
-  padding: 10px;
+  padding: 15px;
   border-radius: 5px;
   transition: transform 0.3s ease;
-  /* background-color: #070F17; */
 }
 
 .wrapper:hover {
   cursor: pointer;
-  background-color: rgb(34, 34, 34);
   transform: scale(1.05);
 }
 
 .wrapper h2 {
   margin-bottom: 5px;
+  font-size: 24px;
+  color: black;
 }
 
 .wrapper p {

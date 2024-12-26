@@ -11,8 +11,14 @@ const Navigation = () => {
         {/* <img src="" alt="My logo" /> */}
       </div>
       <div className={styles.links}>
-        <Link href="/settings">Settings</Link>
+        <Link href="#">Workouts</Link>
+        <Link href="#">Programs</Link>
+        <Link href="#">Nutrition</Link>
+        <Link href="#">Community</Link>
+        {/* <Link href="/settings">Settings</Link>
         <Link href="/about">About</Link>
+        <Link href="#">Get Started</Link> */}
+        <Link href="#">Log In</Link>
       </div>
     </div>
   );

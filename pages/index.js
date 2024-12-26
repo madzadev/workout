@@ -73,7 +73,7 @@ export default function Home() {
       <div className={styles.heroWrapper}>
         <div>
           <h1 className={styles.heroTitle}>
-            Transform Your Fitness Journey Today
+            Transform Your Body, Elevate Your Life
           </h1>
           <p className={styles.heroDescription}>
             Take control of your health with personalized workouts tailored to

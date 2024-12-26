@@ -22,7 +22,6 @@
   place-items: center;
   height: 100px;
   border: 3px solid aqua;
-  /* background-color: slateblue; */
   border-radius: 15px;
   color: black;
   width: 400px;
@@ -40,7 +39,6 @@
 }
 
 .sectionTitle {
-  /* margin-top: 50px; */
   margin-bottom: 20px;
   color: white;
 }
@@ -50,9 +48,8 @@
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 20px;
+  gap: 30px;
   margin-bottom: 50px;
-  /* margin-top: 50px; */
 }
 
 .buttonWrapper {

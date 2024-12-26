@@ -124,7 +124,7 @@ const CustomWorkout = () => {
 
         {/* Basic Settings */}
         <div className={styles.settingsSection}>
-          {/* <h2>Workout Settings</h2>
+          <h2>Workout Settings</h2>
           <div className={styles.settingField}>
             <label>Title:</label>
             <input
@@ -148,7 +148,7 @@ const CustomWorkout = () => {
               placeholder="Workout Description"
               className={styles.textarea}
             />
-          </div> */}
+          </div>
 
           <div className={styles.settingField}>
             <label>Number of Rounds:</label>

@@ -17,14 +17,7 @@ const WorkoutPresetCard = ({
         backgroundColor: isActive ? "yellow" : backgroundColor, //#1F2129
       }}
     >
-      <h2
-        style={{
-          color: "black",
-          fontSize: "22px",
-        }}
-      >
-        {workoutPresetName}
-      </h2>
+      <h2>{workoutPresetName}</h2>
       <p
         style={{
           color: "black",
@@ -44,7 +37,7 @@ const WorkoutPresetCard = ({
           color: isActive ? "black" : "grey",
         }}
       >
-        Total duration: {totalDuration}
+        Duration: {totalDuration}
       </p>
       {/* <p>Difficulty: ⭐⭐⭐</p> */}
     </div>
