@@ -5,6 +5,12 @@ import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import styles from "../styles/Custom.module.css";
 
+import beginnerPresets from "../data/workouts/beginner";
+import hiitPresets from "../data/workouts/hiit";
+import fullbodyPresets from "../data/workouts/full_body";
+
+const presets = [...beginnerPresets, ...hiitPresets, ...fullbodyPresets];
+
 const CustomWorkout = () => {
   const router = useRouter();
   const [customWorkout, setCustomWorkout] = useState({
@@ -25,9 +31,20 @@ const CustomWorkout = () => {
   // Load preset if provided
   useEffect(() => {
     if (router.query.preset) {
-      const presetId = router.query.preset;
-      // Fetch preset data and set it as initial state
-      // This would be implemented when connecting to data source
+      const index = router.query.preset;
+      let preset = presets.find(
+        (preset) => Number(preset.id) === Number(index)
+      );
+      if (preset) {
+        setCustomWorkout({
+          title: preset.title,
+          description: preset.description,
+          rounds: preset.rounds,
+          exerciseBreaks: preset.exerciseBreaks,
+          roundBreaks: preset.roundBreaks,
+          workout: preset.workout,
+        });
+      }
     }
   }, [router.query.preset]);
 
