@@ -288,11 +288,6 @@ const CustomWorkout = () => {
           <h2>Workout Exercises</h2>
           {customWorkout.workout.map((exercise, index) => (
             <div key={index} className={styles.exerciseItem}>
-              <div className={styles.exerciseInfo}>
-                <h3>{exercise.name}</h3>
-                <p>{exercise.description}</p>
-                <p>{exercise.time} seconds</p>
-              </div>
               <div className={styles.moveButtons}>
                 <button
                   onClick={() => moveExercise(index, -1)}
@@ -307,6 +302,12 @@ const CustomWorkout = () => {
                   ↓
                 </button>
               </div>
+              <div className={styles.exerciseInfo}>
+                <h3>{exercise.name}</h3>
+                <p>{exercise.description}</p>
+                <p>{exercise.time} seconds</p>
+              </div>
+
               <button
                 onClick={() => handleRemoveExercise(index)}
                 className={styles.removeButton}
