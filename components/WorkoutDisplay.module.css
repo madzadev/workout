@@ -37,6 +37,10 @@
     /* Include padding in the width calculation */
 }
 
+.controls a {
+    text-decoration: none;
+}
+
 .progress {
     color: rgb(104, 104, 104);
     cursor: pointer;

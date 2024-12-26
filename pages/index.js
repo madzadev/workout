@@ -87,14 +87,19 @@ export default function Home() {
             fitness and unlock your full potential — all from the palm of your
             hand.
           </p>
+          {/* <p>
+            Personalized workouts, expert guidance, and a supportive community
+            to help you achieve your fitness goals. Start your journey to a
+            stronger, healthier you today.
+          </p> */}
         </div>
-        <Link href="/custom">
-          <div className={styles.customWorkoutWrapper}>
+        <div className={styles.customWorkoutWrapper}>
+          <Link href="/custom">
             <h1 className={styles.customWorkoutWrapperStart}>
               Create my workout
             </h1>
-          </div>
-        </Link>
+          </Link>
+        </div>
       </div>
 
       <h1 className={styles.sectionTitle}>Beginner workouts:</h1>
