@@ -2,11 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Wrapper from "../components/Wrapper";
 import Navigation from "../components/Navigation";
-import StartWorkoutButton from "../components/StartWorkoutButton";
 import Footer from "../components/Footer";
 import styles from "../styles/Custom.module.css";
 
-const Custom = () => {
+const CustomWorkout = () => {
   const router = useRouter();
   const [customWorkout, setCustomWorkout] = useState({
     title: "",
@@ -59,6 +58,13 @@ const Custom = () => {
       ...prev,
       workout: prev.workout.filter((_, i) => i !== index),
     }));
+  };
+
+  const moveExercise = (index, direction) => {
+    const newExercises = [...customWorkout.workout];
+    const [movedExercise] = newExercises.splice(index, 1);
+    newExercises.splice(index + direction, 0, movedExercise);
+    setCustomWorkout((prev) => ({ ...prev, workout: newExercises }));
   };
 
   const handleStartWorkout = () => {
@@ -270,6 +276,20 @@ const Custom = () => {
                 <p>{exercise.description}</p>
                 <p>{exercise.time} seconds</p>
               </div>
+              <div className={styles.moveButtons}>
+                <button
+                  onClick={() => moveExercise(index, -1)}
+                  disabled={index === 0}
+                >
+                  ↑
+                </button>
+                <button
+                  onClick={() => moveExercise(index, 1)}
+                  disabled={index === customWorkout.workout.length - 1}
+                >
+                  ↓
+                </button>
+              </div>
               <button
                 onClick={() => handleRemoveExercise(index)}
                 className={styles.removeButton}
@@ -294,4 +314,4 @@ const Custom = () => {
   );
 };
 
-export default Custom;
+export default CustomWorkout;
