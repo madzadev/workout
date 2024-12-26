@@ -70,11 +70,21 @@ const Custom = () => {
     // Create a workout preset in the format expected by the workout page
     const workoutPreset = {
       id: Date.now(), // Generate temporary ID
-      ...customWorkout,
+      title: customWorkout.title,
+      description: customWorkout.description,
+      rounds: customWorkout.rounds,
+      exerciseBreaks: customWorkout.exerciseBreaks,
+      roundBreaks: customWorkout.roundBreaks,
+      workout: customWorkout.workout.map((exercise, index) => ({
+        id: index + 1,
+        name: exercise.name,
+        description: exercise.description,
+        time: exercise.time,
+      })),
     };
 
     // Store workout in session storage for the workout page to access
-    sessionStorage.setItem("customWorkout", JSON.stringify(workoutPreset));
+    sessionStorage.setItem("customPreset", JSON.stringify(workoutPreset));
 
     // Navigate to workout page with the custom workout
     router.push({

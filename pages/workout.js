@@ -48,9 +48,21 @@ const Workout = () => {
   useEffect(() => {
     if (router.query.preset) {
       const index = router.query.preset;
-      const preset = presets.find(
+      let preset = presets.find(
         (preset) => Number(preset.id) === Number(index)
       );
+
+      if (!preset) {
+        const custom = sessionStorage.getItem("customPreset");
+        console.log("AAAAAAAAAA " + custom);
+        if (custom) {
+          preset = JSON.parse(custom);
+        } else {
+          // Handle the case where the preset is not found in both presets and sessionStorage
+          console.error("Preset not found");
+          return;
+        }
+      }
 
       const rounds = preset.rounds;
       const exerciseBreaks = preset.exerciseBreaks;
