@@ -1,20 +1,42 @@
 .wrapper {
-  padding: 15px;
-  border-radius: 5px;
-  transition: transform 0.3s ease;
+  background-color: #1a1a1a;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .wrapper:hover {
-  cursor: pointer;
-  transform: scale(1.05);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .wrapper h2 {
-  margin-bottom: 5px;
-  font-size: 24px;
-  color: black;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: white;
 }
 
-.wrapper p {
-  margin-bottom: 5px;
+.stats {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--paragraph-color);
+}
+
+.stat svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  opacity: 0.7;
 }

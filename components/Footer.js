@@ -3,10 +3,16 @@ import styles from "./Footer.module.css";
 
 const Footer = () => {
   return (
-    <div className={styles.wrapper}>
-      <p>Created with 💖 by Madza</p>
-      <p>Created with NextJS and Vercel</p>
-    </div>
+    <footer className={styles.wrapper}>
+      <div className={styles.content}>
+        <p>Created with 💖 by Madza</p>
+        <p>Built with Next.js and deployed on Vercel</p>
+        <p>
+          <Link href="#">Terms</Link> • <Link href="#">Privacy</Link> •{" "}
+          <Link href="#">Support</Link>
+        </p>
+      </div>
+    </footer>
   );
 };
 

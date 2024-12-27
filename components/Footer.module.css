@@ -1,6 +1,28 @@
 .wrapper {
-    height: 70px;
+    padding: 2rem;
     text-align: center;
-    color: rgb(97, 97, 97);
-    font-size: 18px;
+    color: var(--paragraph-color);
+    background-color: #1a1a1a;
+    margin-top: 4rem;
+}
+
+.content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    gap: 1rem;
+}
+
+.wrapper p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.wrapper a {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+.wrapper a:hover {
+    text-decoration: underline;
 }

@@ -1,27 +1,35 @@
+import { useState } from "react";
 import Link from "next/link";
 import styles from "./Navigation.module.css";
 
 const Navigation = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
-    <div className={styles.wrapper}>
+    <nav className={styles.wrapper}>
       <div className={styles.logo}>
         <Link href="/">
-          <h1 className={styles.links}>💪 FitHub</h1>
-          {/* <p>Devmile</p> */}
+          <span className={styles.links}>
+            💪 <h1>FitHub</h1>
+          </span>
         </Link>
-        {/* <img src="" alt="My logo" /> */}
       </div>
-      <div className={styles.links}>
+
+      <button
+        className={styles.mobileMenuButton}
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+      >
+        ☰
+      </button>
+
+      <div className={`${styles.links} ${isMenuOpen ? styles.active : ""}`}>
         <Link href="#">Workouts</Link>
         <Link href="#">Programs</Link>
         <Link href="#">Nutrition</Link>
         <Link href="#">Community</Link>
-        {/* <Link href="/settings">Settings</Link>
-        <Link href="/about">About</Link>
-        <Link href="#">Get Started</Link> */}
         <Link href="#">Log In</Link>
       </div>
-    </div>
+    </nav>
   );
 };
 
