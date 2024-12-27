@@ -1,61 +1,20 @@
-.columnWrapper {
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.content {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    margin-bottom: 50px;
-    color: rgb(73, 73, 73)
+    gap: 3rem;
 }
 
-.title {
-    margin-bottom: 30px;
-    color: white
-}
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
 
-.parameter {
-    color: rgb(73, 73, 73);
-}
-
-.columnWrapper h3 {
-    line-height: 1.8;
-}
-
-.buttonWrapper {
-    display: grid;
-    place-items: center;
-}
-
-.startButton {
-    background-color: mediumspringgreen;
-    color: white;
-    height: 250px;
-    border-radius: 10px;
-    display: grid;
-    place-items: center;
-    font-size: 32px;
-    cursor: pointer;
-    width: 250px;
-    transition: transform 0.3s ease;
-}
-
-.startButton:hover {
-    background-color: mediumaquamarine;
-    transform: scale(1.1);
-}
-
-.customizeButton {
-    background-color: rgb(109, 109, 109);
-    color: white;
-    height: 50px;
-    border-radius: 10px;
-    display: grid;
-    place-items: center;
-    font-size: 22px;
-    cursor: pointer;
-    width: 200px;
-    transition: transform 0.3s ease;
-}
-
-.customizeButton:hover {
-    background-color: rgb(156, 49, 255);
-    transform: scale(1.1);
+    .content {
+        gap: 2rem;
+    }
 }

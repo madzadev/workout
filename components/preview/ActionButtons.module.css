@@ -1,0 +1,45 @@
+.actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin: 3rem 0;
+}
+
+.actions button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.actions button svg {
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+.startButton {
+    background: #2ecc71;
+    color: white;
+}
+
+.startButton:hover {
+    background: #27ae60;
+    transform: translateY(-2px);
+}
+
+.customizeButton {
+    background: #1a1a1a;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.customizeButton:hover {
+    background: #7f5af0;
+    transform: translateY(-2px);
+}
