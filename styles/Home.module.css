@@ -54,9 +54,10 @@
 .customWorkoutWrapper {
   background: linear-gradient(135deg, #7f5af0 0%, #2ecc71 100%);
   border-radius: 1rem;
-  padding: 0.5rem;
+  padding: 1rem;
   width: fit-content;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
 }
 
 .customWorkoutWrapper:hover {
@@ -65,7 +66,6 @@
 }
 
 .customWorkoutWrapperStart {
-  background-color: var(--background-color);
   color: white;
   padding: 1rem 2rem;
   border-radius: 0.8rem;
