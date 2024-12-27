@@ -6,7 +6,8 @@ const Navigation = () => {
     <div className={styles.wrapper}>
       <div className={styles.logo}>
         <Link href="/">
-          <h1 className={styles.links}>💪 FitHub - Devmile</h1>
+          <h1 className={styles.links}>💪 FitHub</h1>
+          {/* <p>Devmile</p> */}
         </Link>
         {/* <img src="" alt="My logo" /> */}
       </div>
