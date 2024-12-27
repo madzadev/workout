@@ -1,0 +1,52 @@
+.header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+    background: linear-gradient(135deg, #7f5af0 0%, #2ecc71 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.form {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.field {
+    margin-bottom: 1.5rem;
+}
+
+.field label {
+    display: block;
+    color: var(--paragraph-color);
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.field input,
+.field textarea {
+    width: 100%;
+    padding: 1rem;
+    background: #1a1a1a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    color: white;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.field input:focus,
+.field textarea:focus {
+    outline: none;
+    border-color: #7f5af0;
+}
+
+.field textarea {
+    resize: vertical;
+    min-height: 100px;
+}
