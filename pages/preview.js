@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Wrapper from "../components/layout/Wrapper";
-import Navigation from "../components/layout/Navigation";
+import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 import PreviewHeader from "../components/preview/PreviewHeader";
 import PreviewStats from "../components/preview/PreviewStats";
@@ -58,7 +58,7 @@ const Preview = () => {
 
   return (
     <Wrapper>
-      <Navigation />
+      <Header />
       <div className={styles.container}>
         <div className={styles.content}>
           <PreviewHeader

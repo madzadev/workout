@@ -2,11 +2,12 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
+import Metadata from "../components/SEO/Metadata";
+
 import Wrapper from "../components/layout/Wrapper";
-import Navigation from "../components/layout/Navigation";
-import Header from "../components/SEO/Header";
-import WorkoutPresetCard from "../components/WorkoutPresetCard";
+import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
+import WorkoutPresetCard from "../components/WorkoutPresetCard";
 
 import styles from "../styles/Home.module.css";
 import beginnerPresets from "../data/workouts/beginner";
@@ -38,8 +39,8 @@ export default function Home() {
 
   return (
     <Wrapper>
+      <Metadata />
       <Header />
-      <Navigation />
 
       <section className={styles.heroWrapper}>
         <div className={styles.heroContent}>

@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-const Header = () => {
+const Metadata = () => {
   return (
     <Head>
       <title>FitDevs app</title>
@@ -10,4 +10,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Metadata;

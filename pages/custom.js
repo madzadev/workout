@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Wrapper from "../components/layout/Wrapper";
-import Navigation from "../components/layout/Navigation";
+import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 import CustomHeader from "../components/custom/CustomHeader";
 import WorkoutSettings from "../components/custom/WorkoutSettings";
@@ -91,7 +91,7 @@ const CustomWorkout = () => {
 
   return (
     <Wrapper>
-      <Navigation />
+      <Header />
       <div className={styles.container}>
         <div className={styles.content}>
           <CustomHeader

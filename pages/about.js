@@ -1,11 +1,11 @@
 import Wrapper from "../components/layout/Wrapper";
-import Navigation from "../components/layout/Navigation";
+import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 
 const About = () => {
   return (
     <Wrapper>
-      <Navigation />
+      <Header />
       <h1>About the app</h1>
       <p>Having workout is important</p>
       <h1>Note about programs</h1>

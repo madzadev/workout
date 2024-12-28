@@ -1,11 +1,11 @@
 import Wrapper from "../components/layout/Wrapper";
-import Navigation from "../components/layout/Navigation";
+import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 
 const Settings = () => {
   return (
     <Wrapper>
-      <Navigation />
+      <Header />
       <h1>Configure your app</h1>
 
       <h1>Main settings</h1>

@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Link from "next/link";
-import styles from "./Navigation.module.css";
+import styles from "./Header.module.css";
 
-const Navigation = () => {
+const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -33,4 +33,4 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+export default Header;
