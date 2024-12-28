@@ -9,7 +9,7 @@ const CustomHeader = ({
   return (
     <div className={styles.header}>
       <h1 className={styles.title}>Create Custom Workout</h1>
-      <div className={styles.form}>
+      {/* <div className={styles.form}>
         <div className={styles.field}>
           <label>Workout Title</label>
           <input
@@ -28,7 +28,7 @@ const CustomHeader = ({
             rows={4}
           />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
