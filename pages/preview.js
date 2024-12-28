@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import Wrapper from "../components/Wrapper";
-import Navigation from "../components/Navigation";
-import Footer from "../components/Footer";
+import Wrapper from "../components/layout/Wrapper";
+import Navigation from "../components/layout/Navigation";
+import Footer from "../components/layout/Footer";
 import PreviewHeader from "../components/preview/PreviewHeader";
 import PreviewStats from "../components/preview/PreviewStats";
 import ExerciseList from "../components/preview/ExerciseList";

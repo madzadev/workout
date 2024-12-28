@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import Wrapper from "../components/Wrapper";
-import Navigation from "../components/Navigation";
-import Footer from "../components/Footer";
+import Wrapper from "../components/layout/Wrapper";
+import Navigation from "../components/layout/Navigation";
+import Footer from "../components/layout/Footer";
 import CustomHeader from "../components/custom/CustomHeader";
 import WorkoutSettings from "../components/custom/WorkoutSettings";
 import ExerciseForm from "../components/custom/ExerciseForm";

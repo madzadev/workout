@@ -2,11 +2,11 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
-import Wrapper from "../components/Wrapper";
-import Navigation from "../components/Navigation";
+import Wrapper from "../components/layout/Wrapper";
+import Navigation from "../components/layout/Navigation";
 import Header from "../components/SEO/Header";
 import WorkoutPresetCard from "../components/WorkoutPresetCard";
-import Footer from "../components/Footer";
+import Footer from "../components/layout/Footer";
 
 import styles from "../styles/Home.module.css";
 import beginnerPresets from "../data/workouts/beginner";
