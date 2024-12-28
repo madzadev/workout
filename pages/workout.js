@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import WorkoutTimeline from "../components/WorkoutTimeline";
-import WorkoutDisplay from "../components/WorkoutDisplay";
-import WorkoutProgress from "../components/WorkoutProgress";
+
+import WorkoutTimeline from "../components/workout/WorkoutTimeline";
+import WorkoutDisplay from "../components//workout/WorkoutDisplay";
+import WorkoutProgress from "../components//workout/WorkoutProgress";
+
 import styles from "../styles/Workout.module.css";
 import { sumExercises, sumBreaks, formatTime } from "../helpers/convertTime";
 // import { presets } from "../data/workouts";
