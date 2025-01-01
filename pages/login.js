@@ -10,6 +10,65 @@ const Login = () => {
       <Header />
       <div className={styles.container}>
         <div className={styles.content}>
+          <div className={styles.benefitsSection}>
+            <div className={styles.benefitsContent}>
+              <h2>Why Join FitHub?</h2>
+              <div className={styles.benefits}>
+                <div className={styles.benefit}>
+                  <svg viewBox="0 0 24 24" width="24" height="24">
+                    <path
+                      fill="currentColor"
+                      d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1-11v6h2v-6h-2zm0-4v2h2V7h-2z"
+                    />
+                  </svg>
+                  <div>
+                    <h3>Personalized Workouts</h3>
+                    <p>
+                      Customized fitness routines tailored to your goals and
+                      preferences
+                    </p>
+                  </div>
+                </div>
+                <div className={styles.benefit}>
+                  <svg viewBox="0 0 24 24" width="24" height="24">
+                    <path
+                      fill="currentColor"
+                      d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM10.622 8.415l4.879 3.252a.4.4 0 0 1 0 .666l-4.879 3.252a.4.4 0 0 1-.622-.332V8.747a.4.4 0 0 1 .622-.332z"
+                    />
+                  </svg>
+                  <div>
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your improvements and celebrate achievements</p>
+                  </div>
+                </div>
+                <div className={styles.benefit}>
+                  <svg viewBox="0 0 24 24" width="24" height="24">
+                    <path
+                      fill="currentColor"
+                      d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-5-7h2a3 3 0 0 0 6 0h2a5 5 0 0 1-10 0z"
+                    />
+                  </svg>
+                  <div>
+                    <h3>Community Support</h3>
+                    <p>Join a community of like-minded fitness enthusiasts</p>
+                  </div>
+                </div>
+                <div className={styles.benefit}>
+                  <svg viewBox="0 0 24 24" width="24" height="24">
+                    <path
+                      fill="currentColor"
+                      d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-1-7h2v6h-2v-6zm0-4h2v2h-2V9z"
+                    />
+                  </svg>
+                  <div>
+                    <h3>Expert Guidance</h3>
+                    <p>Access professional workout plans and fitness tips</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div className={styles.formSection}>
             <h1 className={styles.title}>Welcome Back</h1>
             <p className={styles.subtitle}>
@@ -70,65 +129,6 @@ const Login = () => {
             <p className={styles.signupPrompt}>
               Don't have an account? <a href="#">Sign up</a>
             </p>
-          </div>
-
-          <div className={styles.benefitsSection}>
-            <div className={styles.benefitsContent}>
-              <h2>Why Join FitHub?</h2>
-              <div className={styles.benefits}>
-                <div className={styles.benefit}>
-                  <svg viewBox="0 0 24 24" width="24" height="24">
-                    <path
-                      fill="currentColor"
-                      d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1-11v6h2v-6h-2zm0-4v2h2V7h-2z"
-                    />
-                  </svg>
-                  <div>
-                    <h3>Personalized Workouts</h3>
-                    <p>
-                      Customized fitness routines tailored to your goals and
-                      preferences
-                    </p>
-                  </div>
-                </div>
-                <div className={styles.benefit}>
-                  <svg viewBox="0 0 24 24" width="24" height="24">
-                    <path
-                      fill="currentColor"
-                      d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM10.622 8.415l4.879 3.252a.4.4 0 0 1 0 .666l-4.879 3.252a.4.4 0 0 1-.622-.332V8.747a.4.4 0 0 1 .622-.332z"
-                    />
-                  </svg>
-                  <div>
-                    <h3>Progress Tracking</h3>
-                    <p>Monitor your improvements and celebrate achievements</p>
-                  </div>
-                </div>
-                <div className={styles.benefit}>
-                  <svg viewBox="0 0 24 24" width="24" height="24">
-                    <path
-                      fill="currentColor"
-                      d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-5-7h2a3 3 0 0 0 6 0h2a5 5 0 0 1-10 0z"
-                    />
-                  </svg>
-                  <div>
-                    <h3>Community Support</h3>
-                    <p>Join a community of like-minded fitness enthusiasts</p>
-                  </div>
-                </div>
-                <div className={styles.benefit}>
-                  <svg viewBox="0 0 24 24" width="24" height="24">
-                    <path
-                      fill="currentColor"
-                      d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-1-7h2v6h-2v-6zm0-4h2v2h-2V9z"
-                    />
-                  </svg>
-                  <div>
-                    <h3>Expert Guidance</h3>
-                    <p>Access professional workout plans and fitness tips</p>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
