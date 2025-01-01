@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Link from "next/link";
+import Logo from "./Logo";
 import styles from "./Header.module.css";
 
 const Header = () => {
@@ -7,13 +8,7 @@ const Header = () => {
 
   return (
     <nav className={styles.wrapper}>
-      <div className={styles.logo}>
-        <Link href="/">
-          <span className={styles.links}>
-            💪 <h1>FitHub</h1>
-          </span>
-        </Link>
-      </div>
+      <Logo />
 
       <button
         className={styles.mobileMenuButton}
