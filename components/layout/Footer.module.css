@@ -1,28 +1,159 @@
-.wrapper {
-    padding: 2rem;
-    text-align: center;
-    color: var(--paragraph-color);
+.footer {
     background-color: #1a1a1a;
-    margin-top: 4rem;
+    padding: 4rem 2rem 2rem;
+    margin-top: 6rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .content {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
+    grid-template-columns: 2fr repeat(3, 1fr);
+    gap: 4rem;
+}
+
+.section h3 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #7f5af0 0%, #2ecc71 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.section h4 {
+    color: white;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.section p {
+    color: var(--paragraph-color);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.section nav {
+    display: flex;
+    flex-direction: column;
     gap: 1rem;
 }
 
-.wrapper p {
-    font-size: 0.9rem;
-    line-height: 1.5;
+.section nav a {
+    color: var(--paragraph-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 0.95rem;
 }
 
-.wrapper a {
+.section nav a:hover {
+    color: white;
+}
+
+.social {
+    display: flex;
+    gap: 1rem;
+}
+
+.social a {
+    color: var(--paragraph-color);
+    transition: all 0.3s ease;
+}
+
+.social a:hover {
+    color: white;
+    transform: translateY(-2px);
+}
+
+.social svg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.appButtons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.appButton {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    color: white;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.appButton:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.appButton svg {
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+.bottom {
+    max-width: 1200px;
+    margin: 4rem auto 0;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--paragraph-color);
+    font-size: 0.9rem;
+}
+
+.bottom a {
     color: var(--secondary-color);
     text-decoration: none;
 }
 
-.wrapper a:hover {
+.bottom a:hover {
     text-decoration: underline;
+}
+
+@media (max-width: 1024px) {
+    .content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 3rem 1.5rem 1.5rem;
+    }
+
+    .content {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+        margin-top: 3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer {
+        padding: 2rem 1rem 1rem;
+    }
+
+    .appButtons {
+        flex-direction: column;
+    }
 }
