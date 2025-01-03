@@ -1,25 +1,72 @@
-.progressBarContainer {
-    display: flex;
-    width: 100%;
+.timeline {
+    background: #1a1a1a;
+    border-radius: 1rem;
+    padding: 1rem;
+    overflow-y: auto;
+    max-height: 300px;
 }
 
-.wrapper {
-    height: 80px;
-    display: inline-block;
-    /* transition: background-color 0.5s ease, width 0.5s ease, background 0.5s ease; */
-    border: 2px solid rgb(73, 73, 73);
-}
-
-.wrapper:hover {
+.exercise {
     cursor: pointer;
-    filter: brightness(1.5);
+    transition: all 0.3s ease;
 }
 
+.exerciseContent {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    margin: 0.5rem 0;
+}
 
-/* Text color for the percentage */
-.wrapper span {
-    position: absolute;
-    right: 5px;
-    top: 5px;
-    color: black;
+.exercise.current .exerciseContent {
+    background: rgba(46, 204, 113, 0.2);
+    border: 1px solid #2ecc71;
+}
+
+.exercise.completed .exerciseContent {
+    opacity: 0.5;
+}
+
+.number {
+    background: #2ecc71;
+    color: white;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-weight: 600;
+}
+
+.details {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.name {
+    color: white;
+    font-weight: 500;
+}
+
+.duration {
+    color: var(--paragraph-color);
+    font-size: 0.9rem;
+}
+
+.break {
+    color: var(--paragraph-color);
+    font-size: 0.8rem;
+    text-align: center;
+    padding: 0.25rem;
+}
+
+@media (max-width: 768px) {
+    .timeline {
+        max-height: 200px;
+    }
 }

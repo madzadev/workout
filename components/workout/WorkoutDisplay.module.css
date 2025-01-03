@@ -1,67 +1,110 @@
 .wrapper {
-    flex-grow: 1;
-    display: grid;
-    place-items: center;
-    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    height: 100%;
+    gap: 2rem;
+}
+
+.header {
+    text-align: center;
 }
 
 .title {
-    font-size: 72px;
+    font-size: 2rem;
     color: var(--text-color);
+    margin-bottom: 0.5rem;
 }
 
 .round {
-    font-size: 32px;
+    font-size: 1.2rem;
     color: var(--paragraph-color);
 }
 
-.timer {
-    font-size: 150px;
-    color: var(--text-color);
+.timerSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.progressWrapper {
+    width: 280px;
+    height: 280px;
+    max-width: 80vw;
+    max-height: 80vw;
 }
 
 .description {
-    font-size: 32px;
+    text-align: center;
+    font-size: 1.2rem;
     color: var(--paragraph-color);
+    padding: 0 1rem;
 }
 
 .controls {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    /* Ensure the container spans the full width of the screen */
-    padding-left: 50px;
-    padding-right: 50px;
-    box-sizing: border-box;
-    /* Include padding in the width calculation */
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
 }
 
-.controls a {
-    text-decoration: none;
-}
-
-.progress {
-    color: rgb(104, 104, 104);
+.controlButton {
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border: none;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
+    min-width: 120px;
 }
 
-.progress:hover {
+.pauseButton {
+    background-color: #2ecc71;
     color: white;
-    transform: scale(1.1);
 }
 
-.exit {
+.pauseButton:hover {
+    background-color: #27ae60;
+    transform: translateY(-2px);
+}
+
+.exitButton {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.exitButton:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px);
+}
+
+.exitLink {
     text-decoration: none;
-    color: rgb(104, 104, 104);
-    cursor: pointer;
-    font-size: 20px;
-    font-weight: bold;
-    transition: transform 0.3s ease;
 }
 
-.exit:hover {
-    color: tomato;
-    transform: scale(1.1);
+@media (max-width: 480px) {
+    .wrapper {
+        padding: 1rem;
+        gap: 1.5rem;
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .round {
+        font-size: 1rem;
+    }
+
+    .description {
+        font-size: 1rem;
+    }
+
+    .controlButton {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+        min-width: 100px;
+    }
 }

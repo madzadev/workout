@@ -1,13 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-
-import WorkoutTimeline from "../components/workout/WorkoutTimeline";
-import WorkoutDisplay from "../components//workout/WorkoutDisplay";
-import WorkoutProgress from "../components//workout/WorkoutProgress";
-
+import WorkoutLayout from "../components/workout/WorkoutLayout";
 import styles from "../styles/Workout.module.css";
 import { sumExercises, sumBreaks, formatTime } from "../helpers/convertTime";
-// import { presets } from "../data/workouts";
 
 import beginnerPresets from "../data/workouts/beginner";
 import hiitPresets from "../data/workouts/hiit";
@@ -18,6 +13,7 @@ const presets = [...beginnerPresets, ...hiitPresets, ...fullbodyPresets];
 const Workout = () => {
   const router = useRouter();
 
+  // Workout configuration state
   const [roundCount, setRoundCount] = useState(0);
   const [breakLength, setBreakLength] = useState(0);
   const [roundBreak, setRoundBreak] = useState(0);
@@ -25,28 +21,28 @@ const Workout = () => {
   const [exerciseNames, setExerciseNames] = useState([]);
   const [exerciseDescriptions, setExerciseDescriptions] = useState([]);
 
-  // State for the workout logic
+  // Workout progress state
+  const [currentInterval, setCurrentInterval] = useState(0);
   const [timer, setTimer] = useState(0);
-  const [currentInterval, setCurrentInterval] = useState(null);
   const [isCooldown, setIsCooldown] = useState(false);
   const [cooldownTimer, setCooldownTimer] = useState(0);
   const [isRoundComplete, setIsRoundComplete] = useState(false);
   const [isWorkoutComplete, setIsWorkoutComplete] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
 
-  // Audio files
+  // Audio state
   const [countAudio, setCountAudio] = useState(null);
   const [startAudio, setStartAudio] = useState(null);
   const [completeAudio, setCompleteAudio] = useState(null);
 
   useEffect(() => {
-    // Ensure this runs only on the client side
-    setCountAudio(new Audio("/audio/count5.wav"));
-    setStartAudio(new Audio("/audio/done4.wav")); //done2.wav = beep, done.mp3 = rocket
-    setCompleteAudio(new Audio("/audio/done3.wav"));
+    if (typeof window !== "undefined") {
+      setCountAudio(new Audio("/audio/count5.wav"));
+      setStartAudio(new Audio("/audio/done4.wav"));
+      setCompleteAudio(new Audio("/audio/done3.wav"));
+    }
   }, []);
 
-  // Fetch the preset data based on query params
   useEffect(() => {
     if (router.query.preset) {
       const index = router.query.preset;
@@ -54,16 +50,19 @@ const Workout = () => {
         (preset) => Number(preset.id) === Number(index)
       );
 
-      if (!preset) {
+      if (!preset && router.query.isCustom) {
         const custom = sessionStorage.getItem("customPreset");
-        console.log("AAAAAAAAAA " + custom);
         if (custom) {
           preset = JSON.parse(custom);
         } else {
-          // Handle the case where the preset is not found in both presets and sessionStorage
           console.error("Preset not found");
           return;
         }
+      }
+
+      if (!preset) {
+        console.error("Preset not found");
+        return;
       }
 
       const rounds = preset.rounds;
@@ -99,69 +98,14 @@ const Workout = () => {
       setExerciseNames(repeatedExerciseNames);
       setExerciseDescriptions(repeatedExerciseDescriptions);
 
-      // Set initial values for timer and cooldown based on the fetched data
+      // Set initial values
       setTimer(repeatedTimeIntervals[0]);
       setCurrentInterval(0);
       setCooldownTimer(exerciseBreaks);
     }
-  }, [router.query.preset]);
+  }, [router.query]);
 
-  // Play audio when the timer hits specific values
-  useEffect(() => {
-    if (router.query.preset) {
-      if (timer === 3 || timer === 2 || timer === 1) {
-        countAudio.play();
-      }
-
-      if (timer === 1) {
-        setTimeout(() => {
-          completeAudio.play();
-        }, 1000);
-        // setTimeout(() => {
-        //   if (currentInterval != timeIntervals.length - 1) {
-        //     const utterance = new SpeechSynthesisUtterance(
-        //       `Next up: ${exerciseNames[currentInterval + 1]}`
-        //     );
-        //     window.speechSynthesis.speak(utterance);
-        //   } else {
-        //     const utterance = new SpeechSynthesisUtterance(`Workout complete!`);
-        //     window.speechSynthesis.speak(utterance);
-        //   }
-        // }, 2000);
-      }
-    }
-  }, [timer]);
-
-  // Play audio when the timer hits specific values
-  useEffect(() => {
-    if (router.query.preset) {
-      if (cooldownTimer === 3 || cooldownTimer === 2 || cooldownTimer === 1) {
-        countAudio.play();
-      }
-
-      if (cooldownTimer === 1) {
-        setTimeout(() => {
-          startAudio.play();
-        }, 1000);
-        // setTimeout(() => {
-        //   const utterance = new SpeechSynthesisUtterance(
-        //     `Begin ${exerciseNames[currentInterval]}`
-        //   );
-        //   window.speechSynthesis.speak(utterance);
-        // }, 3000);
-      }
-    }
-  }, [cooldownTimer]);
-
-  // The exercise logic for the workout will stay the same as before
-  const exercisesPerRound = exerciseNames.length / roundCount;
-  const currentRound = Math.floor(currentInterval / exercisesPerRound) + 1;
-
-  const handlePauseToggle = (e) => {
-    e.preventDefault();
-    setIsPaused(!isPaused);
-  };
-
+  // Handle exercise timer
   useEffect(() => {
     let interval;
     const handleKeydown = (event) => {
@@ -171,8 +115,9 @@ const Workout = () => {
     };
     window.addEventListener("keydown", handleKeydown);
 
-    if (isPaused)
+    if (isPaused) {
       return () => window.removeEventListener("keydown", handleKeydown);
+    }
 
     if (isWorkoutComplete) {
       window.removeEventListener("keydown", handleKeydown);
@@ -198,6 +143,7 @@ const Workout = () => {
           setTimer((prev) => {
             if (prev === 1) {
               const nextInterval = currentInterval + 1;
+              const exercisesPerRound = timeIntervals.length / roundCount;
               const isNewRound = nextInterval % exercisesPerRound === 0;
 
               if (nextInterval < timeIntervals.length) {
@@ -208,7 +154,6 @@ const Workout = () => {
                 }
                 setCurrentInterval(nextInterval);
               } else {
-                clearInterval(interval);
                 setIsWorkoutComplete(true);
               }
               return 0;
@@ -229,54 +174,88 @@ const Workout = () => {
     isPaused,
     isRoundComplete,
     isWorkoutComplete,
+    timeIntervals,
+    breakLength,
+    roundBreak,
+    roundCount,
   ]);
 
-  const handleDivClick = (index) => {
+  // Handle audio cues
+  useEffect(() => {
+    if (timer === 3 || timer === 2 || timer === 1) {
+      countAudio?.play();
+    }
+
+    if (timer === 1) {
+      setTimeout(() => {
+        completeAudio?.play();
+      }, 1000);
+    }
+  }, [timer, countAudio, completeAudio]);
+
+  useEffect(() => {
+    if (cooldownTimer === 3 || cooldownTimer === 2 || cooldownTimer === 1) {
+      countAudio?.play();
+    }
+
+    if (cooldownTimer === 1) {
+      setTimeout(() => {
+        startAudio?.play();
+      }, 1000);
+    }
+  }, [cooldownTimer, countAudio, startAudio]);
+
+  const handlePauseToggle = (e) => {
+    e.preventDefault();
+    setIsPaused(!isPaused);
+  };
+
+  const handleExerciseClick = (index) => {
+    if (index === currentInterval) return;
+
     setCurrentInterval(index);
     setTimer(timeIntervals[index]);
-    setIsPaused(false);
     setIsCooldown(false);
     setIsRoundComplete(false);
     setIsWorkoutComplete(false);
     setCooldownTimer(breakLength);
+    setIsPaused(true);
   };
 
-  const colors = ["aquamarine", "grey", "yellow"];
+  const getExercisesList = () => {
+    if (!exerciseNames.length) return [];
+
+    return exerciseNames.map((name, index) => ({
+      name,
+      time: timeIntervals[index],
+      description: exerciseDescriptions[index],
+    }));
+  };
+
+  const exercisesPerRound = timeIntervals.length / roundCount;
+  const currentRound = Math.floor(currentInterval / exercisesPerRound) + 1;
 
   return (
     <div className={styles.wrapper}>
-      <WorkoutProgress
-        countdown={isCooldown ? cooldownTimer : timer}
-        color={isCooldown ? colors[2] : colors[0]}
-        isCooldown={isCooldown}
-        cooldownTimer={isRoundComplete ? roundBreak : breakLength}
-        totalWorkoutTime={timeIntervals[currentInterval]}
-      />
-      <WorkoutDisplay
+      <WorkoutLayout
         title={
           isWorkoutComplete
             ? "Workout complete!"
             : isCooldown
-            ? "Next up:"
-            : `${exerciseNames[currentInterval]}`
+            ? "Rest"
+            : exerciseNames[currentInterval]
         }
         round={
           isWorkoutComplete
             ? `You did ${timeIntervals.length} exercises`
             : isCooldown
-            ? exerciseNames[currentInterval]
-            : `${currentRound} of ${roundCount}`
+            ? `Next: ${exerciseNames[currentInterval]}`
+            : `Round ${currentRound} of ${roundCount}`
         }
-        timer={
-          isWorkoutComplete
-            ? presets[currentInterval].completionEmoji
-            : isCooldown
-            ? cooldownTimer
-            : timer
-        }
+        timer={isWorkoutComplete ? "🎉" : isCooldown ? cooldownTimer : timer}
         description={
           isWorkoutComplete
-            ? `in ${formatTime(
+            ? `Total time: ${formatTime(
                 sumExercises(timeIntervals) +
                   sumBreaks(
                     timeIntervals.length,
@@ -286,19 +265,17 @@ const Workout = () => {
                   )
               )}`
             : isCooldown
-            ? `${timeIntervals[currentInterval]} seconds`
+            ? "Get ready for the next exercise"
             : exerciseDescriptions[currentInterval]
         }
         isPaused={isPaused}
-        onClick={handlePauseToggle}
-      />
-      <WorkoutTimeline
-        onClick={handleDivClick}
-        timeIntervals={timeIntervals}
-        colors={colors}
-        currentInterval={currentInterval}
-        timer={isCooldown ? cooldownTimer : timer}
+        onPauseClick={handlePauseToggle}
+        totalTime={isCooldown ? breakLength : timeIntervals[currentInterval]}
         isCooldown={isCooldown}
+        isWorkoutComplete={isWorkoutComplete}
+        exercises={getExercisesList()}
+        currentInterval={currentInterval}
+        onExerciseClick={handleExerciseClick}
       />
     </div>
   );
