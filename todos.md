@@ -1,3 +1,7 @@
+Upvote new workouts
+
+Workout heatmap
+
 Gamified Coding Challenges: Incorporate coding puzzles that unlock after completing specific workouts, merging physical activity with mental stimulation.
 
 Achievement Badges: Award badges for milestones like consecutive workout days or reaching fitness goals, providing a sense of accomplishment.
